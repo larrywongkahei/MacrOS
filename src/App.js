@@ -1,8 +1,15 @@
 import './App.css';
+import DashboardContainer from './containers/dashboardContainers/DashboardContainer';
+import JournalContainer from './containers/journalContainers/JournalContainer';
+import OnboardingContainer from './containers/onboardingContainers/OnboardingContainer';
 
 function App() {
   return (
-    <h1>this is app.js</h1>
+    <div>
+    <DashboardContainer />
+    <JournalContainer />
+    <OnboardingContainer />
+    </div>
   )
 }
 
