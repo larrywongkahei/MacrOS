@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import DashboardContainer from '../containers/dashboardContainers/DashboardContainer';
-// import JournalContainer from '../containers/journalContainers/JournalContainer';
+import JournalContainer from '../containers/journalContainers/JournalContainer';
 // import OnboardingContainer from '.. /containers/onboardingContainers/OnboardingContainer';
 import Request from '../helpers/Request';
 import OnboardingContainer from './onboardingContainers/OnboardingContainer';
@@ -78,7 +78,7 @@ const MainContainer = () => {
         return(
             <Routes>
                 <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals}/>} />
-                {/* <JournalContainer />*/}
+                <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} />} />
             </Routes>
         )
 
