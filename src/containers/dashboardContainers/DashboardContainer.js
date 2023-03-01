@@ -5,9 +5,11 @@ import AddMealContainer from "./AddMealContainer";
 import ExerciseContainer from "./ExerciseContainer";
 import MacroStatsContainer from "./MacroStatsContainer";
 
-const DashboardContainer = () => {
+const DashboardContainer = ({user}) => {
+
 return (
     <>
+    <p>Hi, I am {user.name}</p>
     <NavBar />
     <AddMealContainer />
     <MacroStatsContainer />
