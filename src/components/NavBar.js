@@ -1,9 +1,19 @@
-
+import { NavLink } from "react-router-dom"
 const NavBar = () => {
     return(
-        <>
-        <p>I am a NavBar</p>
-        </>
+        
+        <nav>
+            <h2>I am thee Navbar</h2>
+            <ul>
+                <li>
+                    <NavLink to="/">Dashboard</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/journal">Journal</NavLink>
+                </li>
+            </ul>
+        </nav>
+        
     )
 }
 

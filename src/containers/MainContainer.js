@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
+import NavBar from '../components/NavBar';
 import DashboardContainer from '../containers/dashboardContainers/DashboardContainer';
 // import JournalContainer from '../containers/journalContainers/JournalContainer';
 // import OnboardingContainer from '.. /containers/onboardingContainers/OnboardingContainer';
@@ -76,10 +77,12 @@ const MainContainer = () => {
 
     if (user) {
         return(
-            <Routes>
-                <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals}/>} />
-                {/* <JournalContainer />*/}
-            </Routes>
+            <>
+                <Routes>
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals}/>} />
+                    {/* <JournalContainer />*/}
+                </Routes>
+            </>
         )
 
 
