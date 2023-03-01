@@ -1,11 +1,19 @@
+import React, { useState } from "react";
 
+import { format } from 'date-fns'
+import { DayPicker } from 'react-day-picker'
 
-const DatePicker = () => {
-    return(
-        <>
-        <p>Pick your dates with the DatePicker</p>
-        </>
+function DatePicker () {
+    const [selectedDate, setSeletedDate] = useState()
+
+    return (
+        <DayPicker
+        mode="single"
+        seleted={selectedDate}
+        onSelect={setSeletedDate} />
     )
+
+
 }
 
-export default DatePicker;
+export default DatePicker
