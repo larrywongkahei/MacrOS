@@ -6,12 +6,13 @@ import OnBoardingUserInputForm from "../../components/onboardingComponents/OnBoa
 const OnboardingContainer = ({handleUserPost}) => {
 
 
+
     return(
         <>
         <hr/>
         <p>I am OnboardingContainer containing:</p>
         <NavBar />
-        <OnBoardingUserInputForm handleUserPost={handleUserPost}/>
+        <OnBoardingUserInputForm handleUserPost={handleUserPost} />
         <AppInformation />
 
         </>
