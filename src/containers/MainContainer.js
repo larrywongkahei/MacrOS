@@ -28,9 +28,10 @@ const MainContainer = () => {
     }, [])
 
     const handleUserPost = (user) => {
+        console.log(`logging from main container: ${user}`);
         const request = new Request();
         request.post('/api/user', user).then(() => {
-            window.location = '/dashboard'
+            window.location = '/'
         })
     }
 
@@ -87,7 +88,7 @@ const MainContainer = () => {
     } else {
         return(
             <Routes>
-                <Route path="/" element={<OnboardingContainer/>} />
+                <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost}/>} />
             </Routes>
         
         )
