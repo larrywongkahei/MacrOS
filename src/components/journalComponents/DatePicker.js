@@ -3,14 +3,17 @@ import React, { useState } from "react";
 import { format } from 'date-fns'
 import { DayPicker } from 'react-day-picker'
 
-function DatePicker () {
-    const [selectedDate, setSeletedDate] = useState()
-
+function DatePicker ({updateDate, selectedDate}) {
+    console.log(selectedDate);
+    
+    const dateChange = (event) => {
+        updateDate(event)
+    }
     return (
         <DayPicker
         mode="single"
-        seleted={selectedDate}
-        onSelect={setSeletedDate} />
+        selected={selectedDate}
+        onSelect={dateChange} />
     )
 
 
