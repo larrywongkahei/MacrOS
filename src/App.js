@@ -1,14 +1,13 @@
 import './App.css';
-import DashboardContainer from './containers/dashboardContainers/DashboardContainer';
-import JournalContainer from './containers/journalContainers/JournalContainer';
-import OnboardingContainer from './containers/onboardingContainers/OnboardingContainer';
+import MainContainer from './containers/MainContainer';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   return (
     <div>
-    <DashboardContainer />
-    <JournalContainer />
-    <OnboardingContainer />
+      <Router>
+        <MainContainer/>
+      </Router>
     </div>
   )
 }
