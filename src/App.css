@@ -2,9 +2,11 @@
   border-style: solid;
   border-radius: 1em;
   border-color: grey;
+  margin:1em;
   padding:2em;
   padding-top:1em;
   width:fit-content;
+  
 }
 
 .navbar{

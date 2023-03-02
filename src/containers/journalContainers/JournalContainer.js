@@ -17,13 +17,12 @@ const JournalContainer = ({user, handleUserPut}) => {
     }
 
     return(
-        <>
-        <hr/>
+        <div className="component-container">
         <p>I am JournalContainer</p>
         <UserInfo user = {user}/>
         <DatePicker updateDate={updateDate} selectedDate={selectedDate}/>
         <GoalsStats user={user} onEdit={handleUserPut}/>
-        </>
+        </div>
     )
 }
 

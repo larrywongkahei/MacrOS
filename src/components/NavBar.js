@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom"
-const NavBar = () => {
+const NavBar = ({user}) => {
     return(
         
         <nav className="component-container navbar">
-            <h2>I am thee Navbar</h2>
+            <h2>{user.name}'s Navbar</h2>
             <ul>
                 <li>
                     <NavLink to="/">Dashboard</NavLink>

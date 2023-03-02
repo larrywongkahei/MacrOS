@@ -9,7 +9,6 @@ const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, fil
 
 return (
     <>
-    <p>Hi, I am {user.name}</p>
     <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData}/>
     <MacroStatsContainer />
     <ExerciseContainer />
