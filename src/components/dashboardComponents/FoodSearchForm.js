@@ -6,7 +6,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
     const [itemsChosen, setItemsChosen] = useState([])
     const [mealType, setMealType] = useState("")
-    const [breakfastFoodItems, setBreakFastFoodItems] = useState([])
+    const [breakfastFoodItems, setBreakfastFoodItems] = useState([])
     const [lunchFoodItems, setLunchFoodItems] = useState([])
     const [dinnerFoodItems, setDinnerFoodItems] = useState([])
     const [snackFoodItems, setSnackFoodItems] = useState([])
@@ -88,8 +88,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         })
         newItemChosenList.push(theItem)
         switch(mealType){
-            case "BreakFast":
-                setBreakFastFoodItems(newItemChosenList)
+            case "Breakfast":
+                setBreakfastFoodItems(newItemChosenList)
                 break;
             case "Lunch":
                 setLunchFoodItems(newItemChosenList)
@@ -132,7 +132,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                 carbs : {each.carbs}
             </li>
             <li>
-                surgars : {each.sugars}
+                sugars : {each.sugars}
             </li>
             <li>
                 protein : {each.protein}
@@ -148,12 +148,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     })
 
     return(
-        <>
+        <div className="component-container">
         <form>
             <p>I am a FoodSearchForm</p>
             {!mealType?
             <div>
-                <button value={"BreakFast"} onClick={handleMealType}>BreakFast</button>
+                <button value={"Breakfast"} onClick={handleMealType}>Breakfast</button>
                 <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
                 <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
                 <button value={"Snack"} onClick={handleMealType}>Snack</button>
@@ -164,7 +164,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
             {mealType ? 
             <div>
             <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
-            <button>Barcode Scanner button</button>
+            {/* <button>Barcode Scanner button</button> */}
             <label>Quantity(grams): </label>
             <input type="number" value={quantity} onChange={handleQuantity}/>
             <button onClick={handleAdd}>Add</button>
@@ -181,7 +181,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
             <button onClick={handleSubmit}>Submit</button>
             </div>: null}
         </form>
-        </>
+        </div>
     )
 }
 

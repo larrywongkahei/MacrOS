@@ -96,7 +96,7 @@ const MainContainer = () => {
     if (user) {
         return(
             <div>
-                <NavBar />
+                <NavBar user={user}/>
                 <Routes>
                     <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />

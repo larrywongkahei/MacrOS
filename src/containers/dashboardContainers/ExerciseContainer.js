@@ -4,12 +4,11 @@ import DailyExerciseStats from "../../components/dashboardComponents/DailyExerci
 
 const ExerciseContainer = () => {
     return(
-        <>
-        <hr/>
+        <div className="component-container">
         <p>I am ExerciseContainer containing:</p>
         <AddExercise/>
         <DailyExerciseStats/>
-        </>
+        </div>
     )
 }
 
