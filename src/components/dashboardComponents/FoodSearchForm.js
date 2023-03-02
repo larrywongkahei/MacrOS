@@ -1,21 +1,30 @@
 import { useState } from "react";
 
-const FoodSearchForm = ({foodItems}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, filteredList}) => {
     const [foodInput, setFoodInput] = useState("")
+    const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
 
-    function filterFoodItems(letters){
-        setFilteredFoodItems(foodItems.filter(each => {
-            each["name"].toLowerCase().contains(letters)
+    function filterFoodItems(letters, list){
+        setFilteredFoodItems(list.filter(each => {
+            return each.name.toLowerCase().includes(letters)
+
         }))
     }
 
-
-    function handleFoodInputChange(e){
-        setFoodInput(e.target.value.toLowerCase())
-        filterFoodItems(e.target.value)
+    async function handleFoodInputChange(e){
+        setFoodInput(e.target.value)
+        if(e.target.value.length === 3){
+            const abc = await searchFoodItemsByThreeLetters(e.target.value)
+            setFilteredItems(abc)
+            filterFoodItems(e.target.value.toLowerCase(), abc)
+        }
+        if(e.target.value.toLowerCase().length > 3){
+            const abc = await searchFoodItemsByThreeLetters(e.target.value)
+            filterFoodItems(e.target.value.toLowerCase(), abc)
+        }
     }
-
+    
     const foodItemsToShow = filteredFoodItems.map(each => {
         return (
             <ul>
@@ -40,9 +49,11 @@ const FoodSearchForm = ({foodItems}) => {
             </select>
             <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
             <button>Barcode Scanner button</button>
+            {filteredFoodItems? 
             <div>
                 {foodItemsToShow}
             </div>
+            :null}
         </form>
         </>
     )

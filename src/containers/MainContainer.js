@@ -13,6 +13,7 @@ const MainContainer = () => {
     const [days, setDays] = useState([])
     const [meals, setMeals] = useState([])
     const [foodItems, setFoodItems] = useState([])
+    const [filteredList, setFilteredList] = useState([])
 
 
     useEffect(() => {
@@ -37,6 +38,12 @@ const MainContainer = () => {
         request.post('/api/user', user).then(() => {
             window.location = '/'
         })
+    }
+
+    async function searchFoodItemsByThreeLetters(letters){
+        const request = new Request()
+        return(await request.get(`/api/fooditems?letters=${letters}`))
+
     }
 
     const handleUserPut = (user) => {
@@ -76,16 +83,16 @@ const MainContainer = () => {
 
     
 
-    console.log(user);
-    console.log(days);
-    console.log(meals);
+    // console.log(user);
+    // console.log(days);
+    // console.log(meals);
 
     if (user) {
         return(
             <div>
                 <NavBar />
                 <Routes>
-                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems}/>} />
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} />} />
                 </Routes>
             </div>
