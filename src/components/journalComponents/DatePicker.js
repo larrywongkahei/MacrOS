@@ -10,10 +10,12 @@ function DatePicker ({updateDate, selectedDate}) {
         updateDate(event)
     }
     return (
-        <DayPicker
-        mode="single"
-        selected={selectedDate}
-        onSelect={dateChange} />
+        <div className="component-container">
+            <DayPicker
+            mode="single"
+            selected={selectedDate}
+            onSelect={dateChange} />
+        </div>
     )
 
 

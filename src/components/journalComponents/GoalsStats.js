@@ -41,7 +41,7 @@ const GoalsStats = ({user, onEdit}) => {
 
 
     return(
-        <>
+        <div className="component-container">
             <h3>Your statistics</h3>
                 <p>Starting weight: {user.startingWeight}</p>
                     <form onSubmit={handleSubmit}>
@@ -49,7 +49,7 @@ const GoalsStats = ({user, onEdit}) => {
                         <button type="submit">+</button>
                     </form>
                 <p>Current BMI: {calculateBMI(user)}</p>
-        </>
+        </div>
 
 
     )
