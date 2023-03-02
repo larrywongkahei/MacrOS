@@ -53,8 +53,9 @@ const MainContainer = () => {
 
     const handleUserPut = (user) => {
         const request = new Request();
+        console.log(user);
         request.put(`/api/user/${user.id}`, user).then(() => {
-            window.location = '/dashboard'
+            window.location = '/journal'
         })
     }
 
@@ -98,7 +99,7 @@ const MainContainer = () => {
                 <NavBar />
                 <Routes>
                     <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData}/>} />
-                    <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} />} />
+                    <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
             </div>
         )

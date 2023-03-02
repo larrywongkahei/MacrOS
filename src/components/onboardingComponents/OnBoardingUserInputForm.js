@@ -107,7 +107,6 @@ const OnBoardingUserInputForm = ({handleUserPost}) => {
                 <option>VERY_ACTIVE</option>
                 <option>EXTRA_ACTIVE</option>
             </select>
-           
             <button type="submit">Onboard Me daddy</button>
         </form>
     )
