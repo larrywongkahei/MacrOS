@@ -1,7 +1,6 @@
 import DatePicker from "../../components/journalComponents/DatePicker";
 import GoalsStats from "../../components/journalComponents/GoalsStats";
 import UserInfo from "../../components/journalComponents/UserInfo";
-import NavBar from "../../components/NavBar";
 import { useState } from "react";
 
 const JournalContainer = () => {
@@ -21,7 +20,6 @@ const JournalContainer = () => {
         <>
         <hr/>
         <p>I am JournalContainer</p>
-        <NavBar/>
         <UserInfo />
         <DatePicker updateDate={updateDate} selectedDate={selectedDate}/>
         <GoalsStats />

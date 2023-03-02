@@ -1,12 +1,12 @@
 import React from "react";
 import FoodSearchForm from "../../components/dashboardComponents/FoodSearchForm";
 
-const AddMealContainer = () => {
+const AddMealContainer = ({foodItems}) => {
     return(
         <>
         <hr/>
         <p>I am AddMealContainer containing:</p>
-        <FoodSearchForm/>
+        <FoodSearchForm foodItems={foodItems}/>
         </>
     )
 }

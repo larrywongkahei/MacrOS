@@ -12,18 +12,22 @@ const MainContainer = () => {
     const [user, setUser] = useState([])
     const [days, setDays] = useState([])
     const [meals, setMeals] = useState([])
+    const [foodItems, setFoodItems] = useState([])
+
 
     useEffect(() => {
         const request = new Request();
         const userPromise = request.get('/api/user');
         const dayPromise = request.get('/api/days');
         const mealPromise = request.get('/api/meals');
+        const foodItemsPromise = request.get('/api/fooditems')
 
-    Promise.all([userPromise, dayPromise, mealPromise])
+    Promise.all([userPromise, dayPromise, mealPromise, foodItemsPromise])
     .then((data) => {
         setUser(data[0][0])
         setDays(data[1])
         setMeals(data[2])
+        setFoodItems(data[3])
     })
     }, [])
 
@@ -78,10 +82,13 @@ const MainContainer = () => {
 
     if (user) {
         return(
-            <Routes>
-                <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals}/>} />
-                <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} />} />
-            </Routes>
+            <div>
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems}/>} />
+                    <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} />} />
+                </Routes>
+            </div>
         )
 
 
