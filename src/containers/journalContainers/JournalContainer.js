@@ -22,7 +22,7 @@ const JournalContainer = ({user, handleUserPut}) => {
         <hr/>
         <p>I am JournalContainer</p>
         <NavBar/>
-        <UserInfo />
+        <UserInfo user = {user}/>
         <DatePicker updateDate={updateDate} selectedDate={selectedDate}/>
         <GoalsStats user={user} onEdit={handleUserPut}/>
         </>
