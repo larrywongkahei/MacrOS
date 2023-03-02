@@ -1,17 +1,16 @@
-import React from "react";
-import NavBar from "../../components/NavBar";
+import React, { useState } from "react";
 import UserUpdateForm from "../../components/dashboardComponents/UserUpdateForm";
 import AddMealContainer from "./AddMealContainer";
 import ExerciseContainer from "./ExerciseContainer";
 import MacroStatsContainer from "./MacroStatsContainer";
 
-const DashboardContainer = ({user}) => {
+const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData}) => {
+
 
 return (
     <>
     <p>Hi, I am {user.name}</p>
-    <NavBar />
-    <AddMealContainer />
+    <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData}/>
     <MacroStatsContainer />
     <ExerciseContainer />
     <UserUpdateForm />
