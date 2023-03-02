@@ -32,6 +32,11 @@ const MainContainer = () => {
     })
     }, [])
 
+    function getDateData(data){
+        data['userID'] = user.id
+        console.log(data)
+        }
+
     const handleUserPost = (user) => {
         console.log(`logging from main container: ${user}`);
         const request = new Request();
@@ -92,7 +97,7 @@ const MainContainer = () => {
             <div>
                 <NavBar />
                 <Routes>
-                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList}/>} />
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} />} />
                 </Routes>
             </div>

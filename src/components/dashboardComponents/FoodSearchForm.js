@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters }) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -71,7 +71,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters }) => {
             "meals" : [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems],
             "completed" : true
         }
-        console.log(theDate)
+        getDateData(theDate)
     }
 
     function handleMealType(e){
