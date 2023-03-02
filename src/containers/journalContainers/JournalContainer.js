@@ -4,14 +4,14 @@ import UserInfo from "../../components/journalComponents/UserInfo";
 import NavBar from "../../components/NavBar";
 import { useState } from "react";
 
-const JournalContainer = () => {
+const JournalContainer = ({user, handleUserPut}) => {
 
     var date = new Date();
 
     var formatedDate = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`
 
     const [selectedDate, setSelectedDate] = useState(formatedDate);
- 
+
 
     const updateDate = (newDate) => {
         setSelectedDate(newDate)
@@ -24,7 +24,7 @@ const JournalContainer = () => {
         <NavBar/>
         <UserInfo />
         <DatePicker updateDate={updateDate} selectedDate={selectedDate}/>
-        <GoalsStats />
+        <GoalsStats user={user} onEdit={handleUserPut}/>
         </>
     )
 }
