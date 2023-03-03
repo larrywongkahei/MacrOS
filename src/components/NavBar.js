@@ -3,7 +3,9 @@ const NavBar = ({user}) => {
     return(
         
         <nav className="component-container navbar">
-            <h2>{user.name}'s Navbar</h2>
+            {user ? (
+            <h2>{user.name} Navbar</h2>
+            ): <h2> User's Navbar</h2>}
             <ul>
                 <li>
                     <NavLink to="/">Dashboard</NavLink>

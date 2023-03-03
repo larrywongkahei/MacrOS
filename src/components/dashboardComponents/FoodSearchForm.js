@@ -59,6 +59,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
 
     function handleSubmit(e){
         e.preventDefault()
+    
         setItemsChosen([])
         setMealType("")
     }
@@ -149,6 +150,16 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
 
     return(
         <div className="component-container">
+
+            <div>
+                <h2>Breakfast:</h2>{breakfastFoodItems > 0 ?(
+                <ul>
+                    {breakfastFoodItems.map((item) => (
+                        <li key={item}>{item.name}</li>
+                    ))}
+                </ul> ) : null}
+            </div>
+
         <form>
             <p>I am a FoodSearchForm</p>
             {!mealType?
