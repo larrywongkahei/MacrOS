@@ -2,8 +2,9 @@ import DatePicker from "../../components/journalComponents/DatePicker";
 import GoalsStats from "../../components/journalComponents/GoalsStats";
 import UserInfo from "../../components/journalComponents/UserInfo";
 import { useState } from "react";
+import GoalsCharts from "../../components/journalComponents/GoalsCharts";
 
-const JournalContainer = ({user, handleUserPut}) => {
+const JournalContainer = ({user, handleUserPut, days}) => {
 
     var date = new Date();
 
@@ -22,6 +23,7 @@ const JournalContainer = ({user, handleUserPut}) => {
         <UserInfo user = {user}/>
         <DatePicker updateDate={updateDate} selectedDate={selectedDate}/>
         <GoalsStats user={user} onEdit={handleUserPut}/>
+        <GoalsCharts user={user} days={days} /> 
         </div>
     )
 }
