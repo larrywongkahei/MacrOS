@@ -59,7 +59,6 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
 
     function handleSubmit(e){
         e.preventDefault()
-    
         setItemsChosen([])
         setMealType("")
     }
@@ -111,7 +110,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const foodItemsToShow = filteredFoodItems.map(each => {
         return (
             <ul>
-                <li>
+                <li key={each._id}>
                     {each.name}
                 </li>
                 {/* button to add the fooditems, could use react icons */}
@@ -122,10 +121,10 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
 
     const itemDetails = itemsChosen.map(each => {
         return (
-        <ul>
-            <li>
+        <ul key={each._id}>
+            {/* <li >
                 FoodItem {itemsChosen.indexOf(each) + 1} :
-            </li>
+            </li> */}
             <li>
                 {each.name}
             </li>
@@ -149,50 +148,92 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     })
 
     return(
+        <div>
         <div className="component-container">
 
-            <div>
-                <h2>Breakfast:</h2>{breakfastFoodItems > 0 ?(
-                <ul>
-                    {breakfastFoodItems.map((item) => (
-                        <li key={item}>{item.name}</li>
-                    ))}
-                </ul> ) : null}
-            </div>
+            <form>
+                <p>I am a FoodSearchForm</p>
+                {!mealType?
+                <div>
+                    <button value={"Breakfast"} onClick={handleMealType}>Breakfast</button>
+                    <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
+                    <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
+                    <button value={"Snack"} onClick={handleMealType}>Snacks</button>
+                    <button onClick={handleCompleteDay}>Complete Day</button>
 
-        <form>
-            <p>I am a FoodSearchForm</p>
-            {!mealType?
-            <div>
-                <button value={"Breakfast"} onClick={handleMealType}>Breakfast</button>
-                <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
-                <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
-                <button value={"Snack"} onClick={handleMealType}>Snack</button>
-                <button onClick={handleCompleteDay}>Complete Day</button>
+                </div>
+                :null}
+                {mealType ? 
+                <div>
+                    <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
+                    {/* <button>Barcode Scanner button</button> */}
+                    <label> Quantity(grams): </label>
+                    <input type="number" value={quantity} onChange={handleQuantity}/>
+                    <button onClick={handleAdd}>Add to {mealType}</button>
 
-            </div>
-            :null}
-            {mealType ? 
-            <div>
-            <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
-            {/* <button>Barcode Scanner button</button> */}
-            <label>Quantity(grams): </label>
-            <input type="number" value={quantity} onChange={handleQuantity}/>
-            <button onClick={handleAdd}>Add</button>
-
-            {filteredFoodItems ? 
-            <div>
-                {foodItemsToShow}
-            </div>
-            :null}
-            {itemsChosen ?
-            <div>
-                {itemDetails}
-            </div> :null}
-            <button onClick={handleSubmit}>Submit</button>
-            </div>: null}
-        </form>
+                    {filteredFoodItems ? 
+                    <div>
+                        {foodItemsToShow}
+                    </div>
+                    :null}
+                    {/* {itemsChosen ?
+                    <div>
+                        {itemDetails}
+                    </div> :null} */}
+                    <button onClick={handleSubmit}>back</button>
+                </div>: null}
+            </form>
         </div>
+
+        <div>
+        <h2>Breakfast:</h2>{breakfastFoodItems.length > 0 ?(
+        <ul>
+            {breakfastFoodItems.map((item) => (
+                <li key={item}>
+                    <span>
+                        <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                    </span>
+                </li>
+            ))}
+        </ul> ) : null}
+    </div>
+    <div>
+        <h2>Lunch:</h2>{lunchFoodItems.length > 0 ?(
+        <ul>
+            {lunchFoodItems.map((item) => (
+                <li key={item}>
+                    <span>
+                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                    </span>
+                </li>
+            ))}
+        </ul> ) : null}
+    </div>
+    <div>
+        <h2>Dinner:</h2>{dinnerFoodItems.length > 0 ?(
+        <ul>
+            {dinnerFoodItems.map((item) => (
+                <li key={item}>
+                    <span>
+                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                    </span>
+                </li>
+            ))}
+        </ul> ) : null}
+    </div>
+    <div>
+        <h2>Snacks:</h2>{snackFoodItems.length > 0 ?(
+        <ul>
+            {snackFoodItems.map((item) => (
+                <li key={item}>
+                    <span>
+                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                    </span>
+                </li>
+            ))}
+        </ul> ) : null}
+    </div>
+    </div>
     )
 }
 
