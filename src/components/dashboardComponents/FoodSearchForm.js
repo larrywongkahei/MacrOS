@@ -36,6 +36,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         const item = filtereditems.find(each => each.id === parseInt(e.target.value))
         setFoodInput(item.name)
         setTheItem(item)
+        setFilteredFoodItems([])
 
 
     }
