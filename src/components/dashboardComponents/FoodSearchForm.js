@@ -6,7 +6,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
     const [itemsChosen, setItemsChosen] = useState([])
     const [mealType, setMealType] = useState("")
-    const [breakfastFoodItems, setBreakfastFoodItems] = useState([])
+    const [breakfastFoodItems, setmealTypeState] = useState([])
     const [lunchFoodItems, setLunchFoodItems] = useState([])
     const [dinnerFoodItems, setDinnerFoodItems] = useState([])
     const [snackFoodItems, setSnackFoodItems] = useState([])
@@ -36,6 +36,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         const item = filtereditems.find(each => each.id === parseInt(e.target.value))
         setFoodInput(item.name)
         setTheItem(item)
+        setFilteredFoodItems([])
 
 
     }
@@ -89,7 +90,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         newItemChosenList.push(theItem)
         switch(mealType){
             case "Breakfast":
-                setBreakfastFoodItems(newItemChosenList)
+                setmealTypeState(newItemChosenList)
                 break;
             case "Lunch":
                 setLunchFoodItems(newItemChosenList)
@@ -105,23 +106,24 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         setFilteredFoodItems([])
         setTheItem({})
         setFoodInput("")
+        setQuantity(0)
     }
 
     const foodItemsToShow = filteredFoodItems.map(each => {
         return (
             <ul>
-                <li key={each._id}>
+                <li onClick={getTheFoodItem} value={each.id}>
                     {each.name}
                 </li>
                 {/* button to add the fooditems, could use react icons */}
-                <button onClick={getTheFoodItem} value={each.id}>+</button>
+                {/* <button onClick={getTheFoodItem} value={each.id}>+</button> */}
             </ul>
         )
     })
 
     const itemDetails = itemsChosen.map(each => {
         return (
-        <ul key={each._id}>
+        <ul>
             {/* <li >
                 FoodItem {itemsChosen.indexOf(each) + 1} :
             </li> */}
@@ -147,6 +149,49 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         )
     })
 
+   const onRemove = () => {
+    console.log("remove clicked");
+   }
+
+//    calculate macro totals for each meal type state
+
+function calculateTotals(mealTypeState){
+    const totals = mealTypeState.reduce(
+        // acc is the accumlator which keeps track of the running total. Item is the the current element from array in the loop
+        (acc, item) => {
+            acc.calories += item.calories;
+            acc.carbs += item.carbs;
+            acc.sugars += item.sugars;
+            acc.protein += item.protein;
+            acc.fat += item.fat;
+            return acc;
+        }, { calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 } // this line sets the intital accumulator values at 0
+        
+    );
+    return totals;
+
+    
+}
+
+// assign calorie totals to variables for rendering
+const breakfastTotals = calculateTotals(breakfastFoodItems);
+const lunchTotals = calculateTotals(lunchFoodItems);
+const dinnerTotals = calculateTotals(dinnerFoodItems);
+const snacksTotals = calculateTotals(snackFoodItems);
+
+// same as above which sums all of the properties from each variable to give the daily total
+const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
+        .reduce((acc, totals) => {
+            acc.calories += totals.calories
+            acc.carbs += totals.carbs;
+            acc.sugars += totals.sugars;
+            acc.protein += totals.protein;
+            acc.fat += totals.fat;
+            return acc;
+        }, { calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 }
+        );
+
+
     return(
         <div>
         <div className="component-container">
@@ -159,7 +204,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                     <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
                     <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
                     <button value={"Snack"} onClick={handleMealType}>Snacks</button>
-                    <button onClick={handleCompleteDay}>Complete Day</button>
+            
 
                 </div>
                 :null}
@@ -180,59 +225,113 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                     <div>
                         {itemDetails}
                     </div> :null} */}
-                    <button onClick={handleSubmit}>back</button>
+                    <button onClick={handleSubmit}>Choose Meal</button>
                 </div>: null}
             </form>
         </div>
 
         <div>
-        <h2>Breakfast:</h2>{breakfastFoodItems.length > 0 ?(
-        <ul>
-            {breakfastFoodItems.map((item) => (
-                <li key={item}>
-                    <span>
+        <h2>Breakfast</h2>{breakfastFoodItems.length > 0 ?(
+            <>
+                <ul>
+                    {breakfastFoodItems.map((item) => (
+                        <li key={item}>
+                            <span>
+                                <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                                <button onClick={onRemove}>Remove Item</button>
+                            </span>
+                        </li>
+                    ))}
+                </ul> 
+                    <p><b>Breakfast Totals </b> 
+                        Calories:{breakfastTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{breakfastTotals.carbs.toFixed(0)}g 
+                        Sugars:{breakfastTotals.sugars.toFixed(0)}g 
+                        Protein:{breakfastTotals.protein.toFixed(0)}g 
+                        Fat:{breakfastTotals.fat.toFixed(0)}g
+                    </p>
+            </>
+        ) : null}
+    </div>
+    <div>
+        <h2>Lunch</h2>{lunchFoodItems.length > 0 ?(
+            <>
+                <ul>
+                    {lunchFoodItems.map((item) => (
+                        <li key={item}>
+                            <span>
+                            <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                            <button onClick={onRemove}>Remove Item</button>
+                            </span>
+                        </li>
+                    ))}
+                </ul> 
+                <p><b>Lunch Totals </b> 
+                        Calories:{lunchTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{lunchTotals.carbs.toFixed(0)}g 
+                        Sugars:{lunchTotals.sugars.toFixed(0)}g 
+                        Protein:{lunchTotals.protein.toFixed(0)}g 
+                        Fat:{lunchTotals.fat.toFixed(0)}g
+                    </p>
+            </>
+            ) : null}
+        
+    </div>
+    <div>
+        
+        <h2>Dinner</h2>{dinnerFoodItems.length > 0 ?(
+        <>
+            <ul>
+                {dinnerFoodItems.map((item) => (
+                    <li key={item}>
+                        <span>
                         <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                    </span>
-                </li>
-            ))}
-        </ul> ) : null}
+                        <button onClick={onRemove}>Remove Item</button>
+                        </span>
+                    </li>
+                ))}
+            </ul> 
+            <p><b>Dinner Totals </b> 
+                        Calories:{dayTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{dayTotals.carbs.toFixed(0)}g 
+                        Sugars:{dayTotals.sugars.toFixed(0)}g 
+                        Protein:{dayTotals.protein.toFixed(0)}g 
+                        Fat:{dayTotals.fat.toFixed(0)}g
+                    </p>
+        </>
+        ) : null}
     </div>
     <div>
-        <h2>Lunch:</h2>{lunchFoodItems.length > 0 ?(
-        <ul>
-            {lunchFoodItems.map((item) => (
-                <li key={item}>
-                    <span>
-                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                    </span>
-                </li>
-            ))}
-        </ul> ) : null}
+        <h2>Snacks</h2>{snackFoodItems.length > 0 ?(
+        <>
+            <ul>
+                {snackFoodItems.map((item) => (
+                    <li key={item}>
+                        <span>
+                        <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                        <button onClick={onRemove}>Remove Item</button>
+                        </span>
+                    </li>
+                ))}
+            </ul> 
+            <p><b>Snacks Totals </b> 
+                        Calories:{snacksTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{snacksTotals.carbs.toFixed(0)}g 
+                        Sugars:{snacksTotals.sugars.toFixed(0)}g 
+                        Protein:{snacksTotals.protein.toFixed(0)}g 
+                        Fat:{snacksTotals.fat.toFixed(0)}g
+                    </p>
+        </>
+        ) : null}
     </div>
-    <div>
-        <h2>Dinner:</h2>{dinnerFoodItems.length > 0 ?(
-        <ul>
-            {dinnerFoodItems.map((item) => (
-                <li key={item}>
-                    <span>
-                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                    </span>
-                </li>
-            ))}
-        </ul> ) : null}
-    </div>
-    <div>
-        <h2>Snacks:</h2>{snackFoodItems.length > 0 ?(
-        <ul>
-            {snackFoodItems.map((item) => (
-                <li key={item}>
-                    <span>
-                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                    </span>
-                </li>
-            ))}
-        </ul> ) : null}
-    </div>
+        <p><b>Todays Totals </b>
+                Calories:{dayTotals.calories.toFixed(0)}Kcal 
+                Carbs:{dayTotals.carbs.toFixed(0)}g 
+                Sugars:{dayTotals.sugars.toFixed(0)}g 
+                Protein:{dayTotals.protein.toFixed(0)}g 
+                Fat:{dayTotals.fat.toFixed(0)}g
+        </p>
+    <button onClick={handleCompleteDay}>Complete Day</button>
     </div>
     )
 }
