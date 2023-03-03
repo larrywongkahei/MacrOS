@@ -4,7 +4,7 @@ const NavBar = ({user}) => {
         
         <nav className="component-container navbar">
             {user ? (
-            <h2>{user.name} Navbar</h2>
+            <h2>{user.name}'s Navbar</h2>
             ): <h2> User's Navbar</h2>}
             <ul>
                 <li>

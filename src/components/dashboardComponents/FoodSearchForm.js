@@ -105,6 +105,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         setFilteredFoodItems([])
         setTheItem({})
         setFoodInput("")
+        setQuantity(0)
     }
 
     const foodItemsToShow = filteredFoodItems.map(each => {
@@ -146,6 +147,10 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         </ul>
         )
     })
+
+   const onRemove = () => {
+    console.log("remove clicked");
+   }
 
     return(
         <div>
@@ -192,6 +197,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                 <li key={item}>
                     <span>
                         <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                        <button onClick={onRemove}>Remove</button>
                     </span>
                 </li>
             ))}
