@@ -123,9 +123,9 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const itemDetails = itemsChosen.map(each => {
         return (
         <ul key={each._id}>
-            <li >
+            {/* <li >
                 FoodItem {itemsChosen.indexOf(each) + 1} :
-            </li>
+            </li> */}
             <li>
                 {each.name}
             </li>
@@ -166,22 +166,22 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                 :null}
                 {mealType ? 
                 <div>
-                <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
-                {/* <button>Barcode Scanner button</button> */}
-                <label>Quantity(grams): </label>
-                <input type="number" value={quantity} onChange={handleQuantity}/>
-                <button onClick={handleAdd}>Add</button>
+                    <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
+                    {/* <button>Barcode Scanner button</button> */}
+                    <label>Quantity(grams): </label>
+                    <input type="number" value={quantity} onChange={handleQuantity}/>
+                    <button onClick={handleAdd}>Add to {mealType}</button>
 
-                {filteredFoodItems ? 
-                <div>
-                    {foodItemsToShow}
-                </div>
-                :null}
-                {itemsChosen ?
-                <div>
-                    {itemDetails}
-                </div> :null}
-                <button onClick={handleSubmit}>Submit</button>
+                    {filteredFoodItems ? 
+                    <div>
+                        {foodItemsToShow}
+                    </div>
+                    :null}
+                    {itemsChosen ?
+                    <div>
+                        {itemDetails}
+                    </div> :null}
+                    <button onClick={handleSubmit}>back</button>
                 </div>: null}
             </form>
         </div>
@@ -190,7 +190,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         <h2>Breakfast:</h2>{breakfastFoodItems.length > 0 ?(
         <ul>
             {breakfastFoodItems.map((item) => (
-                <li key={item}>{item.name}</li>
+                <li key={item}>
+                    <span>
+                        <b>{item.name}</b> Carbs: {item.carbs}g Sugars: {item.sugars}g Protein:{item.protein}g Fat: {item.fat}g
+                    </span>
+                </li>
             ))}
         </ul> ) : null}
     </div>
@@ -198,7 +202,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         <h2>Lunch:</h2>{lunchFoodItems.length > 0 ?(
         <ul>
             {lunchFoodItems.map((item) => (
-                <li key={item}>{item.name}</li>
+                <li key={item}>
+                    <span>
+                        <b>{item.name}</b> Carbs: {item.carbs}g Sugars: {item.sugars}g Protein:{item.protein}g Fat: {item.fat}g
+                    </span>
+                </li>
             ))}
         </ul> ) : null}
     </div>
@@ -206,7 +214,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         <h2>Dinner:</h2>{dinnerFoodItems.length > 0 ?(
         <ul>
             {dinnerFoodItems.map((item) => (
-                <li key={item}>{item.name}</li>
+                <li key={item}>
+                    <span>
+                        <b>{item.name}</b> Carbs: {item.carbs}g Sugars: {item.sugars}g Protein:{item.protein}g Fat: {item.fat}g
+                    </span>
+                </li>
             ))}
         </ul> ) : null}
     </div>
@@ -214,7 +226,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         <h2>Snacks:</h2>{snackFoodItems.length > 0 ?(
         <ul>
             {snackFoodItems.map((item) => (
-                <li key={item}>{item.name}</li>
+                <li key={item}>
+                    <span>
+                        <b>{item.name}</b> Carbs: {item.carbs}g Sugars: {item.sugars}g Protein:{item.protein}g Fat: {item.fat}g
+                    </span>
+                </li>
             ))}
         </ul> ) : null}
     </div>
