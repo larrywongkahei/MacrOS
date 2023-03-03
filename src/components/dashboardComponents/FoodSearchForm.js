@@ -112,18 +112,18 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const foodItemsToShow = filteredFoodItems.map(each => {
         return (
             <ul>
-                <li key={each._id}>
+                <li onClick={getTheFoodItem} value={each.id}>
                     {each.name}
                 </li>
                 {/* button to add the fooditems, could use react icons */}
-                <button onClick={getTheFoodItem} value={each.id}>+</button>
+                {/* <button onClick={getTheFoodItem} value={each.id}>+</button> */}
             </ul>
         )
     })
 
     const itemDetails = itemsChosen.map(each => {
         return (
-        <ul key={each._id}>
+        <ul>
             {/* <li >
                 FoodItem {itemsChosen.indexOf(each) + 1} :
             </li> */}
@@ -186,7 +186,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                     <div>
                         {itemDetails}
                     </div> :null} */}
-                    <button onClick={handleSubmit}>back</button>
+                    <button onClick={handleSubmit}>Choose Meal</button>
                 </div>: null}
             </form>
         </div>
