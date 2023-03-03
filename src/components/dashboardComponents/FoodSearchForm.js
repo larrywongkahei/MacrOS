@@ -59,7 +59,6 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
 
     function handleSubmit(e){
         e.preventDefault()
-    
         setItemsChosen([])
         setMealType("")
     }
@@ -159,7 +158,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                     <button value={"Breakfast"} onClick={handleMealType}>Breakfast</button>
                     <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
                     <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
-                    <button value={"Snack"} onClick={handleMealType}>Snack</button>
+                    <button value={"Snack"} onClick={handleMealType}>Snacks</button>
                     <button onClick={handleCompleteDay}>Complete Day</button>
 
                 </div>
@@ -168,7 +167,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                 <div>
                     <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
                     {/* <button>Barcode Scanner button</button> */}
-                    <label>Quantity(grams): </label>
+                    <label> Quantity(grams): </label>
                     <input type="number" value={quantity} onChange={handleQuantity}/>
                     <button onClick={handleAdd}>Add to {mealType}</button>
 
@@ -177,10 +176,10 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                         {foodItemsToShow}
                     </div>
                     :null}
-                    {itemsChosen ?
+                    {/* {itemsChosen ?
                     <div>
                         {itemDetails}
-                    </div> :null}
+                    </div> :null} */}
                     <button onClick={handleSubmit}>back</button>
                 </div>: null}
             </form>
@@ -192,7 +191,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
             {breakfastFoodItems.map((item) => (
                 <li key={item}>
                     <span>
-                        <b>{item.name}</b> Carbs: {item.carbs}g Sugars: {item.sugars}g Protein:{item.protein}g Fat: {item.fat}g
+                        <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
                     </span>
                 </li>
             ))}
@@ -204,7 +203,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
             {lunchFoodItems.map((item) => (
                 <li key={item}>
                     <span>
-                        <b>{item.name}</b> Carbs: {item.carbs}g Sugars: {item.sugars}g Protein:{item.protein}g Fat: {item.fat}g
+                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
                     </span>
                 </li>
             ))}
@@ -216,7 +215,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
             {dinnerFoodItems.map((item) => (
                 <li key={item}>
                     <span>
-                        <b>{item.name}</b> Carbs: {item.carbs}g Sugars: {item.sugars}g Protein:{item.protein}g Fat: {item.fat}g
+                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
                     </span>
                 </li>
             ))}
@@ -228,7 +227,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
             {snackFoodItems.map((item) => (
                 <li key={item}>
                     <span>
-                        <b>{item.name}</b> Carbs: {item.carbs}g Sugars: {item.sugars}g Protein:{item.protein}g Fat: {item.fat}g
+                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
                     </span>
                 </li>
             ))}
