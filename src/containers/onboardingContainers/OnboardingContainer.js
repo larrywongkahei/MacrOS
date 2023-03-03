@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NavBar from "../../components/NavBar";
 import AppInformation from "../../components/onboardingComponents/AppInformation";
-import OnBoardingUserInputForm from "../../components/onboardingComponents/OnBoardingUserInputForm";
+import OnboardingController from "../../components/onboardingComponents/MultiStep/OnboardingController";
 
 const OnboardingContainer = ({handleUserPost}) => {
 
@@ -11,8 +11,7 @@ const OnboardingContainer = ({handleUserPost}) => {
         <>
         <hr/>
         <p>I am OnboardingContainer containing:</p>
-        <NavBar />
-        <OnBoardingUserInputForm handleUserPost={handleUserPost} />
+        <OnboardingController handleUserPost={handleUserPost} />
         <AppInformation />
 
         </>

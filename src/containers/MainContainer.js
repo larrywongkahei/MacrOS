@@ -107,9 +107,12 @@ const MainContainer = () => {
 
     } else {
         return(
+            <>
+            <NavBar user={user}/>
             <Routes>
                 <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost}/>} />
             </Routes>
+            </>
         
         )
     
