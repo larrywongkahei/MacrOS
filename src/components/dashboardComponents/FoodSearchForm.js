@@ -178,7 +178,19 @@ const breakfastTotals = calculateTotals(breakfastFoodItems);
 const lunchTotals = calculateTotals(lunchFoodItems);
 const dinnerTotals = calculateTotals(dinnerFoodItems);
 const snacksTotals = calculateTotals(snackFoodItems);
-   
+
+// same as above which sums all of the properties from each variable to give the daily total
+const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
+        .reduce((acc, totals) => {
+            acc.calories += totals.calories
+            acc.carbs += totals.carbs;
+            acc.sugars += totals.sugars;
+            acc.protein += totals.protein;
+            acc.fat += totals.fat;
+            return acc;
+        }, { calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 }
+        );
+
 
     return(
         <div>
@@ -231,7 +243,7 @@ const snacksTotals = calculateTotals(snackFoodItems);
                         </li>
                     ))}
                 </ul> 
-                    <p><b>Totals</b> 
+                    <p><b>Breakfast Totals </b> 
                         Calories:{breakfastTotals.calories.toFixed(0)}Kcal 
                         Carbs:{breakfastTotals.carbs.toFixed(0)}g 
                         Sugars:{breakfastTotals.sugars.toFixed(0)}g 
@@ -254,7 +266,7 @@ const snacksTotals = calculateTotals(snackFoodItems);
                         </li>
                     ))}
                 </ul> 
-                <p><b>Totals</b> 
+                <p><b>Lunch Totals </b> 
                         Calories:{lunchTotals.calories.toFixed(0)}Kcal 
                         Carbs:{lunchTotals.carbs.toFixed(0)}g 
                         Sugars:{lunchTotals.sugars.toFixed(0)}g 
@@ -279,12 +291,12 @@ const snacksTotals = calculateTotals(snackFoodItems);
                     </li>
                 ))}
             </ul> 
-            <p><b>Totals</b> 
-                        Calories:{dinnerTotals.calories.toFixed(0)}Kcal 
-                        Carbs:{dinnerTotals.carbs.toFixed(0)}g 
-                        Sugars:{dinnerTotals.sugars.toFixed(0)}g 
-                        Protein:{dinnerTotals.protein.toFixed(0)}g 
-                        Fat:{dinnerTotals.fat.toFixed(0)}g
+            <p><b>Dinner Totals </b> 
+                        Calories:{dayTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{dayTotals.carbs.toFixed(0)}g 
+                        Sugars:{dayTotals.sugars.toFixed(0)}g 
+                        Protein:{dayTotals.protein.toFixed(0)}g 
+                        Fat:{dayTotals.fat.toFixed(0)}g
                     </p>
         </>
         ) : null}
@@ -302,7 +314,7 @@ const snacksTotals = calculateTotals(snackFoodItems);
                     </li>
                 ))}
             </ul> 
-            <p><b>Totals</b> 
+            <p><b>Snacks Totals </b> 
                         Calories:{snacksTotals.calories.toFixed(0)}Kcal 
                         Carbs:{snacksTotals.carbs.toFixed(0)}g 
                         Sugars:{snacksTotals.sugars.toFixed(0)}g 
@@ -312,6 +324,13 @@ const snacksTotals = calculateTotals(snackFoodItems);
         </>
         ) : null}
     </div>
+        <p><b>Todays Totals </b>
+                Calories:{dayTotals.calories.toFixed(0)}Kcal 
+                Carbs:{dayTotals.carbs.toFixed(0)}g 
+                Sugars:{dayTotals.sugars.toFixed(0)}g 
+                Protein:{dayTotals.protein.toFixed(0)}g 
+                Fat:{dayTotals.fat.toFixed(0)}g
+        </p>
     <button onClick={handleCompleteDay}>Complete Day</button>
     </div>
     )
