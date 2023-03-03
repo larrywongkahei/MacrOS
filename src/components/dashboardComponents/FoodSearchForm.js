@@ -159,7 +159,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                     <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
                     <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
                     <button value={"Snack"} onClick={handleMealType}>Snacks</button>
-                    <button onClick={handleCompleteDay}>Complete Day</button>
+            
 
                 </div>
                 :null}
@@ -233,6 +233,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
             ))}
         </ul> ) : null}
     </div>
+    <button onClick={handleCompleteDay}>Complete Day</button>
     </div>
     )
 }
