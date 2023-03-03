@@ -1,7 +1,6 @@
 import DatePicker from "../../components/journalComponents/DatePicker";
 import GoalsStats from "../../components/journalComponents/GoalsStats";
 import UserInfo from "../../components/journalComponents/UserInfo";
-import NavBar from "../../components/NavBar";
 import { useState } from "react";
 import GoalsCharts from "../../components/journalComponents/GoalsCharts";
 
@@ -19,15 +18,13 @@ const JournalContainer = ({user, handleUserPut, days}) => {
     }
 
     return(
-        <>
-        <hr/>
+        <div className="component-container">
         <p>I am JournalContainer</p>
-        <NavBar/>
         <UserInfo user = {user}/>
         <DatePicker updateDate={updateDate} selectedDate={selectedDate}/>
         <GoalsStats user={user} onEdit={handleUserPut}/>
         <GoalsCharts user={user} days={days} /> 
-        </>
+        </div>
     )
 }
 

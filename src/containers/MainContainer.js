@@ -12,20 +12,30 @@ const MainContainer = () => {
     const [user, setUser] = useState([])
     const [days, setDays] = useState([])
     const [meals, setMeals] = useState([])
+    const [foodItems, setFoodItems] = useState([])
+    const [filteredList, setFilteredList] = useState([])
+
 
     useEffect(() => {
         const request = new Request();
         const userPromise = request.get('/api/user');
         const dayPromise = request.get('/api/days');
         const mealPromise = request.get('/api/meals');
+        const foodItemsPromise = request.get('/api/fooditems')
 
-    Promise.all([userPromise, dayPromise, mealPromise])
+    Promise.all([userPromise, dayPromise, mealPromise, foodItemsPromise])
     .then((data) => {
         setUser(data[0][0])
         setDays(data[1])
         setMeals(data[2])
+        setFoodItems(data[3])
     })
     }, [])
+
+    function getDateData(data){
+        data['userID'] = user.id
+        console.log(data)
+        }
 
     const handleUserPost = (user) => {
         console.log(`logging from main container: ${user}`);
@@ -33,6 +43,12 @@ const MainContainer = () => {
         request.post('/api/user', user).then(() => {
             window.location = '/'
         })
+    }
+
+    async function searchFoodItemsByThreeLetters(letters){
+        const request = new Request()
+        return(await request.get(`/api/fooditems?letters=${letters}`))
+
     }
 
     const handleUserPut = (user) => {
@@ -73,16 +89,19 @@ const MainContainer = () => {
 
     
 
-    console.log(user);
-    console.log(days);
-    console.log(meals);
+    // console.log(user);
+    // console.log(days);
+    // console.log(meals);
 
     if (user) {
         return(
-            <Routes>
-                <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals}/>} />
-                <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
-            </Routes>
+            <div>
+                <NavBar user={user}/>
+                <Routes>
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData}/>} />
+                    <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
+                </Routes>
+            </div>
         )
 
 

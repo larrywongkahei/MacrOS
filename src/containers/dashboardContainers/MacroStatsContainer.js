@@ -4,12 +4,11 @@ import DailyMacroStats from "../../components/dashboardComponents/DailyMacroStat
 
 const MacroStatsContainer = () => {
     return(
-        <>
-        <hr/>
+        <div className="component-container">
         <p>I am a MacroStatsContainer containing:</p>
         <MacroCharts />
         <DailyMacroStats />
-        </>
+        </div>
     )
 }
 export default MacroStatsContainer;

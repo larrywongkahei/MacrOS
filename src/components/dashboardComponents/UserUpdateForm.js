@@ -2,10 +2,9 @@
 
 const UserUpdateForm = () => {
     return(
-        <>
-        <hr/>
+        <div className="component-container">
         <p>Update your user with UserUpdateForm</p>
-        </>
+        </div>
     )
 }
 
