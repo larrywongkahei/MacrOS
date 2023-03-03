@@ -6,7 +6,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
     const [itemsChosen, setItemsChosen] = useState([])
     const [mealType, setMealType] = useState("")
-    const [breakfastFoodItems, setBreakfastFoodItems] = useState([])
+    const [breakfastFoodItems, setmealTypeState] = useState([])
     const [lunchFoodItems, setLunchFoodItems] = useState([])
     const [dinnerFoodItems, setDinnerFoodItems] = useState([])
     const [snackFoodItems, setSnackFoodItems] = useState([])
@@ -90,7 +90,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         newItemChosenList.push(theItem)
         switch(mealType){
             case "Breakfast":
-                setBreakfastFoodItems(newItemChosenList)
+                setmealTypeState(newItemChosenList)
                 break;
             case "Lunch":
                 setLunchFoodItems(newItemChosenList)
@@ -153,6 +153,33 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     console.log("remove clicked");
    }
 
+//    calculate macro totals for each meal type state
+
+function calculateTotals(mealTypeState){
+    const totals = mealTypeState.reduce(
+        // acc is the accumlator which keeps track of the running total. Item is the the current element from array in the loop
+        (acc, item) => {
+            acc.calories += item.calories;
+            acc.carbs += item.carbs;
+            acc.sugars += item.sugars;
+            acc.protein += item.protein;
+            acc.fat += item.fat;
+            return acc;
+        }, { calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 } // this line sets the intital accumulator values at 0
+        
+    );
+    return totals;
+
+    
+}
+
+// assign calorie totals to variables for rendering
+const breakfastTotals = calculateTotals(breakfastFoodItems);
+const lunchTotals = calculateTotals(lunchFoodItems);
+const dinnerTotals = calculateTotals(dinnerFoodItems);
+const snacksTotals = calculateTotals(snackFoodItems);
+   
+
     return(
         <div>
         <div className="component-container">
@@ -192,53 +219,98 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         </div>
 
         <div>
-        <h2>Breakfast:</h2>{breakfastFoodItems.length > 0 ?(
-        <ul>
-            {breakfastFoodItems.map((item) => (
-                <li key={item}>
-                    <span>
+        <h2>Breakfast</h2>{breakfastFoodItems.length > 0 ?(
+            <>
+                <ul>
+                    {breakfastFoodItems.map((item) => (
+                        <li key={item}>
+                            <span>
+                                <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                                <button onClick={onRemove}>Remove Item</button>
+                            </span>
+                        </li>
+                    ))}
+                </ul> 
+                    <p><b>Totals</b> 
+                        Calories:{breakfastTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{breakfastTotals.carbs.toFixed(0)}g 
+                        Sugars:{breakfastTotals.sugars.toFixed(0)}g 
+                        Protein:{breakfastTotals.protein.toFixed(0)}g 
+                        Fat:{breakfastTotals.fat.toFixed(0)}g
+                    </p>
+            </>
+        ) : null}
+    </div>
+    <div>
+        <h2>Lunch</h2>{lunchFoodItems.length > 0 ?(
+            <>
+                <ul>
+                    {lunchFoodItems.map((item) => (
+                        <li key={item}>
+                            <span>
+                            <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                            <button onClick={onRemove}>Remove Item</button>
+                            </span>
+                        </li>
+                    ))}
+                </ul> 
+                <p><b>Totals</b> 
+                        Calories:{lunchTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{lunchTotals.carbs.toFixed(0)}g 
+                        Sugars:{lunchTotals.sugars.toFixed(0)}g 
+                        Protein:{lunchTotals.protein.toFixed(0)}g 
+                        Fat:{lunchTotals.fat.toFixed(0)}g
+                    </p>
+            </>
+            ) : null}
+        
+    </div>
+    <div>
+        
+        <h2>Dinner</h2>{dinnerFoodItems.length > 0 ?(
+        <>
+            <ul>
+                {dinnerFoodItems.map((item) => (
+                    <li key={item}>
+                        <span>
                         <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                        <button onClick={onRemove}>Remove</button>
-                    </span>
-                </li>
-            ))}
-        </ul> ) : null}
+                        <button onClick={onRemove}>Remove Item</button>
+                        </span>
+                    </li>
+                ))}
+            </ul> 
+            <p><b>Totals</b> 
+                        Calories:{dinnerTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{dinnerTotals.carbs.toFixed(0)}g 
+                        Sugars:{dinnerTotals.sugars.toFixed(0)}g 
+                        Protein:{dinnerTotals.protein.toFixed(0)}g 
+                        Fat:{dinnerTotals.fat.toFixed(0)}g
+                    </p>
+        </>
+        ) : null}
     </div>
     <div>
-        <h2>Lunch:</h2>{lunchFoodItems.length > 0 ?(
-        <ul>
-            {lunchFoodItems.map((item) => (
-                <li key={item}>
-                    <span>
-                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                    </span>
-                </li>
-            ))}
-        </ul> ) : null}
-    </div>
-    <div>
-        <h2>Dinner:</h2>{dinnerFoodItems.length > 0 ?(
-        <ul>
-            {dinnerFoodItems.map((item) => (
-                <li key={item}>
-                    <span>
-                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                    </span>
-                </li>
-            ))}
-        </ul> ) : null}
-    </div>
-    <div>
-        <h2>Snacks:</h2>{snackFoodItems.length > 0 ?(
-        <ul>
-            {snackFoodItems.map((item) => (
-                <li key={item}>
-                    <span>
-                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                    </span>
-                </li>
-            ))}
-        </ul> ) : null}
+        <h2>Snacks</h2>{snackFoodItems.length > 0 ?(
+        <>
+            <ul>
+                {snackFoodItems.map((item) => (
+                    <li key={item}>
+                        <span>
+                        <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                        <button onClick={onRemove}>Remove Item</button>
+                        </span>
+                    </li>
+                ))}
+            </ul> 
+            <p><b>Totals</b> 
+                        Calories:{snacksTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{snacksTotals.carbs.toFixed(0)}g 
+                        Sugars:{snacksTotals.sugars.toFixed(0)}g 
+                        Protein:{snacksTotals.protein.toFixed(0)}g 
+                        Fat:{snacksTotals.fat.toFixed(0)}g
+                    </p>
+        </>
+        ) : null}
     </div>
     <button onClick={handleCompleteDay}>Complete Day</button>
     </div>
