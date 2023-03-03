@@ -88,11 +88,6 @@ const MainContainer = () => {
     }
 
     
-
-    // console.log(user);
-    // console.log(days);
-    // console.log(meals);
-
     if (user) {
         return(
             <div>

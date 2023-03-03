@@ -11,7 +11,6 @@ import {
 import { Line } from 'react-chartjs-2'
 
 const GoalsCharts = ({user, days}) => {
-    // console.log(days[0].date);
 
 
 

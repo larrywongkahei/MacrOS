@@ -3,8 +3,9 @@ import GoalsStats from "../../components/journalComponents/GoalsStats";
 import UserInfo from "../../components/journalComponents/UserInfo";
 import { useState } from "react";
 import GoalsCharts from "../../components/journalComponents/GoalsCharts";
+import SelectedDayMacroChart from "../../components/journalComponents/SelectedDayMacroChart";
 
-const JournalContainer = ({user, handleUserPut, days}) => {
+const JournalContainer = ({user, handleUserPut, days, meals}) => {
 
     var date = new Date();
 
@@ -24,6 +25,7 @@ const JournalContainer = ({user, handleUserPut, days}) => {
         <DatePicker updateDate={updateDate} selectedDate={selectedDate}/>
         <GoalsStats user={user} onEdit={handleUserPut}/>
         <GoalsCharts user={user} days={days} /> 
+        <SelectedDayMacroChart selectedDate={selectedDate} meals={meals}/>
         </div>
     )
 }
