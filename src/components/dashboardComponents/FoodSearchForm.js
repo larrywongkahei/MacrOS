@@ -1,7 +1,7 @@
 import { set } from "date-fns";
 import { useState } from "react";
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])

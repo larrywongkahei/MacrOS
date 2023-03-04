@@ -89,6 +89,11 @@ const MainContainer = () => {
         })
     }
 
+    function addCustomFood(foodItem){
+        const request = new Request();
+
+    }
+
     
 
     // console.log(user);
@@ -100,7 +105,7 @@ const MainContainer = () => {
             <div>
                 <NavBar user={user}/>
                 <Routes>
-                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData}/>} />
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
             </div>
