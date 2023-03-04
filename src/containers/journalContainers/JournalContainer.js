@@ -21,7 +21,7 @@ const JournalContainer = ({user, handleUserPut, days}) => {
         <div className="component-container">
         <p>I am JournalContainer</p>
         <UserInfo user = {user}/>
-        <DatePicker updateDate={updateDate} selectedDate={selectedDate}/>
+        <DatePicker updateDate={updateDate} selectedDate={selectedDate} days={days} />
         <GoalsStats user={user} onEdit={handleUserPut}/>
         <GoalsCharts user={user} days={days} /> 
         </div>
