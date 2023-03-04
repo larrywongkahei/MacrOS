@@ -235,11 +235,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
     // clears input fields. correct way?
     setCustomFoodName("");
-    setCustomFoodCalories(0)
-    setCustomFoodCarbs(0)
-    setCustomFoodSugars(0)
-    setCustomFoodProtein(0)
-    setCustomFoodFat(0)
+    setCustomFoodCalories()
+    setCustomFoodCarbs()
+    setCustomFoodSugars()
+    setCustomFoodProtein()
+    setCustomFoodFat()
 
     // pop up alert on completion
     Swal.fire({
