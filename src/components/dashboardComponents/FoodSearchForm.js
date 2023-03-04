@@ -60,7 +60,6 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
 
     function handleSubmit(e){
         e.preventDefault()
-        setItemsChosen([])
         setMealType("")
     }
 
@@ -118,7 +117,6 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
                 setSnackFoodItems(newSnackList)
                 break;
         }
-        setItemsChosen([])
         setFilteredFoodItems([])
         setTheItem({})
         setFoodInput("")
