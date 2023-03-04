@@ -1,7 +1,7 @@
 import { set } from "date-fns";
 import { useState } from "react";
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -12,6 +12,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const [snackFoodItems, setSnackFoodItems] = useState([])
     const [theItem, setTheItem] = useState({})
     const [quantity, setQuantity] = useState(0)
+    const [customFoodName, setCustomFoodName] = useState("")
+    const [customFoodCarbs, setCustomFoodCarbs] = useState()
+    const [customFoodSugars, setCustomFoodSugars] = useState()
+    const [customFoodProtein, setCustomFoodProtein] = useState()
+    const [customFoodFat, setCustomFoodFat] = useState()
+    const [customFoodCalories, setCustomFoodCalories] = useState()
 
     // Day
     // Date
@@ -22,7 +28,29 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     //     "date" : Date().now()
     // }
 
+    function handleCustomFoodNameChange(e){
+        setCustomFoodName(e.target.value)
+    }
 
+    function handleCustomFoodCarbsChange(e){
+        setCustomFoodCarbs(e.target.value)
+    }
+
+    function handleCustomFoodSugarsChange(e){
+        setCustomFoodSugars(e.target.value)
+    }
+
+    function handleCustomFoodProteinChange(e){
+        setCustomFoodProtein(e.target.value)
+    }
+
+    function handleCustomFoodFatChange(e){
+        setCustomFoodFat(e.target.value)
+    }
+
+    function handleCustomFoodCaloriesChange(e){
+        setCustomFoodCalories(e.target.value)
+    }
 
     function filterFoodItems(letters, list){
         setFilteredFoodItems(list.filter(each => {
@@ -89,7 +117,9 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     
     function handleAdd(e){
         e.preventDefault()
-
+        if (quantity <= 0){
+            alert("Quantity must be larger than 0")
+        }else{
         const listToBeMultiply = ["carbs", "sugars", "protein", "fat", "calories"]
         listToBeMultiply.forEach(each => {
             theItem[each] = theItem[each] * quantity / 100
@@ -121,6 +151,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         setTheItem({})
         setFoodInput("")
         setQuantity(0)
+    }
     }
 
     const foodItemsToShow = filteredFoodItems.map(each => {
@@ -181,6 +212,19 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
    const onRemoveSnack = (item) => {
     const newList = snackFoodItems.filter(each => each !== item)
     setSnackFoodItems(newList)
+   }
+
+   function handleAddCustomFood(e){
+    e.preventDefault()
+    const customFoodItem = {
+        "name" : customFoodName,
+        "carbs" : parseInt(customFoodCarbs),
+        "sugars" :  parseInt(customFoodSugars),
+        "protein" : parseInt(customFoodProtein),
+        "fat" : parseInt(customFoodFat),
+        "calories" : parseInt(customFoodCalories),
+    }
+    addCustomFood(customFoodItem)
    }
 
 //    calculate macro totals for each meal type state
@@ -259,7 +303,22 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 </div>: null}
             </form>
         </div>
-
+        <div>
+            <form>
+                <input type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
+                <label> Carbs (per 100g): </label>
+                <input type="text" placeholder="Input the carbs" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange}/>
+                <label> Sugars (per 100g): </label>
+                <input type="text" placeholder="Input the sugars" value={customFoodSugars} onChange={handleCustomFoodSugarsChange}/>
+                <label> Protein (per 100g): </label>
+                <input type="text" placeholder="Input the protein" value={customFoodProtein} onChange={handleCustomFoodProteinChange}/>
+                <label> Fats (per 100g): </label>
+                <input type="text" placeholder="Input the fats" value={customFoodFat} onChange={handleCustomFoodFatChange}/>
+                <label> Calories (per 100g): </label>
+                <input type="text" placeholder="Input the calories" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange}/>
+                <button onClick={handleAddCustomFood}>Add FoodItem</button>
+            </form>
+        </div>
         <div>
         <h2>Breakfast</h2>{breakfastFoodItems.length > 0 ?(
             <>
