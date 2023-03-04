@@ -14,11 +14,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     const [theItem, setTheItem] = useState({})
     const [quantity, setQuantity] = useState(0)
     const [customFoodName, setCustomFoodName] = useState("")
-    const [customFoodCarbs, setCustomFoodCarbs] = useState()
-    const [customFoodSugars, setCustomFoodSugars] = useState()
-    const [customFoodProtein, setCustomFoodProtein] = useState()
-    const [customFoodFat, setCustomFoodFat] = useState()
-    const [customFoodCalories, setCustomFoodCalories] = useState()
+    const [customFoodCarbs, setCustomFoodCarbs] = useState(0)
+    const [customFoodSugars, setCustomFoodSugars] = useState(0)
+    const [customFoodProtein, setCustomFoodProtein] = useState(0)
+    const [customFoodFat, setCustomFoodFat] = useState(0)
+    const [customFoodCalories, setCustomFoodCalories] = useState(0)
 
     // Day
     // Date
@@ -235,11 +235,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
     // clears input fields. correct way?
     setCustomFoodName("");
-    setCustomFoodCalories()
-    setCustomFoodCarbs()
-    setCustomFoodSugars()
-    setCustomFoodProtein()
-    setCustomFoodFat()
+    setCustomFoodCalories(0)
+    setCustomFoodCarbs(0)
+    setCustomFoodSugars(0)
+    setCustomFoodProtein(0)
+    setCustomFoodFat(0)
 
     // pop up alert on completion
     Swal.fire({
