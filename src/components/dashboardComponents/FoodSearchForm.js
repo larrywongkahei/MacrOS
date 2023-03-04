@@ -1,5 +1,6 @@
 import { set } from "date-fns";
 import { useState } from "react";
+import Swal from 'sweetalert2'
 
 const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood}) => {
     const [foodInput, setFoodInput] = useState("")
@@ -105,6 +106,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
             "completed" : true
         }
         getDateData(completedDay)
+        Swal.fire({
+            title: 'Day Complete!',
+            text: 'The day has been added to your diary',
+            icon: 'success',
+            confirmButtonText: 'Return'
+          })
         // getDateData -> handleDayPost automatically resets the page and meal/day state
         // alert to say day has been completed and saved
         
@@ -225,7 +232,23 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         "calories" : parseInt(customFoodCalories),
     }
     addCustomFood(customFoodItem)
-   }
+
+    // clears input fields. correct way?
+    setCustomFoodName("");
+    setCustomFoodCalories(0)
+    setCustomFoodCarbs(0)
+    setCustomFoodSugars(0)
+    setCustomFoodProtein(0)
+    setCustomFoodFat(0)
+
+    // pop up alert on completion
+    Swal.fire({
+        title: 'Success!',
+        text: 'You have added your custom food to our database and can now search for it',
+        icon: 'success',
+        confirmButtonText: 'Return'
+        })
+    }
 
 //    calculate macro totals for each meal type state
 
@@ -303,7 +326,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 </div>: null}
             </form>
         </div>
-        <div>
+        <div className="component-container">
             <form>
                 <input type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
                 <label> Carbs (per 100g): </label>
