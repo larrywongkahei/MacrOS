@@ -225,11 +225,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     e.preventDefault()
     const customFoodItem = {
         "name" : customFoodName,
-        "carbs" : parseInt(customFoodCarbs),
-        "sugars" :  parseInt(customFoodSugars),
-        "protein" : parseInt(customFoodProtein),
-        "fat" : parseInt(customFoodFat),
-        "calories" : parseInt(customFoodCalories),
+        "carbs" : customFoodCarbs,
+        "sugars" :  customFoodSugars,
+        "protein" : customFoodProtein,
+        "fat" : customFoodFat,
+        "calories" : customFoodCalories,
     }
     addCustomFood(customFoodItem)
 
