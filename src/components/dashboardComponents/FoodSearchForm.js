@@ -12,6 +12,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const [snackFoodItems, setSnackFoodItems] = useState([])
     const [theItem, setTheItem] = useState({})
     const [quantity, setQuantity] = useState(0)
+    const [customFoodName, setCustomFoodName] = useState("")
+    const [customFoodCarbs, setCustomFoodCarbs] = useState(0)
+    const [customFoodSugars, setCustomFoodSugars] = useState(0)
+    const [customFoodProtein, setCustomFoodProtein] = useState(0)
+    const [customFoodFat, setCustomFoodFat] = useState(0)
+    const [customFoodCalories, setCustomFoodCalories] = useState(0)
 
     // Day
     // Date
@@ -186,6 +192,10 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     setSnackFoodItems(newList)
    }
 
+   function handleAddCustomFood(e){
+    e.preventDefault()
+   }
+
 //    calculate macro totals for each meal type state
 
 function calculateTotals(mealTypeState){
@@ -264,7 +274,13 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         </div>
         <div>
             <form>
-                
+                <input type="text" placeholder="Input the name" value={customFoodName}/>
+                <input type="text" placeholder="Input the carbs" value={customFoodCarbs}/>
+                <input type="text" placeholder="Input the sugars" value={customFoodSugars}/>
+                <input type="text" placeholder="Input the protein" value={customFoodProtein}/>
+                <input type="text" placeholder="Input the fats" value={customFoodFat}/>
+                <input type="text" placeholder="Input the calories" value={customFoodCalories}/>
+                <button onclick={handleAddCustomFood}>Add FoodItem</button>
             </form>
         </div>
         <div>
