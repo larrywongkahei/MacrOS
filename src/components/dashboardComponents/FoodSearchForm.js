@@ -89,7 +89,9 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     
     function handleAdd(e){
         e.preventDefault()
-
+        if (quantity <= 0){
+            alert("Quantity must be larger than 0")
+        }else{
         const listToBeMultiply = ["carbs", "sugars", "protein", "fat", "calories"]
         listToBeMultiply.forEach(each => {
             theItem[each] = theItem[each] * quantity / 100
@@ -121,6 +123,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         setTheItem({})
         setFoodInput("")
         setQuantity(0)
+    }
     }
 
     const foodItemsToShow = filteredFoodItems.map(each => {
@@ -259,7 +262,11 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 </div>: null}
             </form>
         </div>
-
+        <div>
+            <form>
+                
+            </form>
+        </div>
         <div>
         <h2>Breakfast</h2>{breakfastFoodItems.length > 0 ?(
             <>
