@@ -6,7 +6,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
     const [itemsChosen, setItemsChosen] = useState([])
     const [mealType, setMealType] = useState("")
-    const [breakfastFoodItems, setmealTypeState] = useState([])
+    const [breakfastFoodItems, setBreakfastFoodItems] = useState([])
     const [lunchFoodItems, setLunchFoodItems] = useState([])
     const [dinnerFoodItems, setDinnerFoodItems] = useState([])
     const [snackFoodItems, setSnackFoodItems] = useState([])
@@ -66,13 +66,21 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
 
     function handleCompleteDay(e){
         e.preventDefault()
-        const date = new Date()
-        const theDate = {
-            "date" : `${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()}`,
+        // gets todays date
+        const date = new Date();
+        // toISOString() method converts to ISO format. split removes the time
+        const isoDateStr = date.toISOString().split('T')[0];
+        console.log(isoDateStr);
+        const completedDay = {
+            // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
+            "date" : isoDateStr,
             "meals" : [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems],
             "completed" : true
         }
-        getDateData(theDate)
+        getDateData(completedDay)
+        // getDateData -> handleDayPost automatically resets the page and meal/day state
+        // alert to say day has been completed and saved
+        
     }
 
     function handleMealType(e){
@@ -83,14 +91,17 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     function handleAdd(e){
         e.preventDefault()
         const newItemChosenList = [...itemsChosen]
+
         const listToBeMultiply = ["carbs", "sugars", "protein", "fat", "calories"]
         listToBeMultiply.forEach(each => {
             theItem[each] = theItem[each] * quantity / 100
         })
+
         newItemChosenList.push(theItem)
+        
         switch(mealType){
             case "Breakfast":
-                setmealTypeState(newItemChosenList)
+                setBreakfastFoodItems(newItemChosenList)
                 break;
             case "Lunch":
                 setLunchFoodItems(newItemChosenList)

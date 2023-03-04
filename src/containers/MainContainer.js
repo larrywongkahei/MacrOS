@@ -35,6 +35,7 @@ const MainContainer = () => {
     function getDateData(data){
         data['userID'] = user.id
         console.log(data)
+        handleDayPost(data)
         }
 
     const handleUserPost = (user) => {
@@ -59,10 +60,11 @@ const MainContainer = () => {
         })
     }
 
-    const handleDayPost = (days) => {
+    const handleDayPost = (day) => {
+        console.log(`logging from main container: ${day}`);
         const request = new Request();
-        request.post('/api/days', days).then(() => {
-            window.location = '/dashboard'
+        request.post('/api/days', day).then(() => {
+            // window.location = '/'
         })
     }
 
