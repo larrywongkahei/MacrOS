@@ -92,9 +92,7 @@ const MainContainer = () => {
     function addCustomFood(foodItem){
         const request = new Request();
         foodItem["barcode"] = "1234"
-        console.log(typeof(foodItem['carbs']))
         request.post("/api/fooditems", foodItem).then(res => console.log(res.status))
-        console.log("added")
 
     }
 
