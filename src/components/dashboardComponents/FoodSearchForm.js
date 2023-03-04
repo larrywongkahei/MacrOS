@@ -13,11 +13,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     const [theItem, setTheItem] = useState({})
     const [quantity, setQuantity] = useState(0)
     const [customFoodName, setCustomFoodName] = useState("")
-    const [customFoodCarbs, setCustomFoodCarbs] = useState(0)
-    const [customFoodSugars, setCustomFoodSugars] = useState(0)
-    const [customFoodProtein, setCustomFoodProtein] = useState(0)
-    const [customFoodFat, setCustomFoodFat] = useState(0)
-    const [customFoodCalories, setCustomFoodCalories] = useState(0)
+    const [customFoodCarbs, setCustomFoodCarbs] = useState()
+    const [customFoodSugars, setCustomFoodSugars] = useState()
+    const [customFoodProtein, setCustomFoodProtein] = useState()
+    const [customFoodFat, setCustomFoodFat] = useState()
+    const [customFoodCalories, setCustomFoodCalories] = useState()
 
     // Day
     // Date
@@ -28,7 +28,29 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     //     "date" : Date().now()
     // }
 
+    function handleCustomFoodNameChange(e){
+        setCustomFoodName(e.target.value)
+    }
 
+    function handleCustomFoodCarbsChange(e){
+        setCustomFoodCarbs(e.target.value)
+    }
+
+    function handleCustomFoodSugarsChange(e){
+        setCustomFoodSugars(e.target.value)
+    }
+
+    function handleCustomFoodProteinChange(e){
+        setCustomFoodProtein(e.target.value)
+    }
+
+    function handleCustomFoodFatChange(e){
+        setCustomFoodFat(e.target.value)
+    }
+
+    function handleCustomFoodCaloriesChange(e){
+        setCustomFoodCalories(e.target.value)
+    }
 
     function filterFoodItems(letters, list){
         setFilteredFoodItems(list.filter(each => {
@@ -194,6 +216,15 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
    function handleAddCustomFood(e){
     e.preventDefault()
+    const customFoodItem = {
+        "name" : customFoodName,
+        "carbs" : parseInt(customFoodCarbs),
+        "sugars" :  parseInt(customFoodSugars),
+        "protein" : parseInt(customFoodProtein),
+        "fat" : parseInt(customFoodFat),
+        "calories" : parseInt(customFoodCalories),
+    }
+    addCustomFood(customFoodItem)
    }
 
 //    calculate macro totals for each meal type state
@@ -274,13 +305,18 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         </div>
         <div>
             <form>
-                <input type="text" placeholder="Input the name" value={customFoodName}/>
-                <input type="text" placeholder="Input the carbs" value={customFoodCarbs}/>
-                <input type="text" placeholder="Input the sugars" value={customFoodSugars}/>
-                <input type="text" placeholder="Input the protein" value={customFoodProtein}/>
-                <input type="text" placeholder="Input the fats" value={customFoodFat}/>
-                <input type="text" placeholder="Input the calories" value={customFoodCalories}/>
-                <button onclick={handleAddCustomFood}>Add FoodItem</button>
+                <input type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
+                <label> Carbs (per 100g): </label>
+                <input type="text" placeholder="Input the carbs" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange}/>
+                <label> Sugars (per 100g): </label>
+                <input type="text" placeholder="Input the sugars" value={customFoodSugars} onChange={handleCustomFoodSugarsChange}/>
+                <label> Protein (per 100g): </label>
+                <input type="text" placeholder="Input the protein" value={customFoodProtein} onChange={handleCustomFoodProteinChange}/>
+                <label> Fats (per 100g): </label>
+                <input type="text" placeholder="Input the fats" value={customFoodFat} onChange={handleCustomFoodFatChange}/>
+                <label> Calories (per 100g): </label>
+                <input type="text" placeholder="Input the calories" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange}/>
+                <button onClick={handleAddCustomFood}>Add FoodItem</button>
             </form>
         </div>
         <div>
