@@ -1,10 +1,10 @@
+import { set } from "date-fns";
 import { useState } from "react";
 
 const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
-    const [itemsChosen, setItemsChosen] = useState([])
     const [mealType, setMealType] = useState("")
     const [breakfastFoodItems, setBreakfastFoodItems] = useState([])
     const [lunchFoodItems, setLunchFoodItems] = useState([])
@@ -90,30 +90,35 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
     
     function handleAdd(e){
         e.preventDefault()
-        const newItemChosenList = [...itemsChosen]
 
         const listToBeMultiply = ["carbs", "sugars", "protein", "fat", "calories"]
         listToBeMultiply.forEach(each => {
             theItem[each] = theItem[each] * quantity / 100
         })
 
-        newItemChosenList.push(theItem)
-        
         switch(mealType){
             case "Breakfast":
-                setBreakfastFoodItems(newItemChosenList)
+                const newBreakfastList = [...breakfastFoodItems]
+                newBreakfastList.push(theItem)
+                setBreakfastFoodItems(newBreakfastList)
                 break;
             case "Lunch":
-                setLunchFoodItems(newItemChosenList)
+                const newLunchList = [...lunchFoodItems]
+                newLunchList.push(theItem)
+                setLunchFoodItems(newLunchList)
                 break;
             case "Dinner":
-                setDinnerFoodItems(newItemChosenList)
+                const newDinnerList = [...dinnerFoodItems]
+                newDinnerList.push(theItem)
+                setDinnerFoodItems(newDinnerList)
                 break;
             case "Snack":
-                setSnackFoodItems(newItemChosenList)
+                const newSnackList = [...dinnerFoodItems]
+                newSnackList.push(theItem)
+                setSnackFoodItems(newSnackList)
                 break;
         }
-        setItemsChosen(newItemChosenList)
+        setItemsChosen([])
         setFilteredFoodItems([])
         setTheItem({})
         setFoodInput("")
@@ -132,36 +137,52 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData})
         )
     })
 
-    const itemDetails = itemsChosen.map(each => {
-        return (
-        <ul>
-            {/* <li >
-                FoodItem {itemsChosen.indexOf(each) + 1} :
-            </li> */}
-            <li>
-                {each.name}
-            </li>
-            <li>
-                carbs : {each.carbs}
-            </li>
-            <li>
-                sugars : {each.sugars}
-            </li>
-            <li>
-                protein : {each.protein}
-            </li>
-            <li>
-                fat : {each.fat}
-            </li>
-            <li>
-                calories : {each.calories}
-            </li>
-        </ul>
-        )
-    })
+    // const itemDetails = itemsChosen.map(each => {
+    //     return (
+    //     <ul>
+    //         {/* <li >
+    //             FoodItem {itemsChosen.indexOf(each) + 1} :
+    //         </li> */}
+    //         <li>
+    //             {each.name}
+    //         </li>
+    //         <li>
+    //             carbs : {each.carbs}
+    //         </li>
+    //         <li>
+    //             sugars : {each.sugars}
+    //         </li>
+    //         <li>
+    //             protein : {each.protein}
+    //         </li>
+    //         <li>
+    //             fat : {each.fat}
+    //         </li>
+    //         <li>
+    //             calories : {each.calories}
+    //         </li>
+    //     </ul>
+    //     )
+    // })
 
-   const onRemove = () => {
-    console.log("remove clicked");
+   const onRemoveBreakfast = (item) => {
+    const newList = breakfastFoodItems.filter(each => each !== item)
+    setBreakfastFoodItems(newList)
+   }
+
+   const onRemoveLunch = (item) => {
+    const newList = lunchFoodItems.filter(each => each !== item)
+    setLunchFoodItems(newList)
+   }
+
+   const onRemoveDinner = (item) => {
+    const newList = dinnerFoodItems.filter(each => each !== item)
+    setDinnerFoodItems(newList)
+   }
+
+   const onRemoveSnack = (item) => {
+    const newList = snackFoodItems.filter(each => each !== item)
+    setSnackFoodItems(newList)
    }
 
 //    calculate macro totals for each meal type state
@@ -249,7 +270,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         <li key={item}>
                             <span>
                                 <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                                <button onClick={onRemove}>Remove Item</button>
+                                <button onClick={() => onRemoveBreakfast(item)}>Remove Item</button>
                             </span>
                         </li>
                     ))}
@@ -272,7 +293,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         <li key={item}>
                             <span>
                             <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                            <button onClick={onRemove}>Remove Item</button>
+                            <button onClick={() => onRemoveLunch(item)}>Remove Item</button>
                             </span>
                         </li>
                     ))}
@@ -297,7 +318,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     <li key={item}>
                         <span>
                         <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                        <button onClick={onRemove}>Remove Item</button>
+                        <button onClick={() => onRemoveDinner(item)}>Remove Item</button>
                         </span>
                     </li>
                 ))}
@@ -320,7 +341,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     <li key={item}>
                         <span>
                         <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                        <button onClick={onRemove}>Remove Item</button>
+                        <button onClick={() => onRemoveSnack(item)}>Remove Item</button>
                         </span>
                     </li>
                 ))}
