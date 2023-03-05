@@ -12,7 +12,7 @@ const MainContainer = () => {
     const [user, setUser] = useState([])
     const [days, setDays] = useState([])
     // We use the get method to get all the day instance from the backend and save it in dayInstance.
-    const [dayInstance, setDayInstance] = useState([])
+    const [dayInstanceList, setDayInstanceList] = useState([])
     const [meals, setMeals] = useState([])
     const [foodItems, setFoodItems] = useState([])
     const [filteredList, setFilteredList] = useState([])
@@ -24,21 +24,21 @@ const MainContainer = () => {
         const dayPromise = request.get('/api/days');
         const mealPromise = request.get('/api/meals');
         const foodItemsPromise = request.get('/api/fooditems')
+        const dayInstanceListPromise = request.get('api/days')
 
-    Promise.all([userPromise, dayPromise, mealPromise, foodItemsPromise])
+    Promise.all([userPromise, dayPromise, mealPromise, foodItemsPromise, dayInstanceListPromise])
     .then((data) => {
         setUser(data[0][0])
         setDays(data[1])
         setMeals(data[2])
         setFoodItems(data[3])
+        setDayInstanceList(data[4])
     })
     }, [])
 
     function getDateData(data){
         // data['userID'] = user.id
         data['user'] = user
-        console.log(user)
-        console.log(data)
         handleDayPost(data)
         }
 
@@ -64,13 +64,16 @@ const MainContainer = () => {
         })
     }
 
-    const handleDayPost = (day) => {
+    const handleDayPost = async (day) => {
         console.log(`logging from main container: ${day}`);
         const request = new Request();
-        request.post('/api/days', day).then(() => {
-            // window.location = '/'
-        })
+        const postDay = await request.post('/api/days', day)
+        const responseToData = await postDay.json()
+        const newDayInstanceList = [...dayInstanceList]
+        newDayInstanceList.push(responseToData)
+        setDayInstanceList(newDayInstanceList)   
     }
+    console.log(dayInstanceList.length)
 
     const handleDayPut = (day) => {
         const request = new Request();
