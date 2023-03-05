@@ -4,12 +4,12 @@ import AddMealContainer from "./AddMealContainer";
 import ExerciseContainer from "./ExerciseContainer";
 import MacroStatsContainer from "./MacroStatsContainer";
 
-const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood, putFoodItemsIntoList}) => {
+const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood }) => {
 
 
 return (
     <>
-    <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} putFoodItemsIntoList={putFoodItemsIntoList}/>
+    <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} />
     <MacroStatsContainer />
     <ExerciseContainer />
     <UserUpdateForm />

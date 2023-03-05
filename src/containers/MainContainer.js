@@ -77,9 +77,11 @@ const MainContainer = () => {
         const mealList = await handleMealPost(responseToData)
         // Put food inside the list
         const mealListWithFoods = putFoodItemsIntoList(mealList, list)
-        // Update the list to database(Testing)
+        // Update the list with foods to database
         const updatedMeals = await handleMealPut(mealListWithFoods)
+        // Add meals field to day object
         responseToData['meals'] = updatedMeals
+        // Update the day object to database
         handleDayPut(responseToData)
 
     }
@@ -162,7 +164,7 @@ const MainContainer = () => {
             <div>
                 <NavBar user={user}/>
                 <Routes>
-                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} putFoodItemsIntoList={putFoodItemsIntoList}/>} />
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
             </div>
