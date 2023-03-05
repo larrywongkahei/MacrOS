@@ -107,35 +107,13 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
                 date: isoDateStr,
             }
 
-        const breakfastMeal = {
-                                "mealType": "BREAKFAST", 
-                                "foodItems": breakfastFoodItems, 
-                                // "day": completedDay
-        };
 
-        const lunchMeal = {
-                            "mealType": "LUNCH", 
-                            "foodItems": lunchFoodItems, 
-                            // "day": completedDay
-        };
 
-        const dinnerMeal = {
-                            "mealType": "DINNER", 
-                            "foodItems": dinnerFoodItems, 
-                            // "day": completedDay
-        };
-
-        const snacksMeal = {
-                            "mealType": "SNACK", 
-                            "foodItems": snackFoodItems, 
-                            // "day": completedDay
-        };
-
-        completedDay.meals.push(breakfastMeal);
-        completedDay.meals.push(lunchMeal);
-        completedDay.meals.push(dinnerMeal);
-        completedDay.meals.push(snacksMeal);
-        completedDay.completed = true;
+        // completedDay.meals.push(breakfastMeal);
+        // completedDay.meals.push(lunchMeal);
+        // completedDay.meals.push(dinnerMeal);
+        // completedDay.meals.push(snacksMeal);
+        // completedDay.completed = true;
 
         getDateData(completedDay)
         Swal.fire({

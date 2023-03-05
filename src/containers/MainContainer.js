@@ -11,6 +11,7 @@ const MainContainer = () => {
 
     const [user, setUser] = useState([])
     const [days, setDays] = useState([])
+    const [mealList, setMealList] = useState([])
     // We use the get method to get all the day instance from the backend and save it in dayInstance.
     const [dayInstanceList, setDayInstanceList] = useState([])
     const [meals, setMeals] = useState([])
@@ -72,8 +73,16 @@ const MainContainer = () => {
         const newDayInstanceList = [...dayInstanceList]
         newDayInstanceList.push(responseToData)
         setDayInstanceList(newDayInstanceList)   
+        await handleMealPost(responseToData)
+
     }
-    console.log(dayInstanceList.length)
+
+    // async function createMeal(day){
+
+        
+    
+    // }
+
 
     const handleDayPut = (day) => {
         const request = new Request();
@@ -82,12 +91,31 @@ const MainContainer = () => {
         })
     }
 
-    const handleMealPost = (meal) => {
+    const handleMealPost = async (day) => {
         const request = new Request();
-        request.post('/api/meals', meal).then(() => {
-            window.location = '/dashboard'
-        })
-    }
+        const breakfastMeal = {
+            "mealType": "BREAKFAST", 
+        };
+    
+        const lunchMeal = {
+            "mealType": "LUNCH", 
+        };
+    
+        const dinnerMeal = {
+            "mealType": "DINNER", 
+        };
+    
+        const snacksMeal = {
+            "mealType": "SNACK", 
+        };
+        const mealList = [breakfastMeal, lunchMeal, dinnerMeal, snacksMeal]
+        mealList.forEach(each => {
+            each['day'] = day
+            const data = request.post('/api/meals', each)
+            .then(res => res.json())
+            .then(data => console.log(data))
+    })
+}
 
     const handleMealPut = (meal) => {
         const request = new Request();
