@@ -14,11 +14,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     const [theItem, setTheItem] = useState({})
     const [quantity, setQuantity] = useState(0)
     const [customFoodName, setCustomFoodName] = useState("")
-    const [customFoodCarbs, setCustomFoodCarbs] = useState()
-    const [customFoodSugars, setCustomFoodSugars] = useState()
-    const [customFoodProtein, setCustomFoodProtein] = useState()
-    const [customFoodFat, setCustomFoodFat] = useState()
-    const [customFoodCalories, setCustomFoodCalories] = useState()
+    const [customFoodCarbs, setCustomFoodCarbs] = useState(0)
+    const [customFoodSugars, setCustomFoodSugars] = useState(0)
+    const [customFoodProtein, setCustomFoodProtein] = useState(0)
+    const [customFoodFat, setCustomFoodFat] = useState(0)
+    const [customFoodCalories, setCustomFoodCalories] = useState(0)
 
     // Day
     // Date
@@ -225,11 +225,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     e.preventDefault()
     const customFoodItem = {
         "name" : customFoodName,
-        "carbs" : parseInt(customFoodCarbs),
-        "sugars" :  parseInt(customFoodSugars),
-        "protein" : parseInt(customFoodProtein),
-        "fat" : parseInt(customFoodFat),
-        "calories" : parseInt(customFoodCalories),
+        "carbs" : customFoodCarbs,
+        "sugars" :  customFoodSugars,
+        "protein" : customFoodProtein,
+        "fat" : customFoodFat,
+        "calories" : customFoodCalories,
     }
     addCustomFood(customFoodItem)
 
