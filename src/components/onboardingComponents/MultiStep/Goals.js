@@ -2,50 +2,53 @@ import { motion } from "framer-motion";
 
 const Goals = ({ page, setPage, newUser, setNewUser, handleUserPost, x, setX }) => {
 
+
+    const saveUser = (bmr,multiplier) => {
+        const newUser2 = {...newUser}
+        newUser2['caloriesGoal'] = bmr * multiplier
+        handleUserPost(newUser2)
+    }
+
+
     const calcTDEE = (newUser) => {
         if (newUser.sex === "Male") {
-            console.log(`loggin male`);
-            console.log(newUser);
-             const maleBMR = 66 + (13.7 * newUser.startingWeight) + (5 * newUser.height) - (6.8 * newUser.age)
+            const maleBMR = 66 + (13.7 * newUser.startingWeight) + (5 * newUser.height) - (6.8 * newUser.age)
             if (newUser.activityLevel === 'SEDENTARY') {
-                setNewUser({ ...newUser, caloriesGoal: maleBMR * 1.2})
+                saveUser(maleBMR,1.2)
             } else if (newUser.activityLevel === "LIGHT") {
-                setNewUser({ ...newUser, caloriesGoal: maleBMR * 1.375})
+                saveUser(maleBMR,1.375)
             } else if (newUser.activityLevel === "MODERATE") {
-                setNewUser({ ...newUser, caloriesGoal: maleBMR * 1.55})
+                saveUser(maleBMR,1.55)
             } else if (newUser.activityLevel === "ACTIVE") {
-                setNewUser({ ...newUser, caloriesGoal: maleBMR * 1.725})
+                saveUser(maleBMR,1.725)
             } else if (newUser.activityLevel === "VERY_ACTIVE") {
-                setNewUser({ ...newUser, caloriesGoal: maleBMR * 1.9})
+                saveUser(maleBMR,1.9)
             } else if (newUser.activityLevel === "EXTRA_ACTIVE") {
-                setNewUser({ ...newUser, caloriesGoal: maleBMR * 2.4})
-        }} else if (newUser.sex === "Female") {
-        console.log(`logging female`);
-        console.log(newUser);
-        const femaleBMR = 655 + (9.6 * newUser.startingWeight) + (1.8 * newUser.height) - (4.7 * newUser.age)
-        if (newUser.activityLevel === "SEDENTARY") {
-            setNewUser({ ...newUser, caloriesGoal: femaleBMR * 1.2})
-        } else if (newUser.activityLevel === "LIGHT") {
-            setNewUser({ ...newUser, caloriesGoal: femaleBMR * 1.375})
-        } else if (newUser.activityLevel === "MODERATE") {
-            setNewUser({ ...newUser, caloriesGoal: femaleBMR * 1.55})
-        } else if (newUser.activityLevel === "ACTIVE") {
-            setNewUser({ ...newUser, caloriesGoal: femaleBMR * 1.725})
-        } else if (newUser.activityLevel === "VERY_ACTIVE") {
-            setNewUser({ ...newUser, caloriesGoal: femaleBMR * 1.9})
-        } else if (newUser.activityLevel === "EXTRA_ACTIVE") {
-            setNewUser({ ...newUser, caloriesGoal: femaleBMR * 2.4})
-    } } else {
-        console.log(`logging neither`);
-        console.log(newUser);
-    }}
+                saveUser(maleBMR,2.4)
+            }
+        } else if (newUser.sex === "Female") {
+            const femaleBMR = 655 + (9.6 * newUser.startingWeight) + (1.8 * newUser.height) - (4.7 * newUser.age)
+            if (newUser.activityLevel === "SEDENTARY") {
+                saveUser(femaleBMR,1.2)
+            } else if (newUser.activityLevel === "LIGHT") {
+                saveUser(femaleBMR,1.375)
+            } else if (newUser.activityLevel === "MODERATE") {
+                saveUser(femaleBMR,1.55)
+            } else if (newUser.activityLevel === "ACTIVE") {
+                saveUser(femaleBMR,1.725)
+            } else if (newUser.activityLevel === "VERY_ACTIVE") {
+                saveUser(femaleBMR,1.9)
+            } else if (newUser.activityLevel === "EXTRA_ACTIVE") {
+                saveUser(femaleBMR,2.4)
+            }
+        }
+    }
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         calcTDEE(newUser);
-        // handleUserPost(newUser)
-        // alert(`Hi ${newUser.name}! Welcome to macrOS`)
+        alert(`Hi ${newUser.name}! Welcome to macrOS`)
     }
 
     return (
