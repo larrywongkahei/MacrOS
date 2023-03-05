@@ -112,7 +112,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         const breakfastMeal = {
                                 "mealType": "BREAKFAST", 
                                 "foodItems": breakfastFoodItems, 
-                                "day": completedDay
+                                // "day": completedDay
         };
 
         const lunchMeal = {
@@ -137,6 +137,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         completedDay.meals.push(lunchMeal);
         completedDay.meals.push(dinnerMeal);
         completedDay.meals.push(snacksMeal);
+        completedDay.completed = true;
 
         getDateData(completedDay)
         Swal.fire({
