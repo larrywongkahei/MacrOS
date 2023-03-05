@@ -9,7 +9,7 @@ const Weight = ({ page, setPage, newUser, setNewUser }) => {
                 onChange={(e) => setNewUser({...newUser, startingWeight: e.target.value})}
             />
             <button
-                onClick={() => {
+                onClick={ () => {
                     setPage(page + 1);
                 }}>
                 Next

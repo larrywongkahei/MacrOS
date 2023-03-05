@@ -105,7 +105,7 @@ const MainContainer = () => {
 
     
 
-    // console.log(user);
+    console.log(user);
     // console.log(days);
     // console.log(meals);
 

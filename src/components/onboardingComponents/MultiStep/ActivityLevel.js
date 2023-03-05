@@ -10,18 +10,33 @@ const ActivityLevel = ({ page, setPage, newUser, setNewUser, x, setX }) => {
         >
             <div className="card">
                 <div className="step-title">How Would You Best Describe Your Acitivity Level?</div>
-                <select value={newUser.activityLevel} onChange={(e) => setNewUser({ ...newUser, activityLevel: e.target.value })}>
+                {/* <select value={newUser.activityLevel} onChange={(e) => setNewUser({ ...newUser, activityLevel: e.target.value })}>
                     <option>SEDENTARY</option>
                     <option>LIGHT</option>
                     <option>MODERATE</option>
                     <option>ACTIVE</option>
                     <option>VERY_ACTIVE</option>
                     <option>EXTRA_ACTIVE</option>
-                </select>
+                </select> */}
+                <div className="radio">How would you best descrive your activity level?</div>
+                <div onChange={(e) => setNewUser({ ...newUser, activityLevel: e.target.value })}>
+                    <input type="radio" value="SEDENTARY" name="activityLevel" /> Sedentary
+                    <input type="radio" value="LIGHT" name="activityLevel" /> Light
+                    <input type="radio" value="MODERATE" name="activityLevel" /> Moderate
+                    <input type="radio" value="ACTIVE" name="activityLevel" /> Active
+                    <input type="radio" value="VERY_ACTIVE" name="activityLevel" /> Very Active
+                    <input type="radio" value="EXTRA_ACTIVE" name="activityLevel" /> Extra Active (Athlete)
+                </div>
                 <button
                     onClick={() => {
-                        setPage(page + 1);
-                        setX(1000);
+                        if (newUser.activityLevel !== "") {
+                            setPage(page + 1);
+                            setX(1000);
+                        } else {
+                            alert('Activity level not selected. please try again')
+                        }
+
+                    
                     }}>
                     Next
                 </button>
