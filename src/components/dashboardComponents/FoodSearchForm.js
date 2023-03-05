@@ -99,12 +99,45 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         // toISOString() method converts to ISO format. split removes the time
         const isoDateStr = date.toISOString().split('T')[0];
         console.log(isoDateStr);
-        const completedDay = {
+
+
+        
             // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
-            "date" : isoDateStr,
-            "meals" : [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems],
-            "completed" : true
-        }
+            const completedDay = {
+                date: isoDateStr,
+                meals: [],
+                completed: false
+              }
+
+        const breakfastMeal = {
+                                "mealType": "BREAKFAST", 
+                                "foodItems": breakfastFoodItems, 
+                                "day": completedDay
+        };
+
+        const lunchMeal = {
+            "mealType": "LUNCH", 
+            "foodItems": lunchFoodItems, 
+            "day": completedDay
+};
+
+        const dinnerMeal = {
+            "mealType": "DINNER", 
+            "foodItems": dinnerFoodItems, 
+            "day": completedDay
+        };
+
+        const snacksMeal = {
+            "mealType": "SNACK", 
+            "foodItems": snackFoodItems, 
+            "day": completedDay
+};
+
+        completedDay.meals.push(breakfastMeal);
+        completedDay.meals.push(lunchMeal);
+        completedDay.meals.push(dinnerMeal);
+        completedDay.meals.push(snacksMeal);
+
         getDateData(completedDay)
         Swal.fire({
             title: 'Day Complete!',
