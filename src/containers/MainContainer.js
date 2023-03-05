@@ -11,7 +11,6 @@ const MainContainer = () => {
 
     const [user, setUser] = useState([])
     const [days, setDays] = useState([])
-    const [mealList, setMealList] = useState([])
     // We use the get method to get all the day instance from the backend and save it in dayInstance.
     const [dayInstanceList, setDayInstanceList] = useState([])
     const [meals, setMeals] = useState([])
@@ -37,10 +36,10 @@ const MainContainer = () => {
     })
     }, [])
 
-    function getDateData(data){
+    function getDateData(data, list){
         // data['userID'] = user.id
         data['user'] = user
-        handleDayPost(data)
+        handleDayPost(data, list)
         }
 
     const handleUserPost = (user) => {
@@ -56,6 +55,7 @@ const MainContainer = () => {
         return(await request.get(`/api/fooditems?letters=${letters}`))
 
     }
+    console.log(dayInstanceList)
 
     const handleUserPut = (user) => {
         const request = new Request();
@@ -65,7 +65,7 @@ const MainContainer = () => {
         })
     }
 
-    const handleDayPost = async (day) => {
+    const handleDayPost = async (day, list) => {
         console.log(`logging from main container: ${day}`);
         const request = new Request();
         const postDay = await request.post('/api/days', day)
@@ -73,22 +73,35 @@ const MainContainer = () => {
         const newDayInstanceList = [...dayInstanceList]
         newDayInstanceList.push(responseToData)
         setDayInstanceList(newDayInstanceList)   
-        await handleMealPost(responseToData)
+        // Create a list of meal
+        const mealList = await handleMealPost(responseToData)
+        // Put food inside the list
+        const mealListWithFoods = putFoodItemsIntoList(mealList, list)
+        // Update the list to database(Testing)
+        const updatedMeals = await handleMealPut(mealListWithFoods)
+        responseToData['meals'] = updatedMeals
+        handleDayPut(responseToData)
 
     }
 
-    // async function createMeal(day){
+    function putFoodItemsIntoList(mealList, foodItmesList){
+        mealList.forEach(each => {
+            const index = mealList.indexOf(each)
+            each['foodItems'] = foodItmesList[index]
+        })
+        return mealList
 
-        
-    
-    // }
+    }
 
 
     const handleDayPut = (day) => {
         const request = new Request();
-        request.put(`/api/days/${day.id}`, day).then(() => {
-            window.location = '/dashboard'
+        request.put(`/api/days/${day.id}`, day)
+        .then(res => {
+            console.log(res.status)
+            console.log(res.json())
         })
+            window.location = '/dashboard'
     }
 
     const handleMealPost = async (day) => {
@@ -109,19 +122,26 @@ const MainContainer = () => {
             "mealType": "SNACK", 
         };
         const mealList = [breakfastMeal, lunchMeal, dinnerMeal, snacksMeal]
-        mealList.forEach(each => {
+        const newList = await Promise.all(mealList.map( async each => {
             each['day'] = day
-            const data = request.post('/api/meals', each)
-            .then(res => res.json())
-            .then(data => console.log(data))
-    })
+            const mealPromise = await request.post('/api/meals', each)
+            const mealData = await mealPromise.json()
+            return mealData
+    }))
+    return newList
 }
 
-    const handleMealPut = (meal) => {
+    const handleMealPut = (list) => {
         const request = new Request();
-        request.put(`/api/meals/${meal.id}`, meal).then(() => {
+        const newList = Promise.all(list.map(async each => {
+            const mealPromise = await request.put(`/api/meals/${each.id}`, each)
+            const mealData = await mealPromise.json()
+            return mealData
+        }))
+        return newList
+
             window.location = '/dashboard'
-        })
+        
     }
 
     function addCustomFood(foodItem){
@@ -142,7 +162,7 @@ const MainContainer = () => {
             <div>
                 <NavBar user={user}/>
                 <Routes>
-                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood}/>} />
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} putFoodItemsIntoList={putFoodItemsIntoList}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
             </div>
