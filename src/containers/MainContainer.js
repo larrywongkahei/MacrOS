@@ -11,6 +11,8 @@ const MainContainer = () => {
 
     const [user, setUser] = useState([])
     const [days, setDays] = useState([])
+    // We use the get method to get all the day instance from the backend and save it in dayInstance.
+    const [dayInstance, setDayInstance] = useState([])
     const [meals, setMeals] = useState([])
     const [foodItems, setFoodItems] = useState([])
     const [filteredList, setFilteredList] = useState([])
@@ -33,7 +35,9 @@ const MainContainer = () => {
     }, [])
 
     function getDateData(data){
-        data['userID'] = user.id
+        // data['userID'] = user.id
+        data['user'] = user
+        console.log(user)
         console.log(data)
         handleDayPost(data)
         }
