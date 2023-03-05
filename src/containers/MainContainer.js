@@ -36,10 +36,10 @@ const MainContainer = () => {
     })
     }, [])
 
-    function getDateData(data, list){
+    function getDateData(data, listOfMeals){
         // data['userID'] = user.id
         data['user'] = user
-        handleDayPost(data, list)
+        handleDayPost(data, listOfMeals)
         }
 
     const handleUserPost = (user) => {
@@ -65,7 +65,7 @@ const MainContainer = () => {
         })
     }
 
-    const handleDayPost = async (day, list) => {
+    const handleDayPost = async (day, listOfMeals) => {
         console.log(`logging from main container: ${day}`);
         const request = new Request();
         const postDay = await request.post('/api/days', day)
@@ -76,7 +76,7 @@ const MainContainer = () => {
         // Create a list of meal
         const mealList = await handleMealPost(responseToData)
         // Put food inside the list
-        const mealListWithFoods = putFoodItemsIntoList(mealList, list)
+        const mealListWithFoods = putFoodItemsIntoList(mealList, listOfMeals)
         // Update the list with foods to database
         const updatedMeals = await handleMealPut(mealListWithFoods)
         // Add meals field to day object
@@ -103,7 +103,7 @@ const MainContainer = () => {
             console.log(res.status)
             console.log(res.json())
         })
-            window.location = '/dashboard'
+            window.location = '/'
     }
 
     const handleMealPost = async (day) => {
