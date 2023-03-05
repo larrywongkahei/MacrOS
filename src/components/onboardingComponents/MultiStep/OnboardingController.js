@@ -7,6 +7,8 @@ import Height from './Height';
 import Name from './Name';
 import Sex from './Sex';
 import Weight from './Weight';
+import Goals from './Goals'
+
 
 
 function OnboardingController({ handleUserPost }) {
@@ -92,7 +94,17 @@ function OnboardingController({ handleUserPost }) {
             setPage={setPage}
             x={x}
             setX={setX}
+        />,
+        <Goals
+            newUser={newUser}
+            setNewUser={setNewUser}
+            handleUserPost={handleUserPost}
+            page={page}
+            setPage={setPage}
+            x={x}
+            setX={setX}
         />
+        
     ]
 
     return (

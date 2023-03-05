@@ -2,11 +2,6 @@ import { motion } from "framer-motion";
 
 const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, setX }) => {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        handleUserPost(newUser)
-        alert(`Hi ${newUser.name}! Welcome to macrOS`)
-    }
 
     return (
         <motion.div
@@ -24,9 +19,12 @@ const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, set
                 />
                 <br />
                 <button
-                    onClick={handleSubmit}>
-                    Submit
-                </button>
+          onClick={() => {
+            setPage(page + 1);
+            setX(1000);
+          }}>
+          Next
+        </button>
                 <br />
                 <button
                     onClick={() => {

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
 
+
     return (
         <motion.div
             initial={{ x: x }}
@@ -9,15 +10,19 @@ const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
             animate={{ x: 0 }}
         >
             <div className="card">
-                <div className="step-title">What's your gender?</div>
-                <select value={newUser.sex} onChange={(e) => setNewUser({ ...newUser, sex: e.target.value })}>
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
+                <div className="radio">What's your gender?</div>
+                <div onChange={(e) => setNewUser({ ...newUser, sex: e.target.value })}>
+                    <input type="radio" value="Male" name="sex" /> Male
+                    <input type="radio" value="Female" name="sex" /> Female
+                </div>
                 <button
                     onClick={() => {
-                        setPage(page + 1);
-                        setX(1000);
+                        if (newUser.sex !== "") {
+                            setPage(page + 1)
+                            setX(1000)
+                        } else {
+                            alert('Sex not selected, please try again')
+                        }
                     }}>
                     Next
                 </button>
