@@ -2,7 +2,7 @@ import { set } from "date-fns";
 import { useState } from "react";
 import Swal from 'sweetalert2'
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood }) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -102,42 +102,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
 
         
-            // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
-            const completedDay = {
-                date: isoDateStr,
-            }
-
-        const breakfastMeal = {
-                                "mealType": "BREAKFAST", 
-                                "foodItems": breakfastFoodItems, 
-                                // "day": completedDay
-        };
-
-        const lunchMeal = {
-                            "mealType": "LUNCH", 
-                            "foodItems": lunchFoodItems, 
-                            // "day": completedDay
-        };
-
-        const dinnerMeal = {
-                            "mealType": "DINNER", 
-                            "foodItems": dinnerFoodItems, 
-                            // "day": completedDay
-        };
-
-        const snacksMeal = {
-                            "mealType": "SNACK", 
-                            "foodItems": snackFoodItems, 
-                            // "day": completedDay
-        };
-
-        completedDay.meals.push(breakfastMeal);
-        completedDay.meals.push(lunchMeal);
-        completedDay.meals.push(dinnerMeal);
-        completedDay.meals.push(snacksMeal);
-        completedDay.completed = true;
-
-        getDateData(completedDay)
+        // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
+        const completedDay = {
+            date: isoDateStr,
+        }
+        console.log("next")
+        getDateData(completedDay, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
         Swal.fire({
             title: 'Day Complete!',
             text: 'The day has been added to your diary',
