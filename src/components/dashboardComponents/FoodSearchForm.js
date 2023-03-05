@@ -158,7 +158,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     function handleAdd(e){
         e.preventDefault()
         if (quantity <= 0){
-            alert("Quantity must be larger than 0")
+            Swal.fire({
+                title: 'Oops!',
+                text: 'The quantity must be more than zero',
+                icon: 'error',
+                confirmButtonText: 'Return'
+              })
         }else{
         const listToBeMultiply = ["carbs", "sugars", "protein", "fat", "calories"]
         listToBeMultiply.forEach(each => {
