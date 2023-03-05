@@ -99,12 +99,44 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         // toISOString() method converts to ISO format. split removes the time
         const isoDateStr = date.toISOString().split('T')[0];
         console.log(isoDateStr);
-        const completedDay = {
+
+
+        
             // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
-            "date" : isoDateStr,
-            "meals" : [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems],
-            "completed" : true
-        }
+            const completedDay = {
+                date: isoDateStr,
+            }
+
+        const breakfastMeal = {
+                                "mealType": "BREAKFAST", 
+                                "foodItems": breakfastFoodItems, 
+                                // "day": completedDay
+        };
+
+        const lunchMeal = {
+                            "mealType": "LUNCH", 
+                            "foodItems": lunchFoodItems, 
+                            // "day": completedDay
+        };
+
+        const dinnerMeal = {
+                            "mealType": "DINNER", 
+                            "foodItems": dinnerFoodItems, 
+                            // "day": completedDay
+        };
+
+        const snacksMeal = {
+                            "mealType": "SNACK", 
+                            "foodItems": snackFoodItems, 
+                            // "day": completedDay
+        };
+
+        completedDay.meals.push(breakfastMeal);
+        completedDay.meals.push(lunchMeal);
+        completedDay.meals.push(dinnerMeal);
+        completedDay.meals.push(snacksMeal);
+        completedDay.completed = true;
+
         getDateData(completedDay)
         Swal.fire({
             title: 'Day Complete!',
@@ -125,7 +157,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     function handleAdd(e){
         e.preventDefault()
         if (quantity <= 0){
-            alert("Quantity must be larger than 0")
+            Swal.fire({
+                title: 'Oops!',
+                text: 'The quantity must be more than zero',
+                icon: 'error',
+                confirmButtonText: 'Return'
+              })
         }else{
         const listToBeMultiply = ["carbs", "sugars", "protein", "fat", "calories"]
         listToBeMultiply.forEach(each => {
