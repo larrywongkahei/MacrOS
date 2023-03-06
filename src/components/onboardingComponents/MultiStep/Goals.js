@@ -122,7 +122,6 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
         e.preventDefault();
         calcTDEE(newUser);
         clearForm()
-        setOnboardingComplete(true)
     }
 
     return (

@@ -51,6 +51,7 @@ const MainContainer = () => {
         // .then(() => {
         //     window.location = '/'
         // })
+        setOnboardingComplete(true);
         Swal.fire({
             title: 'Your Nutrition Goals Per Day',
             text: `Calories: ${user.caloriesGoal} \n Protein: ${user.proteinGoal}`,
@@ -169,7 +170,7 @@ const MainContainer = () => {
     // console.log(days);
     // console.log(meals);
 
-    if (onboardingComplete) {
+    if (onboardingComplete || user) {
         return(
             <div>
                 <NavBar user={user}/>
