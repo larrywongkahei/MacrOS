@@ -9,6 +9,7 @@ import Name from './Name';
 import Sex from './Sex';
 import Weight from './Weight';
 import Goals from './Goals'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 
 
@@ -48,6 +49,7 @@ function OnboardingController({ handleUserPost, setOnboardingComplete }) {
             setPage={setPage}
             x={x}
             setX={setX}
+            
         />,
         <Age
             newUser={newUser}
@@ -116,6 +118,7 @@ function OnboardingController({ handleUserPost, setOnboardingComplete }) {
             x={x}
             setX={setX}
         />
+        
     ]
 
     return (

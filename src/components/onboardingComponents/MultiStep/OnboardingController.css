@@ -1,89 +1,17 @@
-/* .App {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    height: 100vh;
-    background: rgba(194, 233, 251, 1);
-    background: radial-gradient(
-      circle,
-      rgba(161, 196, 253, 1) 10%,
-      rgba(194, 233, 251, 1) 100%
-    );
-  }
-  .progress-bar {
-    width: 400px;
-    height: 15px;
-    background-color: white;
-    margin-bottom: 50px;
-  }
-  .progress-bar div {
-    width: 25%;
-    height: 100%;
-    background-color: rgb(98, 0, 255);
-  }
-  .card {
-    width: 400px;
-    background-color: white;
-    border: 1px solid #333;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
-    gap: 0.25em;
-  }
-  .form-group:last-child {
-    margin: 0;
-  }
-  .form-group > label {
-    font-weight: bold;
-    font-size: 0.8em;
-    color: #333;
-  }
-  .form-group > input {
-    border: 1px solid #333;
-    border-radius: 0.25em;
-    font-size: 1rem;
-    padding: 0.25em;
-  }
-  .step-title {
-    margin: 0;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    text-align: center;
-  }
-  input {
-    border: 2px solid rgb(98, 0, 255);
-    border-radius: 5px;
-    height: 35px;
-    display: block;
-    margin-bottom: 1rem;
-  }
-  .button-area {
-    display: flex;
-    align-content: space-between;
-  }
-  button {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 0.8rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  }
-  textarea {
-    height: 5rem;
-  }
+.card {
+  margin: 0 auto; 
+  float: none; 
+  margin-bottom: 10px; 
+}
 
-   */
+label span {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+Button {
+    margin: .6rem;
+}
+
+
+

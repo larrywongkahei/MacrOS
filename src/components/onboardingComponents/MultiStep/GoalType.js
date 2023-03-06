@@ -1,54 +1,125 @@
+import './OnboardingController.css'
 import { motion } from "framer-motion";
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card'
+import Nav from 'react-bootstrap/Nav'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 const GoalType = ({ page, setPage, newUser, setNewUser, x, setX }) => {
 
+    const clickHandlerForward = (skipPages) => {
+        setPage(page + skipPages);
+        setX(1000);
+    }
+
+    const clickHandlerBackward = (skipPages) => {
+        setPage(page - skipPages);
+        setX(-1000);
+    }
+
+    const currentProgress = 84;
+
+
     return (
-        <motion.div
-            initial={{ x: x }}
-            transition={{ duration: 1 }}
-            animate={{ x: 0 }}
-        >
-     
-                <div>What's your endgame?</div>
-                <div onChange={(e) => setNewUser({ ...newUser, goalType: e.target.value })}>
-                    <div className="form-check">
-                        <input type="radio" value="MAINTAIN_WEIGHT" name="goalType" id="goal1" className="form-check-input" />
-                        <label className="form-check-label" htmlFor="goal1">Maintain Weight</label>
-                    </div>
-                    <div className="form-check">
-                        <input type="radio" value="GAIN_WEIGHT" name="goalType" id="goal2" className="form-check-input" />
-                        <label className="form-check-label" htmlFor="goal1">Gain Weight</label>
-                    </div>
-                    <div className="form-check">
-                        <input type="radio" value="LOSE_WEIGHT" name="goalType" id="goal3" className="form-check-input" />
-                        <label className="form-check-label" htmlFor="goal3">Lose Weight</label>
-                    </div>
-                </div>
-                <Button
-                    onClick={() => {
-                        if (newUser.goalType !== "") {
-                            setPage(page + 1);
-                            setX(1000);
-                        } else {
-                            alert('Your goal not selected. please try again')
-                        }
-                    }}
-                    variant="outline-success"
+
+        <Card style={{ width: '53rem' }} className="text-center">
+            <Card.Body>
+                <motion.div
+                    initial={{ x: x }}
+                    transition={{ duration: 1 }}
+                    animate={{ x: 0 }}
+                >
+                    <Card.Header><h2>Fitness Goal</h2>
+                        <Nav variant="pills" defaultActiveKey="#active">
+                            <Nav.Item>
+                                <Nav.Link href="#link" onClick={() => {
+                                    clickHandlerBackward(6)
+                                }}>Name</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="#link" onClick={() => {
+                                    clickHandlerBackward(5)
+                                }}>Age</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="/" onClick={() => {
+                                    clickHandlerBackward(4)
+                                }}>Sex</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="#link" onClick={() => {
+                                    clickHandlerBackward(3);
+                                }}>Height</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="#link" onClick={() => {
+                                    clickHandlerBackward(2);
+                                }}>Weight</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="#link" onClick={() => {
+                                    clickHandlerBackward(1);
+                                }}>Activity Level</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="#active" onClick={() => {
+                                    setPage(page);
+                                }}>Goal</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="#link" onClick={() => {
+                                    clickHandlerForward(1);
+                                }}>Weight Goal</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="#link" onClick={() => {
+                                    clickHandlerForward(2);
+                                }}>Summary</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
+                    </Card.Header>
+                    <br />
+                    <Card.Title><h3>What's Your Goal?</h3></Card.Title>
+                    <br />
+                    <Card.Text>
+                        <div onChange={(e) => setNewUser({ ...newUser, goalType: e.target.value })}>
+                            <div className="form-check">
+                                <input type="radio" value="MAINTAIN_WEIGHT" name="goalType" id="goal1" className="card-input-element" />
+                                <label className="form-check-label" htmlFor="goal1"><span>Maintain Weight</span></label>
+                            </div>
+                            <div className="form-check">
+                                <input type="radio" value="GAIN_WEIGHT" name="goalType" id="goal2" className="card-input-element" />
+                                <label className="form-check-label" htmlFor="goal1"><span>Gain Weight</span></label>
+                            </div>
+                            <div className="form-check">
+                                <input type="radio" value="LOSE_WEIGHT" name="goalType" id="goal3" className="card-input-element" />
+                                <label className="form-check-label" htmlFor="goal3"><span>Lose Weight</span></label>
+                            </div>
+                        </div>
+                    </Card.Text>
+                    <Button
+                        onClick={() => {
+                            clickHandlerBackward(1)
+                        }}
+                        variant="outline-secondary"
                     >
-                    Next
-                </Button>
-                <br />
-                <Button
-                    onClick={() => {
-                        setPage(page - 1);
-                        setX(-1000);
-                    }}
-                    variant="outline-secondary"
+                        Previous
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            clickHandlerForward(1)
+                        }}
+                        variant="outline-success"
                     >
-                    Previous
-                </Button>
-        </motion.div>
+                        Next
+                    </Button>
+                    <br />
+                    <br />
+                    <ProgressBar now={currentProgress} label={`${currentProgress}%`} />
+                </motion.div>
+            </Card.Body>
+        </Card>
+
     );
 }
 
