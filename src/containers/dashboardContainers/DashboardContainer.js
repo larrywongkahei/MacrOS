@@ -20,7 +20,6 @@ return (
 
     <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal}/>
     <MacroStatsContainer dayTotals={dayTotals}/>
-
     <ExerciseContainer />
     <UserUpdateForm />
     </>
