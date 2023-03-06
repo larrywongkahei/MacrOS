@@ -1,8 +1,8 @@
 import { set } from "date-fns";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Swal from 'sweetalert2'
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, dayTotalsState }) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -20,6 +20,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     const [customFoodFat, setCustomFoodFat] = useState(0)
     const [customFoodCalories, setCustomFoodCalories] = useState(0)
 
+
     // Day
     // Date
     // list of Meals - 4 meal - fooditems
@@ -28,6 +29,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     // const Day = {
     //     "date" : Date().now()
     // }
+
+
+    useEffect(() => {
+    updateDayTotal(dayTotals)
+    }, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
     
 
 
@@ -167,6 +173,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         setTheItem({})
         setFoodInput("")
         setQuantity(0)
+        console.log('day totals', dayTotals);
         updateDayTotal(dayTotals)
     }
     }
@@ -323,7 +330,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     {/* <button>Barcode Scanner button</button> */}
                     <label> Quantity(grams): </label>
                     <input type="number" value={quantity} onChange={handleQuantity}/>
-                    <button onClick={handleAdd}>Add to {mealType}</button>
+                    <button onClick={handleAdd} >Add to {mealType}</button>
 
                     {filteredFoodItems ? 
                     <div>

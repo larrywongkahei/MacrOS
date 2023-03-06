@@ -1,26 +1,30 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Title, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Title, Legend);
 
 
 const MacroCharts = ({dayTotals}) => {
 
 console.log(dayTotals)
 
+const percentageCarbs = ((dayTotals.carbs*4)/dayTotals.calories)*100
+const percentageProtein = ((dayTotals.protein*4)/dayTotals.calories)*100
+const percentageFat = ((dayTotals.fat*9)/dayTotals.calories)*100
+
+
+
     const data = {
-            labels: ['Carbohydrates (g)', 'of which Sugars (g)', 'Protein (g)', 'Fat (g)'],
+            labels: ['Carbohydrates (%)', 'Protein (%)', 'Fat (%)'],
             datasets: [
             {
-            label: '',
-            data: [dayTotals.carbs, dayTotals.sugars, dayTotals.protein, dayTotals.fat],
+            label: '%',
+            data: [percentageCarbs.toFixed(0), percentageProtein.toFixed(0), percentageFat.toFixed(0)],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
+                
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -34,10 +38,17 @@ console.log(dayTotals)
             },
         ],
     };
+
+    const options = {
+        title: {
+            display:true,
+            text: `Today's macros`
+        }
+    }
     
     return (
         <>
-        <Pie data={data} />
+        <Pie data={data} options={options}/>
         </>
     )
 }

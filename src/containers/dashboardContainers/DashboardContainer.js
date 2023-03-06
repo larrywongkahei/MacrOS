@@ -6,7 +6,7 @@ import MacroStatsContainer from "./MacroStatsContainer";
 
 const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood }) => {
 
-    const [dayTotals, setDayTotals] = useState({})
+    const [dayTotals, setDayTotals] = useState({ calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 })
 
     // function to pull dayTotals from food search form and pass down to MacroCharts
 
@@ -18,11 +18,10 @@ const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, fil
 return (
     <>
 
-    <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} dayTotalsState={dayTotals}/>
-    <MacroStatsContainer dayTotals={dayTotals}/>
-
-    <ExerciseContainer />
-    <UserUpdateForm />
+    <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal}/>
+    <MacroStatsContainer dayTotals={dayTotals} user={user}/>
+    {/* <ExerciseContainer /> */}
+    {/* <UserUpdateForm /> */}
     </>
 );
 }
