@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from 'react-bootstrap/Button';
 
 
 const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingComplete, handleUserPost, x, setX }) => {
@@ -129,7 +130,7 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
     const handleSubmit = (e) => {
         e.preventDefault();
         calcTDEE(newUser);
-        // clearForm()
+        clearForm()
     }
 
     return (
@@ -138,23 +139,26 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
             transition={{ duration: 1 }}
             animate={{ x: 0 }}
         >
-            <div className="card">
-                <div className="step-title">SAVE</div>
+         
+                <div>That's it! Enjoy macrOS</div>
                 <br />
-                <button
-                    onClick={handleSubmit}>
-                    Save
-                </button>
+                <Button
+                    onClick={handleSubmit}
+                    variant="outline-success"
+                    >
+                    Take Me To Dashboard
+                </Button>
                 <br />
         
-                <button
+                <Button
                     onClick={() => {
                         setPage(page - 1);
                         setX(-1000);
-                    }}>
+                    }}
+                    variant="outline-secondary"
+                    >
                     Previous
-                </button>
-            </div>
+                </Button>
         </motion.div>
     );
 }

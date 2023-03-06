@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from 'react-bootstrap/Button';
 
 const Name = ({ page, setPage, newUser, setNewUser, x, setX }) => {
   return (
@@ -7,24 +8,29 @@ const Name = ({ page, setPage, newUser, setNewUser, x, setX }) => {
       transition={{ duration: 1 }}
       animate={{ x: 0 }}
     >
-    <div className="card">
-      <div className="step-title">What's your name?</div>
+      <div className="d-flex flex-column justify-content-center">
+      <h3 className="p-2">What's your name?</h3>
       <input
+        className="p-22"
         type="text"
         placeholder="Name"
         value={newUser.name}
         onChange={(e) => setNewUser({...newUser, name: e.target.value})}
-        className="form-group"
       />
-      <button
+      <Button
+          className="p-2"
           onClick={() => {
             setPage(page + 1);
             setX(1000);
-          }}>
+          }}
+          variant="outline-success"
+          size="sm"
+          >
           Next
-        </button>
-    </div>
+        </Button>
+        </div>
     </motion.div>
+    
   );
 };
 

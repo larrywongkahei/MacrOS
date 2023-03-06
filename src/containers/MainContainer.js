@@ -54,7 +54,7 @@ const MainContainer = () => {
         setOnboardingComplete(true);
         Swal.fire({
             title: 'Your Nutrition Goals Per Day',
-            text: `Calories: ${user.caloriesGoal} \n Protein: ${user.proteinGoal} \n Fat: ${user.fatGoal} \n Carbs: ${user.carbsGoal}`,
+            text: `Calories: ${user.caloriesGoal}Kcal \n Protein: ${user.proteinGoal}g \n Fat: ${user.fatGoal}g \n Carbs: ${user.carbsGoal}g`,
             icon: 'success',
             confirmButtonText: 'Return'
           })

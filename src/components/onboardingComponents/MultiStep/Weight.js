@@ -1,27 +1,41 @@
-const Weight = ({ page, setPage, newUser, setNewUser }) => {
+import { motion } from "framer-motion";
+import Button from 'react-bootstrap/Button';
+
+const Weight = ({ page, setPage, newUser, setNewUser, x, setX }) => {
     return (
-        <div className="card">
-            <div className="step-title">... Aaaand Your Current Weight?</div>
-            <input
-                type="number"
-                placeholder="Weight"
-                value={newUser.startingWeight}
-                onChange={(e) => setNewUser({...newUser, startingWeight: e.target.value})}
-            />
-            <button
-                onClick={ () => {
-                    setPage(page + 1);
-                }}>
-                Next
-            </button>
-            <br />
-            <button
-                onClick={() => {
-                    setPage(page - 1);
-                }}>
-                Previous
-            </button>
-        </div>
+        <motion.div
+            initial={{ x: x }}
+            transition={{ duration: 1 }}
+            animate={{ x: 0 }}
+        >
+                <div>... Aaaand Your Current Weight?</div>
+                <input
+                    type="number"
+                    placeholder="Kg"
+                    value={newUser.startingWeight}
+                    onChange={(e) => setNewUser({ ...newUser, startingWeight: e.target.value })}
+                />
+                <Button
+                    onClick={() => {
+                        setPage(page + 1);
+                        setX(1000);
+                    }}
+                    variant="outline-success"
+                    >
+                    Next
+                </Button>
+                <br />
+                <Button
+                    onClick={() => {
+                        setPage(page - 1);
+                        setX(-1000);
+                    }}
+                    variant="outline-secondary"
+                    >
+                    Previous
+                </Button>
+
+        </motion.div>
     );
 }
 

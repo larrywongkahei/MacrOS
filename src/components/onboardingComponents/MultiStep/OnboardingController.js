@@ -9,7 +9,7 @@ import Name from './Name';
 import Sex from './Sex';
 import Weight from './Weight';
 import Goals from './Goals'
-import Stats from './Stats'
+
 
 
 
@@ -18,15 +18,15 @@ function OnboardingController({ handleUserPost, setOnboardingComplete }) {
 
     const emptyUser = {
         name: "",
-        age: 0,
+        age: "",
         sex: "",
-        height: 0,
-        startingWeight: 0,
-        currentWeight: 0,
-        goalWeight: 0,
+        height: "",
+        startingWeight: "",
+        currentWeight: "",
+        goalWeight: "",
         activityLevel: "",
         goalType: "",
-        experiencePoints: 0,
+        experiencePoints: "",
         caloriesGoal: 0,
         proteinGoal: 0,
         fatGoal: 0,
@@ -119,10 +119,9 @@ function OnboardingController({ handleUserPost, setOnboardingComplete }) {
     ]
 
     return (
-        <div className="App">
-            <div className="progress-bar">
-                <div style={{ width: page === 0 ? "15%" : page === 1 ? "30%" : page === 2 ? "45%" : page === 3 ? "60%" : page === 4 ? "75%" : page === 5 ? "85%" : "100%" }}></div>
-            </div>
+        <div>
+            <div style={{ width: page === 0 ? "15%" : page === 1 ? "30%" : page === 2 ? "45%" : page === 3 ? "55%" : page === 4 ? "65%" : page === 5 ? "75%" : page === 6 ? "85%" : page === 7 ? "90%" : "100%" }}></div>
+
             <div>{componentList[page]}</div>
         </div>
     );

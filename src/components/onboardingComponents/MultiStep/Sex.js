@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from 'react-bootstrap/Button';
 
 const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
 
@@ -9,13 +10,19 @@ const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
             transition={{ duration: 1 }}
             animate={{ x: 0 }}
         >
-            <div className="card">
-                <div className="radio">What's your gender?</div>
+    
+                <div>What's your gender?</div>
                 <div onChange={(e) => setNewUser({ ...newUser, sex: e.target.value })}>
-                    <input type="radio" value="Male" name="sex" /> Male
-                    <input type="radio" value="Female" name="sex" /> Female
+                    <div className="form-check">
+                        <input type="radio" value="Male" name="sex" id="sex1" className="form-check-input" /> 
+                        <label className="form-check-label" htmlFor="sex1">Male</label>
+                    </div>
+                    <div className="form-check">
+                        <input type="radio" value="Female" name="sex" id="sex2" className="form-check-input" />
+                        <label className="form-check-label" htmlFor="sex2">Female</label>
+                    </div>
                 </div>
-                <button
+                <Button
                     onClick={() => {
                         if (newUser.sex !== "") {
                             setPage(page + 1)
@@ -23,18 +30,22 @@ const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                         } else {
                             alert('Sex not selected, please try again')
                         }
-                    }}>
+                    }}
+                    variant="outline-success"
+                    >
                     Next
-                </button>
+                </Button>
                 <br />
-                <button
+                <Button
                     onClick={() => {
                         setPage(page - 1);
                         setX(-1000);
-                    }}>
+                    }}
+                    variant="outline-secondary"
+                    >
                     Previous
-                </button>
-            </div>
+                </Button>
+         
         </motion.div>
     );
 }

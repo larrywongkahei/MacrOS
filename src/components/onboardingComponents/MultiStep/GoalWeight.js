@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from 'react-bootstrap/Button';
 
 const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, setX }) => {
 
@@ -9,31 +10,35 @@ const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, set
             transition={{ duration: 1 }}
             animate={{ x: 0 }}
         >
-            <div className="card">
-                <div className="step-title">Le Grande Finale! What's Your Goal Weight?</div>
+
+                <div>Le Grande Finale! What's Your Goal Weight?</div>
                 <input
                     type="number"
-                    placeholder="Goal Weight"
+                    placeholder="Kg"
                     value={newUser.goalWeight}
                     onChange={(e) => setNewUser({ ...newUser, goalWeight: e.target.value })}
                 />
                 <br />
-                <button
+                <Button
           onClick={() => {
             setPage(page + 1);
             setX(1000);
-          }}>
+          }}
+          variant="outline-success"
+          >
           Next
-        </button>
+        </Button>
                 <br />
-                <button
+                <Button
                     onClick={() => {
                         setPage(page - 1);
                         setX(-1000);
-                    }}>
+                    }}
+                    variant="outline-secondary"
+                    >
                     Previous
-                </button>
-            </div>
+                </Button>
+          
         </motion.div>
     );
 }

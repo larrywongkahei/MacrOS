@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from 'react-bootstrap/Button';
 
 const GoalType = ({ page, setPage, newUser, setNewUser, x, setX }) => {
 
@@ -8,19 +9,23 @@ const GoalType = ({ page, setPage, newUser, setNewUser, x, setX }) => {
             transition={{ duration: 1 }}
             animate={{ x: 0 }}
         >
-            <div className="card">
-                <div className="step-title">What's your endgame?</div>
+     
+                <div>What's your endgame?</div>
                 <div onChange={(e) => setNewUser({ ...newUser, goalType: e.target.value })}>
-                    <input type="radio" value="MAINTAIN_WEIGHT" name="goalType" /> Maintain Weight
-                    <input type="radio" value="GAIN_WEIGHT" name="goalType" /> Gain Weight
-                    <input type="radio" value="LOSE_WEIGHT" name="goalType" /> Lose Weight
+                    <div className="form-check">
+                        <input type="radio" value="MAINTAIN_WEIGHT" name="goalType" id="goal1" className="form-check-input" />
+                        <label className="form-check-label" htmlFor="goal1">Maintain Weight</label>
+                    </div>
+                    <div className="form-check">
+                        <input type="radio" value="GAIN_WEIGHT" name="goalType" id="goal2" className="form-check-input" />
+                        <label className="form-check-label" htmlFor="goal1">Gain Weight</label>
+                    </div>
+                    <div className="form-check">
+                        <input type="radio" value="LOSE_WEIGHT" name="goalType" id="goal3" className="form-check-input" />
+                        <label className="form-check-label" htmlFor="goal3">Lose Weight</label>
+                    </div>
                 </div>
-                {/* <select onChange={(e) => setNewUser({ ...newUser, goal: e.target.value })}>
-                    <option value="MAINTAIN_WEIGHT" selected>Maintain Weight</option>
-                    <option value="GAIN_WEIGHT">Gain Weight</option>
-                    <option value="LOSE_WEIGHT">LOSE Weight</option>
-                </select> */}
-                <button
+                <Button
                     onClick={() => {
                         if (newUser.goalType !== "") {
                             setPage(page + 1);
@@ -28,20 +33,21 @@ const GoalType = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                         } else {
                             alert('Your goal not selected. please try again')
                         }
-
-                    
-                    }}>
+                    }}
+                    variant="outline-success"
+                    >
                     Next
-                </button>
+                </Button>
                 <br />
-                <button
+                <Button
                     onClick={() => {
                         setPage(page - 1);
                         setX(-1000);
-                    }}>
+                    }}
+                    variant="outline-secondary"
+                    >
                     Previous
-                </button>
-            </div>
+                </Button>
         </motion.div>
     );
 }
