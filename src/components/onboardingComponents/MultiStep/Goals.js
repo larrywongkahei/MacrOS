@@ -5,9 +5,10 @@ import Button from 'react-bootstrap/Button';
 const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingComplete, handleUserPost, x, setX }) => {
 
     const fatProteinCarbsGoal = (newUser2,bmr,multiplier) => {
-        newUser2['proteinGoal'] = (((bmr * multiplier) * 0.4 ) / 4).toFixed(0)
-        newUser2['fatGoal'] = (((bmr * multiplier) * 0.3 ) / 9).toFixed(0)
+        newUser2['proteinGoal'] = (newUser2.startingWeight * 2.2).toFixed(0)
+        newUser2['fatGoal'] = (newUser2.startingWeight * 0.7).toFixed(0)
         newUser2['carbsGoal'] = (((bmr * multiplier) * 0.3 ) / 4).toFixed(0)
+        newUser2['sugarsGoal'] = (((bmr * multiplier) * 0.1) / 4).toFixed(0)
     }
 
     const saveUserLose = (bmr,multiplier,Goal) => {
