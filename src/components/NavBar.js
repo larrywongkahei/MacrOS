@@ -21,25 +21,25 @@ const NavBar = ({user}) => {
 
       
 
-        <nav class="navbar sticky-top navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav className="navbar sticky-top navbar-expand-lg bg-light">
+            <div className="container-fluid">
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                     {user? (
                         <div>
-                            <a class="navbar-brand" href="#">{user.name}'s macrOS</a>
+                            <a className="navbar-brand" href="#">{user.name}'s macrOS</a>
                             {/* <img src={logo}></img> */}
                         </div>
 
-                    ): <a class="navbar-brand" href="#">macrOS</a>}
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
+                    ): <a className="navbar-brand" href="#">macrOS</a>}
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="/">Dashboard</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/journal">Journal</a>
+                    <li className="nav-item">
+                    <a className="nav-link" href="/journal">Journal</a>
                     </li>
                 </ul>
                 </div>

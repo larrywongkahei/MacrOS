@@ -11,7 +11,7 @@ const OnboardingContainer = ({handleUserPost, setOnboardingComplete}) => {
         <>
         <hr/>
         <p>I am OnboardingContainer containing:</p>
-        <OnboardingController handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete} />
+        <OnboardingController handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete}/>
         <AppInformation />
 
         </>

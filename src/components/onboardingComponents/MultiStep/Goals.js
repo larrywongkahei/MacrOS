@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 
+
 const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingComplete, handleUserPost, x, setX }) => {
 
     const fatProteinCarbsGoal = (newUser2,bmr,multiplier) => {
@@ -121,7 +122,6 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
         e.preventDefault();
         calcTDEE(newUser);
         clearForm()
-        // setOnboardingComplete(true)
     }
 
     return (
