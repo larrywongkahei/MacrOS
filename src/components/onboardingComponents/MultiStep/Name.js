@@ -1,36 +1,108 @@
 import { motion } from "framer-motion";
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card'
+import Nav from 'react-bootstrap/Nav'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 const Name = ({ page, setPage, newUser, setNewUser, x, setX }) => {
+
+  const clickHandlerForward = (skipPages) => {
+    setPage(page + skipPages);
+    setX(1000);
+  }
+
+  const clickHandlerBackward = (skipPages) => {
+    setPage(page - skipPages);
+    setX(-1000);
+  }
+
+  const currentProgress = 12;
+
   return (
+
+    <Card style= {{ width: '53rem'}} className="text-center">
+      <Card.Body>
     <motion.div
       initial={{ x: x }}
       transition={{ duration: 1 }}
       animate={{ x: 0 }}
     >
-      <div className="d-flex flex-column justify-content-center">
-      <h3 className="p-2">What's your name?</h3>
+      <Card.Header><h2>Welcome to macrOS!</h2>
+      <Nav variant="pills" defaultActiveKey="#active">
+          <Nav.Item>
+            <Nav.Link href="#active" onClick={() => {
+            setPage(page);
+          }}>Name</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="#link" onClick={() => {
+            clickHandlerForward(1)
+          }}>Age</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="#link" onClick={() => {
+            clickHandlerForward(2);
+          }}>Sex</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="#link" onClick={() => {
+            clickHandlerForward(3);
+          }}>Height</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="#link" onClick={() => {
+            clickHandlerForward(4);
+          }}>Weight</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="#link" onClick={() => {
+            clickHandlerForward(5);
+          }}>Activity Level</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="#link" onClick={() => {
+            clickHandlerForward(6);
+          }}>Goal</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="#link" onClick={() => {
+            clickHandlerForward(7);
+          }}>Weight Goal</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="#link" onClick={() => {
+            clickHandlerForward(8);
+          }}>Summary</Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </Card.Header>
+      <br />
+      <Card.Title><h3>What's your name?</h3></Card.Title>
+      <br />
+      <Card.Text>
       <input
-        className="p-22"
         type="text"
         placeholder="Name"
         value={newUser.name}
         onChange={(e) => setNewUser({...newUser, name: e.target.value})}
       />
+      </Card.Text>
       <Button
-          className="p-2"
           onClick={() => {
-            setPage(page + 1);
-            setX(1000);
+            clickHandlerForward(1)
           }}
           variant="outline-success"
-          size="sm"
           >
           Next
         </Button>
-        </div>
+        <br />
+        <br />
+        <ProgressBar now={currentProgress} label={`${currentProgress}%`} />
     </motion.div>
-    
+    </Card.Body>
+    </Card>
+
+
   );
 };
 
