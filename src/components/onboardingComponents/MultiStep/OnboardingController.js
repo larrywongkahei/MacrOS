@@ -25,7 +25,7 @@ function OnboardingController({ handleUserPost, setOnboardingComplete }) {
         currentWeight: 0,
         goalWeight: 0,
         activityLevel: "",
-        goal: "",
+        goalType: "",
         experiencePoints: 0,
         caloriesGoal: 0,
         proteinGoal: 0,
