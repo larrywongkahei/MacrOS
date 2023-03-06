@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from 'react-bootstrap/Button';
 
 
 const Age = ({ page, setPage, newUser, setNewUser, x, setX }) => {
@@ -9,30 +10,32 @@ const Age = ({ page, setPage, newUser, setNewUser, x, setX }) => {
       transition={{ duration: 1 }}
       animate={{ x: 0 }}
     >
-      <div className="card">
-        <div className="step-title">Hi {newUser.name}! How Old Are You?</div>
+        <div>Hi {newUser.name}! How Old Are You?</div>
         <input
           type="number"
-          placeholder="Age"
+          placeholder="Years"
           value={newUser.age}
           onChange={(e) => setNewUser({ ...newUser, age: e.target.value })}
         />
-        <button
+        <Button
           onClick={() => {
             setPage(page + 1);
             setX(1000);
-          }}>
+          }}
+          variant="outline-success"
+          >
           Next
-        </button>
+        </Button>
         <br />
-        <button
+        <Button
           onClick={() => {
             setPage(page - 1);
             setX(-1000);
-          }}>
+          }}
+          variant="outline-secondary"
+          >  
           Previous
-        </button>
-      </div>
+        </Button>
     </motion.div>
   )
 }
