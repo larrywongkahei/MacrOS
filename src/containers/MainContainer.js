@@ -6,6 +6,7 @@ import JournalContainer from '../containers/journalContainers/JournalContainer';
 // import OnboardingContainer from '.. /containers/onboardingContainers/OnboardingContainer';
 import Request from '../helpers/Request';
 import OnboardingContainer from './onboardingContainers/OnboardingContainer';
+import Swal from 'sweetalert2'
 
 const MainContainer = () => {
 
@@ -50,6 +51,12 @@ const MainContainer = () => {
         // .then(() => {
         //     window.location = '/'
         // })
+        Swal.fire({
+            title: 'Your Nutrition Goals Per Day',
+            text: `Calories: ${user.caloriesGoal} \n Protein: ${user.proteinGoal}`,
+            icon: 'success',
+            confirmButtonText: 'Return'
+          })
     }
 
     async function searchFoodItemsByThreeLetters(letters){
@@ -162,7 +169,7 @@ const MainContainer = () => {
     // console.log(days);
     // console.log(meals);
 
-    if (user) {
+    if (onboardingComplete) {
         return(
             <div>
                 <NavBar user={user}/>

@@ -115,15 +115,6 @@ function OnboardingController({ handleUserPost, setOnboardingComplete }) {
             setPage={setPage}
             x={x}
             setX={setX}
-        />,
-        <Stats
-            newUser={newUser}
-            setOnboardingComplete={setOnboardingComplete}
-            setNewUser={setNewUser}
-            page={page}
-            setPage={setPage}
-            x={x}
-            setX={setX}
         />
     ]
 
