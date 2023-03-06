@@ -16,6 +16,7 @@ const MainContainer = () => {
     const [meals, setMeals] = useState([])
     const [foodItems, setFoodItems] = useState([])
     const [filteredList, setFilteredList] = useState([])
+    const [onboardingComplete, setOnboardingComplete] = useState(false)
 
 
     useEffect(() => {
@@ -43,11 +44,12 @@ const MainContainer = () => {
         }
 
     const handleUserPost = (user) => {
-        console.log(`logging from main container: ${user}`);
+        console.log(user.caloriesGoal)
         const request = new Request();
-        request.post('/api/user', user).then(() => {
-            window.location = '/'
-        })
+        request.post('/api/user', user)
+        // .then(() => {
+        //     window.location = '/'
+        // })
     }
 
     async function searchFoodItemsByThreeLetters(letters){
@@ -103,6 +105,7 @@ const MainContainer = () => {
 
     }
 
+
     
 
     console.log(user);
@@ -126,7 +129,7 @@ const MainContainer = () => {
             <>
             <NavBar user={user}/>
             <Routes>
-                <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost}/>} />
+                <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete}/>} />
             </Routes>
             </>
         
