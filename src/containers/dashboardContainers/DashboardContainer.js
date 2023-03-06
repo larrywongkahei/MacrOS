@@ -19,7 +19,7 @@ return (
     <>
 
     <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal}/>
-    <MacroStatsContainer dayTotals={dayTotals}/>
+    <MacroStatsContainer dayTotals={dayTotals} user={user}/>
     <ExerciseContainer />
     <UserUpdateForm />
     </>

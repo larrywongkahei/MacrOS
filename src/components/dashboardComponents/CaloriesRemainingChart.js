@@ -4,7 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-const CaloriesRemainingChart = ({dayTotals}) => {
+const CaloriesRemainingChart = ({dayTotals, user}) => {
 
 
 
@@ -14,7 +14,7 @@ const CaloriesRemainingChart = ({dayTotals}) => {
             datasets: [
             {
             label: 'Kcal',
-            data: [dayTotals.calories, dayTotals.protein],
+            data: [dayTotals.calories, user.caloriesGoal],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -43,7 +43,7 @@ const CaloriesRemainingChart = ({dayTotals}) => {
     
     return (
         <>
-        <doughnut data={data} options={options}/>
+        <Doughnut data={data} options={options}/>
         </>
     )
 }

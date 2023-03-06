@@ -4,7 +4,7 @@ import CaloriesRemainingChart from "../../components/dashboardComponents/Calorie
 import DailyMacroStats from "../../components/dashboardComponents/DailyMacroStats";
 
 
-const MacroStatsContainer = ({dayTotals}) => {
+const MacroStatsContainer = ({dayTotals, user}) => {
     return(
         <>
             <div className="component-container">
@@ -14,7 +14,7 @@ const MacroStatsContainer = ({dayTotals}) => {
             <div className="component-container">
             <h2>Calories Remaining</h2>
 
-                <CaloriesRemainingChart dayTotals={dayTotals} />
+                <CaloriesRemainingChart dayTotals={dayTotals} user={user} />
             </div>
         </>
     )
