@@ -10,14 +10,6 @@ const ActivityLevel = ({ page, setPage, newUser, setNewUser, x, setX }) => {
         >
             <div className="card">
                 <div className="step-title">How Would You Best Describe Your Acitivity Level?</div>
-                {/* <select value={newUser.activityLevel} onChange={(e) => setNewUser({ ...newUser, activityLevel: e.target.value })}>
-                    <option>SEDENTARY</option>
-                    <option>LIGHT</option>
-                    <option>MODERATE</option>
-                    <option>ACTIVE</option>
-                    <option>VERY_ACTIVE</option>
-                    <option>EXTRA_ACTIVE</option>
-                </select> */}
                 <div className="radio">How would you best descrive your activity level?</div>
                 <div onChange={(e) => setNewUser({ ...newUser, activityLevel: e.target.value })}>
                     <input type="radio" value="SEDENTARY" name="activityLevel" /> Sedentary

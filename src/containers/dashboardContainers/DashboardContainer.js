@@ -9,8 +9,10 @@ const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, fil
 
 return (
     <>
+
     <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} />
     <MacroStatsContainer />
+
     <ExerciseContainer />
     <UserUpdateForm />
     </>
