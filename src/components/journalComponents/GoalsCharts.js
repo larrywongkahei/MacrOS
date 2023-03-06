@@ -11,7 +11,6 @@ import {
 import { Line } from 'react-chartjs-2'
 
 const GoalsCharts = ({user, days}) => {
-    // console.log(days[0].date);
 
 
 
@@ -37,7 +36,6 @@ const GoalsCharts = ({user, days}) => {
 
     const daysData = days.map(day => day.user.currentWeight)
 
-    console.log(daysData);
 
     const data = {
         labels,
@@ -47,7 +45,6 @@ const GoalsCharts = ({user, days}) => {
         }]
     }
 
-    console.log(data);
 
         return(
             <>

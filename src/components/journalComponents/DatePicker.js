@@ -4,10 +4,9 @@ import { format } from 'date-fns'
 import { DayPicker } from 'react-day-picker'
 
 function DatePicker ({updateDate, selectedDate, days}) {
-    console.log(selectedDate);
     
     const dateChange = (event) => {
-        updateDate(event)
+        updateDate(event.toISOString().split('T')[0])
     }
 
     // loop days. if day.date === selected date then display that days information else null

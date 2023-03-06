@@ -179,7 +179,7 @@ const MainContainer = () => {
             <>
             <NavBar user={user}/>
             <Routes>
-                <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete}/>} />
+                <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete} meals={meals}/>} />
             </Routes>
             </>
         
