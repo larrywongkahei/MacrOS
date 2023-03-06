@@ -171,10 +171,10 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     }
     }
 
-    const foodItemsToShow = filteredFoodItems.map(each => {
+    const foodItemsToShow = filteredFoodItems.map((each,index) => {
         return (
             <ul>
-                <li onClick={getTheFoodItem} value={each.id}>
+                <li onClick={getTheFoodItem} value={each.id} key={index}>
                     {each.name}
                 </li>
                 {/* button to add the fooditems, could use react icons */}
