@@ -37,10 +37,10 @@ const MainContainer = () => {
     })
     }, [])
 
-    function getDateData(data){
+    function getDateData(data, listOfMeals){
         // data['userID'] = user.id
         data['user'] = user
-        handleDayPost(data)
+        handleDayPost(data, listOfMeals)
         }
 
     const handleUserPost = (user) => {
@@ -57,6 +57,7 @@ const MainContainer = () => {
         return(await request.get(`/api/fooditems?letters=${letters}`))
 
     }
+    console.log(dayInstanceList)
 
     const handleUserPut = (user) => {
         const request = new Request();
@@ -66,7 +67,7 @@ const MainContainer = () => {
         })
     }
 
-    const handleDayPost = async (day) => {
+    const handleDayPost = async (day, listOfMeals) => {
         console.log(`logging from main container: ${day}`);
         const request = new Request();
         const postDay = await request.post('/api/days', day)
@@ -74,28 +75,77 @@ const MainContainer = () => {
         const newDayInstanceList = [...dayInstanceList]
         newDayInstanceList.push(responseToData)
         setDayInstanceList(newDayInstanceList)   
+        // Create a list of meal
+        const mealList = await handleMealPost(responseToData)
+        // Put food inside the list
+        const mealListWithFoods = putFoodItemsIntoList(mealList, listOfMeals)
+        // Update the list with foods to database
+        const updatedMeals = await handleMealPut(mealListWithFoods)
+        // Add meals field to day object
+        responseToData['meals'] = updatedMeals
+        // Update the day object to database
+        handleDayPut(responseToData)
+
     }
-    console.log(dayInstanceList.length)
+
+    function putFoodItemsIntoList(mealList, foodItmesList){
+        mealList.forEach(each => {
+            const index = mealList.indexOf(each)
+            each['foodItems'] = foodItmesList[index]
+        })
+        return mealList
+
+    }
+
 
     const handleDayPut = (day) => {
         const request = new Request();
-        request.put(`/api/days/${day.id}`, day).then(() => {
-            window.location = '/dashboard'
+        request.put(`/api/days/${day.id}`, day)
+        .then(res => {
+            console.log(res.status)
+            console.log(res.json())
         })
+            window.location = '/'
     }
 
-    const handleMealPost = (meal) => {
+    const handleMealPost = async (day) => {
         const request = new Request();
-        request.post('/api/meals', meal).then(() => {
-            window.location = '/dashboard'
-        })
-    }
+        const breakfastMeal = {
+            "mealType": "BREAKFAST", 
+        };
+    
+        const lunchMeal = {
+            "mealType": "LUNCH", 
+        };
+    
+        const dinnerMeal = {
+            "mealType": "DINNER", 
+        };
+    
+        const snacksMeal = {
+            "mealType": "SNACK", 
+        };
+        const mealList = [breakfastMeal, lunchMeal, dinnerMeal, snacksMeal]
+        const newList = await Promise.all(mealList.map( async each => {
+            each['day'] = day
+            const mealPromise = await request.post('/api/meals', each)
+            const mealData = await mealPromise.json()
+            return mealData
+    }))
+    return newList
+}
 
-    const handleMealPut = (meal) => {
+    const handleMealPut = (list) => {
         const request = new Request();
-        request.put(`/api/meals/${meal.id}`, meal).then(() => {
+        const newList = Promise.all(list.map(async each => {
+            const mealPromise = await request.put(`/api/meals/${each.id}`, each)
+            const mealData = await mealPromise.json()
+            return mealData
+        }))
+        return newList
+
             window.location = '/dashboard'
-        })
+        
     }
 
     function addCustomFood(foodItem){
