@@ -10,11 +10,11 @@ const CarbsChart = ({dayTotals, user}) => {
 const carbs = (dayTotals.carbs - dayTotals.sugars)
 
     const data = {
-            labels: ['Carbohydrates consumed (g)', 'of Which Sugars (g)', 'Carbohydrates remaining (g)'],
+            labels: ['Carbohydrates consumed (g)', 'Carbohydrates remaining (g)'],
             datasets: [
             {
             label: 'g',
-            data: [carbs, dayTotals.sugars, user.carbsGoal],
+            data: [carbs, user.carbsGoal],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 120, 132, 0.5)',
