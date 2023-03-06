@@ -1,11 +1,11 @@
 import React from "react";
 import FoodSearchForm from "../../components/dashboardComponents/FoodSearchForm";
 
-const AddMealContainer = ({foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood }) => {
+const AddMealContainer = ({foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood, updateDayTotal }) => {
     return(
-        <div className="component-container">
+        <div class="container text-center">
         <p>I am AddMealContainer containing:</p>
-        <FoodSearchForm foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} />
+        <FoodSearchForm foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal}/>
         </div>
     )
 }

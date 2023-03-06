@@ -2,7 +2,7 @@ import { set } from "date-fns";
 import { useState } from "react";
 import Swal from 'sweetalert2'
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood }) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, dayTotalsState }) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -28,6 +28,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     // const Day = {
     //     "date" : Date().now()
     // }
+    
+
 
     function handleCustomFoodNameChange(e){
         setCustomFoodName(e.target.value)
@@ -165,6 +167,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         setTheItem({})
         setFoodInput("")
         setQuantity(0)
+        updateDayTotal(dayTotals)
     }
     }
 
@@ -272,7 +275,8 @@ function calculateTotals(mealTypeState){
         }, { calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 } // this line sets the intital accumulator values at 0
         
     );
-    return totals;
+    return totals
+
 
     
 }
@@ -295,6 +299,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         }, { calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 }
         );
 
+        
 
     return(
         <div>

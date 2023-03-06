@@ -113,7 +113,7 @@ const MainContainer = () => {
             console.log(res.status)
             console.log(res.json())
         })
-            window.location = '/'
+            // window.locati on = '/'
     }
 
     const handleMealPost = async (day) => {
