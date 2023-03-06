@@ -11,7 +11,7 @@ import {
 import { Line } from 'react-chartjs-2'
 
 const GoalsCharts = ({user, days}) => {
-
+    const userGoal = user.goalWeight;
 
 
     ChartJS.register(
@@ -24,31 +24,29 @@ const GoalsCharts = ({user, days}) => {
         Legend
     );
 
-    const options = {
-        responsive: true,
-        title: {
-            display: true,
-            text: 'Weight trends'
-        }
-    }
-
     const labels = days.map( day => day.date)
 
     const daysData = days.map(day => day.user.currentWeight)
+
+    const goalData = days.map(day => day.user.goalWeight)
 
 
     const data = {
         labels,
         datasets: [{
-            label: 'currentWeight',
-            data: daysData
+            label: 'Your Weight',
+            data: daysData,
+        },
+        {
+            label: 'Your Goal',
+            data: goalData,
         }]
     }
 
 
         return(
             <>
-            <Line options={options} data={data} />
+            <Line data={data} />
             </>
         )
     }
