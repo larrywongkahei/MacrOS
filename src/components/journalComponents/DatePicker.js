@@ -6,6 +6,8 @@ import { DayPicker } from 'react-day-picker'
 function DatePicker ({updateDate, selectedDate, days}) {
     console.log(selectedDate);
     
+    console.log(days)
+    
     const dateChange = (event) => {
         updateDate(event)
     }
