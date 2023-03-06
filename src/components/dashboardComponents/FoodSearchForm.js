@@ -33,7 +33,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
     useEffect(() => {
     updateDayTotal(dayTotals)
-  }, [breakfastFoodItems])
+    }, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
     
 
 
