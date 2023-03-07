@@ -310,10 +310,10 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
 
     return(
         <div>
-        <div className="component-container">
+        <div className="container">
 
             <form>
-                <p>I am a FoodSearchForm</p>
+                <h4>Add Food to Diary</h4>
                 {!mealType?
                 <div>
                     <button value={"Breakfast"} onClick={handleMealType}>Breakfast</button>
@@ -347,22 +347,23 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         </div>
         <div className="component-container">
             <form>
-                <input type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
-                <label> Carbs (per 100g): </label>
-                <input type="text" placeholder="Input the carbs" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange}/>
-                <label> Sugars (per 100g): </label>
-                <input type="text" placeholder="Input the sugars" value={customFoodSugars} onChange={handleCustomFoodSugarsChange}/>
-                <label> Protein (per 100g): </label>
-                <input type="text" placeholder="Input the protein" value={customFoodProtein} onChange={handleCustomFoodProteinChange}/>
-                <label> Fats (per 100g): </label>
-                <input type="text" placeholder="Input the fats" value={customFoodFat} onChange={handleCustomFoodFatChange}/>
-                <label> Calories (per 100g): </label>
-                <input type="text" placeholder="Input the calories" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange}/>
-                <button onClick={handleAddCustomFood}>Add FoodItem</button>
+                <h4>Add Custom Food to Database</h4>
+                    <input type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
+                    <label> Carbs (per 100g): </label>
+                    <input type="text" placeholder="Input the carbs" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange}/>
+                    <label> Sugars (per 100g): </label>
+                    <input type="text" placeholder="Input the sugars" value={customFoodSugars} onChange={handleCustomFoodSugarsChange}/>
+                    <label> Protein (per 100g): </label>
+                    <input type="text" placeholder="Input the protein" value={customFoodProtein} onChange={handleCustomFoodProteinChange}/>
+                    <label> Fats (per 100g): </label>
+                    <input type="text" placeholder="Input the fats" value={customFoodFat} onChange={handleCustomFoodFatChange}/>
+                    <label> Calories (per 100g): </label>
+                    <input type="text" placeholder="Input the calories" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange}/>
+                    <button onClick={handleAddCustomFood}>Add FoodItem</button>
             </form>
         </div>
-        <div>
-        <h2>Breakfast</h2>{breakfastFoodItems.length > 0 ?(
+            <div>
+        <h2 className="text-left">Breakfast</h2>{breakfastFoodItems.length > 0 ?(
             <>
                 <ul>
                     {breakfastFoodItems.map((item) => (
@@ -383,7 +384,6 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     </p>
             </>
         ) : null}
-    </div>
     <div>
         <h2>Lunch</h2>{lunchFoodItems.length > 0 ?(
             <>
@@ -454,6 +454,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     </p>
         </>
         ) : null}
+        </div>
     </div>
         <p><b>Todays Totals </b>
                 Calories:{dayTotals.calories.toFixed(0)}Kcal 
