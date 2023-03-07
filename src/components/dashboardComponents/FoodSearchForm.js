@@ -5,6 +5,8 @@ import Swal from 'sweetalert2'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal}) => {
     const [foodInput, setFoodInput] = useState("")
@@ -67,7 +69,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
     function filterFoodItems(letters, list){
         setFilteredFoodItems(list.filter(each => {
-            return each.name.toLowerCase().includes(letters)
+            return each.name.toLowerCase().startsWith(letters)
 
         }))
     }
@@ -182,7 +184,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     }
     }
 
-    const foodItemsToShow = filteredFoodItems.map((each,index) => {
+    const foodItemsToShow = filteredFoodItems.splice(0,5).map((each,index) => {
         return (
             <ul>
                 <li onClick={getTheFoodItem} value={each.id} key={index}>
@@ -313,65 +315,72 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         
 
     return(
-        <Container>
-        <Container>
+        <Container className="margin">
             <Row>
-                <Col xs={2} md={4} lg={6}>
-                    <form>
-                        <h4>Add Food to Diary</h4>
-                        {!mealType?
+                <Col xs={12} md={6}>
+                <Form>
+                    {!mealType ?
+                    <div>
+                        <Button value={"Breakfast"} onClick={handleMealType} variant="secondary" className="me-2">Breakfast +</Button>
+                        <Button value={"Lunch"} onClick={handleMealType} variant="secondary" className="me-2">Lunch +</Button>
+                        <Button value={"Dinner"} onClick={handleMealType} variant="secondary" className="me-2">Dinner +</Button>
+                        <Button value={"Snack"} onClick={handleMealType} variant="secondary" className="me-2">Snacks +</Button>
+                    </div>
+                    : null}
+                    {mealType ? 
+                    <Form.Group>
+                        <Form.Control type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange} />
+                        {/* <button>Barcode Scanner button</button> */}
+                        <Form.Label>Quantity (grams):</Form.Label>
+                        <Form.Control type="number" value={quantity} onChange={handleQuantity} />
+                        <Button onClick={handleAdd} className="my-3" variant="primary">Add to {mealType}</Button>
+                        {filteredFoodItems ? 
                         <div>
-                            <button value={"Breakfast"} onClick={handleMealType}>Breakfast</button>
-                            <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
-                            <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
-                            <button value={"Snack"} onClick={handleMealType}>Snacks</button>
-                    
-
+                            {foodItemsToShow}
                         </div>
-                        :null}
-                        {mealType ? 
+                        : null}
+                        {/* {itemsChosen ?
                         <div>
-                            <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
-                            {/* <button>Barcode Scanner button</button> */}
-                            <label> Quantity(grams): </label>
-                            <input type="number" value={quantity} onChange={handleQuantity}/>
-                            <button onClick={handleAdd} >Add to {mealType}</button>
-
-                            {filteredFoodItems ? 
-                            <div>
-                                {foodItemsToShow}
-                            </div>
-                            :null}
-                            {/* {itemsChosen ?
-                            <div>
-                                {itemDetails}
-                            </div> :null} */}
-                            <button onClick={handleSubmit}>Choose Meal</button>
-                        </div>: null}
-                    </form>
+                        {itemDetails}
+                        </div> :null} */}
+                        <Button onClick={handleSubmit} className="my-3" variant="success">Choose Meal</Button>
+                    </Form.Group>
+                    : null}
+                </Form>
                 </Col>
-            
-        
-        <Col xs={2} md={4} lg={6}>
-            <form>
-                <h4>Add Custom Food to Database</h4>
-                    <input type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
-                    <label> Carbs (per 100g): </label>
-                    <input type="text" placeholder="Input the carbs" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange}/>
-                    <label> Sugars (per 100g): </label>
-                    <input type="text" placeholder="Input the sugars" value={customFoodSugars} onChange={handleCustomFoodSugarsChange}/>
-                    <label> Protein (per 100g): </label>
-                    <input type="text" placeholder="Input the protein" value={customFoodProtein} onChange={handleCustomFoodProteinChange}/>
-                    <label> Fats (per 100g): </label>
-                    <input type="text" placeholder="Input the fats" value={customFoodFat} onChange={handleCustomFoodFatChange}/>
-                    <label> Calories (per 100g): </label>
-                    <input type="text" placeholder="Input the calories" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange}/>
-                    <button onClick={handleAddCustomFood}>Add FoodItem</button>
-            </form>
-        </Col>
-        </Row>
 
-        </Container>
+                <Col xs={12} md={6}>
+                <Form>
+                    <h4>Add Custom Food to Database</h4>
+                    <Form.Group className="mb-3">
+                    <Form.Label>Food Name:</Form.Label>
+                    <Form.Control type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                    <Form.Label>Carbs (per 100g):</Form.Label>
+                    <Form.Control type="text" placeholder="Input the carbs" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                    <Form.Label>Sugars (per 100g):</Form.Label>
+                    <Form.Control type="text" placeholder="Input the sugars" value={customFoodSugars} onChange={handleCustomFoodSugarsChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                    <Form.Label>Protein (per 100g):</Form.Label>
+                    <Form.Control type="text" placeholder="Input the protein" value={customFoodProtein} onChange={handleCustomFoodProteinChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                    <Form.Label>Fats (per 100g):</Form.Label>
+                    <Form.Control type="text" placeholder="Input the fats" value={customFoodFat} onChange={handleCustomFoodFatChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                    <Form.Label>Calories (per 100g):</Form.Label>
+                    <Form.Control type="text" placeholder="Input the calories" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange} />
+                    <Button onClick={handleAddCustomFood}>Add FoodItem</Button>
+                    </Form.Group>
+                    </Form>
+                    </Col>
+                    </Row>
+
         <Container>
             <h2 className="text-left">Breakfast</h2>{breakfastFoodItems.length > 0 ?(
                 <Row>
