@@ -18,7 +18,7 @@ const MainContainer = () => {
     const [foodItems, setFoodItems] = useState([])
     const [filteredList, setFilteredList] = useState([])
     const [onboardingComplete, setOnboardingComplete] = useState(false)
-
+    const [dayTotals, setDayTotals] = useState({ calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 })
 
     useEffect(() => {
         const request = new Request();
@@ -164,6 +164,11 @@ const MainContainer = () => {
 
     }
 
+    const updateDayTotal = function(dayTotalsData){
+        setDayTotals(dayTotalsData)
+        console.log(`Function triggered ${dayTotalsData.calories}`)
+    }
+
 
     
 
@@ -174,9 +179,9 @@ const MainContainer = () => {
     if (onboardingComplete || user) {
         return(
             <div>
-                <NavBar user={user}/>
+                <NavBar user={user} dayTotals={dayTotals}/>
                 <Routes>
-                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood}/>} />
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} dayTotals={dayTotals}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
             </div>
@@ -186,7 +191,7 @@ const MainContainer = () => {
     } else {
         return(
             <>
-            <NavBar user={user}/>
+            <NavBar/>
             <Routes>
                 <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete} meals={meals}/>} />
             </Routes>

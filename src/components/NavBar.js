@@ -1,26 +1,66 @@
-import { NavLink } from "react-router-dom"
+import './NavBar.css'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
-const NavBar = ({user}) => {
 
-    // const logo = require("../logo.png")
 
-    return(
-        
-        // <nav className="navbar-brand navbar-expand-lg bg-light">
-        //     {user ? (
-        //     <h2>{user.name}'s Navbar</h2>
-        //     ): <h2> User's Navbar</h2>}
-        //     <ul>
-        //         <li>
-        //             <NavLink to="/">Dashboard</NavLink>
-        //         </li>
-        //         <li>
-        //             <NavLink to="/journal">Journal</NavLink>
-        //         </li>
-        //     </ul>
-        // </nav>
+const NavBar = ({ user, dayTotals }) => {
 
+
+    if (user) {
+   
+
+    const currentProgressCalories = ((dayTotals.calories / user.caloriesGoal) * 100).toFixed(0)
+    const currentProgressProtein = ((dayTotals.protein / user.proteinGoal) * 100).toFixed(0)
+    const currentProgressCarbs = ((dayTotals.carbs / user.carbsGoal) * 100).toFixed(0)
+    const currentProgressFat = ((dayTotals.fat / user.fatGoal) * 100).toFixed(0)
+
+
+    return (
+        <Navbar bg="light" expand="lg" sticky="top">
+            <Container >
+                <Navbar.Brand href="/">{user.name}, Welcome to macrOS</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link href="/">Dashboard</Nav.Link>
+                        <Nav.Link href="/journal">Journal</Nav.Link>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link href="/">Calories
+                            <ProgressBar striped animated min={0} max={user.caloriesGoal} now={dayTotals.calories} label={`${currentProgressCalories}%`} />
+                        </Nav.Link>
+                        <Nav.Link href="/">Protein
+                            <ProgressBar striped animated variant="success" max={user.proteinGoal}  now={dayTotals.protein} label={`${currentProgressProtein}%`} />
+                        </Nav.Link>
+                        <Nav.Link href="/">Carbs
+                        <ProgressBar striped animated variant="warning" max={user.carbsGoal}  now={dayTotals.carbs} label={`${currentProgressCarbs}%`}/>
+                        </Nav.Link>
+                        <Nav.Link href="/">Fat
+                        <ProgressBar striped animated variant="danger" max={user.fatGoal}  now={dayTotals.fat} label={`${currentProgressFat}%`} />
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    ) 
+
+} else {
+    return (
+        <Navbar bg="light" expand="lg" sticky="top"  >
+            <Container>
+                <Navbar.Brand href="/" id="onb-nav-title">macrOS</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    ) 
+}}
+
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       
 
@@ -97,21 +137,9 @@ const NavBar = ({user}) => {
 
         //     </nav>
 >>>>>>> Stashed changes
+=======
 
-                    ): <a className="navbar-brand" href="#">macrOS</a>}
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">Dashboard</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="/journal">Journal</a>
-                    </li>
-                </ul>
-                </div>
-            </div>
-            </nav>
-        
-    )
-}
+>>>>>>> d3d4d43b385be6508d0dc61ab5c3993cee462aa1
+
 
 export default NavBar;
