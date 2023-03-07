@@ -12,7 +12,7 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
 
     const fatProteinCarbsGoal = (newUser2, bmr, multiplier) => {
         newUser2['proteinGoal'] = (newUser2.startingWeight * 2.2).toFixed(0)
-        newUser2['fatGoal'] = (newUser2.startingWeight * 0.7).toFixed(0)
+        newUser2['fatGoal'] = (newUser2.startingWeight * 1.8).toFixed(0)
         newUser2['carbsGoal'] = (((bmr * multiplier) * 0.3) / 4).toFixed(0)
         newUser2['sugarsGoal'] = (((bmr * multiplier) * 0.1) / 4).toFixed(0)
     }
@@ -165,42 +165,42 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
                     <Card.Header><h1>Welcome to macrOS!</h1>
                         <Nav variant="pills" defaultActiveKey="#active">
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(7)
                                 }}>Name</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(3)
                                 }}>Age</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(6);
                                 }}>Sex</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(5)
                                 }}>Height</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(4)
                                 }}>Weight</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(3)
                                 }}>Activity Level</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(2)
                                 }}>Goal</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(1)
                                 }}>Weight Goal</Nav.Link>
                             </Nav.Item>

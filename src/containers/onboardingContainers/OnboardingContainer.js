@@ -9,11 +9,8 @@ const OnboardingContainer = ({handleUserPost, setOnboardingComplete}) => {
 
     return(
         <>
-        <hr/>
-        <p>I am OnboardingContainer containing:</p>
         <OnboardingController handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete}/>
         <AppInformation />
-
         </>
     )
 }

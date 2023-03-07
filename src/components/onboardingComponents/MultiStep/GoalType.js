@@ -32,12 +32,12 @@ const GoalType = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                     <Card.Header><h2>Fitness Goal</h2>
                         <Nav variant="pills" defaultActiveKey="#active">
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(6)
                                 }}>Name</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(5)
                                 }}>Age</Nav.Link>
                             </Nav.Item>
@@ -47,17 +47,17 @@ const GoalType = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                                 }}>Sex</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(3);
                                 }}>Height</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(2);
                                 }}>Weight</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(1);
                                 }}>Activity Level</Nav.Link>
                             </Nav.Item>
@@ -67,12 +67,12 @@ const GoalType = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                                 }}>Goal</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(1);
                                 }}>Weight Goal</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(2);
                                 }}>Summary</Nav.Link>
                             </Nav.Item>

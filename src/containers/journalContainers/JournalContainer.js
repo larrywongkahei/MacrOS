@@ -5,7 +5,7 @@ import { useState } from "react";
 import GoalsCharts from "../../components/journalComponents/GoalsCharts";
 import SelectedDateChart from "../../components/journalComponents/SelectedDateChart";
 
-const JournalContainer = ({user, handleUserPut, days, meals}) => {
+const JournalContainer = ({user, setUser, handleUserPut, days, meals}) => {
 
     var date = new Date();
 
@@ -23,7 +23,7 @@ const JournalContainer = ({user, handleUserPut, days, meals}) => {
         <p>I am JournalContainer</p>
         <UserInfo user = {user}/>
         <DatePicker updateDate={updateDate} selectedDate={selectedDate} days={days} />
-        <GoalsStats user={user} onEdit={handleUserPut}/>
+        <GoalsStats user={user} setUser={setUser} onEdit={handleUserPut}/>
         <GoalsCharts user={user} days={days} /> 
         <SelectedDateChart days={days} selectedDate={selectedDate} />
         </div>

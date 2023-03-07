@@ -34,27 +34,27 @@ const ActivityLevel = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                     <Card.Header><h2>That's The Main Thing, Though...</h2>
                         <Nav variant="pills" defaultActiveKey="#active">
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(5)
                                 }}>Name</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(4)
                                 }}>Age</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(3)
                                 }}>Sex</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(2);
                                 }}>Height</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(1);
                                 }}>Weight</Nav.Link>
                             </Nav.Item>
@@ -64,17 +64,17 @@ const ActivityLevel = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                                 }}>Activity Level</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(1);
                                 }}>Goal</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(2);
                                 }}>Weight Goal</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(3);
                                 }}>Summary</Nav.Link>
                             </Nav.Item>

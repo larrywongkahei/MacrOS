@@ -33,22 +33,22 @@ const Weight = ({ page, setPage, newUser, setNewUser, x, setX }) => {
         <Card.Header><h2>\m/ O_o \m/</h2>
         <Nav variant="pills" defaultActiveKey="#active">
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(4)
             }}>Name</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(3)
             }}>Age</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(2);
             }}>Sex</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(1)
             }}>Height</Nav.Link>
             </Nav.Item>
@@ -58,22 +58,22 @@ const Weight = ({ page, setPage, newUser, setNewUser, x, setX }) => {
             }}>Weight</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerForward(1);
             }}>Activity Level</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerForward(2);
             }}>Goal</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerForward(3);
             }}>Weight Goal</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerForward(4);
             }}>Summary</Nav.Link>
             </Nav.Item>
@@ -86,8 +86,8 @@ const Weight = ({ page, setPage, newUser, setNewUser, x, setX }) => {
         <input
           type="number"
           placeholder="Kg"
-          value={newUser.weight}
-          onChange={(e) => setNewUser({...newUser, weight: e.target.value})}
+          value={newUser.startingWeight}
+          onChange={(e) => setNewUser({...newUser, startingWeight: e.target.value})}
         />
         </Card.Text>
         <Button

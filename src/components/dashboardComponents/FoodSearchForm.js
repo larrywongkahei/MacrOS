@@ -2,6 +2,7 @@ import { set } from "date-fns";
 import { useState, useEffect } from "react";
 import Swal from 'sweetalert2'
 
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,7 +10,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal}) => {
+
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, setUser}) => {
+
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -121,6 +124,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
         const completedDay = {
             date: isoDateStr,
+            userWeight: user.currentWeight,
         }
         console.log("next")
         getDateData(completedDay, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
@@ -294,6 +298,14 @@ function calculateTotals(mealTypeState){
 
 
     
+}
+
+const handleChange = function (event) {
+    let propertyName = event.target.name;
+    let copiedUser = { ...user };
+    copiedUser[propertyName] = event.target.value;
+    setUser(copiedUser);
+    console.log(copiedUser[propertyName]);
 }
 
 // assign calorie totals to variables for rendering
@@ -497,6 +509,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         </Row>
         ) : null}
         </div>
+
         </div>
     </Container>
         <Card>
@@ -508,8 +521,14 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Protein:{dayTotals.protein.toFixed(0)}g 
                         Fat:{dayTotals.fat.toFixed(0)}g
                 </p>
+                <form onSubmit={handleSubmit}>
+                        <label for="weightUpdate">Weigh in!</label><br/>
+                        <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
+                        <button type="submit">+</button>
+                    </form>
             </Card.Body>
         </Card>
+
     <button onClick={handleCompleteDay}>Complete Day</button>
     
     </Card>
