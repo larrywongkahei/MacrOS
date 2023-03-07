@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom"
+import ProgressBar from 'react-bootstrap/ProgressBar'
+
 const NavBar = ({user}) => {
 
     // const logo = require("../logo.png")
