@@ -87,8 +87,8 @@ const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, set
         <input
           type="number"
           placeholder="Kg"
-          value={newUser.startingWeight}
-          onChange={(e) => setNewUser({...newUser, startingWeight: e.target.value})}
+          value={newUser.goalWeight}
+          onChange={(e) => setNewUser({...newUser, goalWeight: e.target.value})}
         />
         </Card.Text>
         <Button

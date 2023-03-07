@@ -45,7 +45,6 @@ const MainContainer = () => {
         }
 
     const handleUserPost = (user) => {
-        console.log(user.caloriesGoal)
         const request = new Request();
         request.post('/api/user', user)
         // .then(() => {
@@ -58,6 +57,7 @@ const MainContainer = () => {
             icon: 'success',
             confirmButtonText: 'Return'
           })
+          setUser(user);
     }
 
     async function searchFoodItemsByThreeLetters(letters){
