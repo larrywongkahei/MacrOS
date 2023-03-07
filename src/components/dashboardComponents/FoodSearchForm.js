@@ -2,6 +2,10 @@ import { set } from "date-fns";
 import { useState, useEffect } from "react";
 import Swal from 'sweetalert2'
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
@@ -309,43 +313,46 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         
 
     return(
-        <div>
-        <div className="container">
+        <Container>
+        <Container>
+            <Row>
+                <Col xs={2} md={4} lg={6}>
+                    <form>
+                        <h4>Add Food to Diary</h4>
+                        {!mealType?
+                        <div>
+                            <button value={"Breakfast"} onClick={handleMealType}>Breakfast</button>
+                            <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
+                            <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
+                            <button value={"Snack"} onClick={handleMealType}>Snacks</button>
+                    
 
-            <form>
-                <h4>Add Food to Diary</h4>
-                {!mealType?
-                <div>
-                    <button value={"Breakfast"} onClick={handleMealType}>Breakfast</button>
-                    <button value={"Lunch"} onClick={handleMealType}>Lunch</button>
-                    <button value={"Dinner"} onClick={handleMealType}>Dinner</button>
-                    <button value={"Snack"} onClick={handleMealType}>Snacks</button>
+                        </div>
+                        :null}
+                        {mealType ? 
+                        <div>
+                            <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
+                            {/* <button>Barcode Scanner button</button> */}
+                            <label> Quantity(grams): </label>
+                            <input type="number" value={quantity} onChange={handleQuantity}/>
+                            <button onClick={handleAdd} >Add to {mealType}</button>
+
+                            {filteredFoodItems ? 
+                            <div>
+                                {foodItemsToShow}
+                            </div>
+                            :null}
+                            {/* {itemsChosen ?
+                            <div>
+                                {itemDetails}
+                            </div> :null} */}
+                            <button onClick={handleSubmit}>Choose Meal</button>
+                        </div>: null}
+                    </form>
+                </Col>
             
-
-                </div>
-                :null}
-                {mealType ? 
-                <div>
-                    <input type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange}/>
-                    {/* <button>Barcode Scanner button</button> */}
-                    <label> Quantity(grams): </label>
-                    <input type="number" value={quantity} onChange={handleQuantity}/>
-                    <button onClick={handleAdd} >Add to {mealType}</button>
-
-                    {filteredFoodItems ? 
-                    <div>
-                        {foodItemsToShow}
-                    </div>
-                    :null}
-                    {/* {itemsChosen ?
-                    <div>
-                        {itemDetails}
-                    </div> :null} */}
-                    <button onClick={handleSubmit}>Choose Meal</button>
-                </div>: null}
-            </form>
-        </div>
-        <div className="component-container">
+        
+        <Col xs={2} md={4} lg={6}>
             <form>
                 <h4>Add Custom Food to Database</h4>
                     <input type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
@@ -361,10 +368,13 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     <input type="text" placeholder="Input the calories" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange}/>
                     <button onClick={handleAddCustomFood}>Add FoodItem</button>
             </form>
-        </div>
-            <div>
-        <h2 className="text-left">Breakfast</h2>{breakfastFoodItems.length > 0 ?(
-            <>
+        </Col>
+        </Row>
+
+        </Container>
+        <Container>
+            <h2 className="text-left">Breakfast</h2>{breakfastFoodItems.length > 0 ?(
+                <Row>
                 <ul>
                     {breakfastFoodItems.map((item) => (
                         <li key={item}>
@@ -382,11 +392,11 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Protein:{breakfastTotals.protein.toFixed(0)}g 
                         Fat:{breakfastTotals.fat.toFixed(0)}g
                     </p>
-            </>
+            </Row>
         ) : null}
     <div>
         <h2>Lunch</h2>{lunchFoodItems.length > 0 ?(
-            <>
+            <Row>
                 <ul>
                     {lunchFoodItems.map((item) => (
                         <li key={item}>
@@ -404,14 +414,14 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Protein:{lunchTotals.protein.toFixed(0)}g 
                         Fat:{lunchTotals.fat.toFixed(0)}g
                     </p>
-            </>
+            </Row>
             ) : null}
         
     </div>
     <div>
         
         <h2>Dinner</h2>{dinnerFoodItems.length > 0 ?(
-        <>
+        <Row>
             <ul>
                 {dinnerFoodItems.map((item) => (
                     <li key={item}>
@@ -429,12 +439,12 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Protein:{dayTotals.protein.toFixed(0)}g 
                         Fat:{dayTotals.fat.toFixed(0)}g
                     </p>
-        </>
+        </Row>
         ) : null}
     </div>
     <div>
         <h2>Snacks</h2>{snackFoodItems.length > 0 ?(
-        <>
+        <Row>
             <ul>
                 {snackFoodItems.map((item) => (
                     <li key={item}>
@@ -452,19 +462,21 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Protein:{snacksTotals.protein.toFixed(0)}g 
                         Fat:{snacksTotals.fat.toFixed(0)}g
                     </p>
-        </>
+        </Row>
         ) : null}
         </div>
-    </div>
-        <p><b>Todays Totals </b>
-                Calories:{dayTotals.calories.toFixed(0)}Kcal 
-                Carbs:{dayTotals.carbs.toFixed(0)}g 
-                Sugars:{dayTotals.sugars.toFixed(0)}g 
-                Protein:{dayTotals.protein.toFixed(0)}g 
-                Fat:{dayTotals.fat.toFixed(0)}g
-        </p>
+    </Container>
+        <Row>
+            <p><b>Todays Totals </b>
+                    Calories:{dayTotals.calories.toFixed(0)}Kcal 
+                    Carbs:{dayTotals.carbs.toFixed(0)}g 
+                    Sugars:{dayTotals.sugars.toFixed(0)}g 
+                    Protein:{dayTotals.protein.toFixed(0)}g 
+                    Fat:{dayTotals.fat.toFixed(0)}g
+            </p>
+        </Row>
     <button onClick={handleCompleteDay}>Complete Day</button>
-    </div>
+    </Container>
     )
 }
 
