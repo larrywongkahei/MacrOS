@@ -10,6 +10,7 @@ const SVGComponent = (props) => (
       height: "100%",
       width: "100%",
       top: "0",
+      opacity:"0.5",
       right: "0",
       padding: "none",
       position: "fixed",
