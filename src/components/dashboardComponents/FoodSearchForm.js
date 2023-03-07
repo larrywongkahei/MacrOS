@@ -2,7 +2,7 @@ import { set } from "date-fns";
 import { useState, useEffect } from "react";
 import Swal from 'sweetalert2'
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, setUser}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -289,6 +289,14 @@ function calculateTotals(mealTypeState){
     
 }
 
+const handleChange = function (event) {
+    let propertyName = event.target.name;
+    let copiedUser = { ...user };
+    copiedUser[propertyName] = event.target.value;
+    setUser(copiedUser);
+    console.log(copiedUser[propertyName]);
+}
+
 // assign calorie totals to variables for rendering
 const breakfastTotals = calculateTotals(breakfastFoodItems);
 const lunchTotals = calculateTotals(lunchFoodItems);
@@ -464,6 +472,11 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 Protein:{dayTotals.protein.toFixed(0)}g 
                 Fat:{dayTotals.fat.toFixed(0)}g
         </p>
+        <form onSubmit={handleSubmit}>
+                        <label for="weightUpdate">Weigh in!</label><br/>
+                        <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
+                        <button type="submit">+</button>
+                    </form>
     <button onClick={handleCompleteDay}>Complete Day</button>
     </div>
     )
