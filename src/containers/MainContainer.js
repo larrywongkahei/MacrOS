@@ -18,7 +18,7 @@ const MainContainer = () => {
     const [foodItems, setFoodItems] = useState([])
     const [filteredList, setFilteredList] = useState([])
     const [onboardingComplete, setOnboardingComplete] = useState(false)
-
+    const [dayTotals, setDayTotals] = useState({ calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 })
 
     useEffect(() => {
         const request = new Request();
@@ -79,9 +79,9 @@ const MainContainer = () => {
         const request = new Request();
         const postDay = await request.post('/api/days', day)
         const responseToData = await postDay.json()
-        const newDayInstanceList = [...dayInstanceList]
-        newDayInstanceList.push(responseToData)
-        setDayInstanceList(newDayInstanceList)   
+        // const newDayInstanceList = [...dayInstanceList]
+        // newDayInstanceList.push(responseToData)
+        // setDayInstanceList(newDayInstanceList)   
         // Create a list of meal
         const mealList = await handleMealPost(responseToData)
         // Put food inside the list
@@ -91,7 +91,6 @@ const MainContainer = () => {
         // Add meals field to day object
         responseToData['meals'] = updatedMeals
         // Update the day object to database
-        responseToData['completed'] = true
         handleDayPut(responseToData)
 
     }
@@ -109,11 +108,12 @@ const MainContainer = () => {
     const handleDayPut = (day) => {
         const request = new Request();
         request.put(`/api/days/${day.id}`, day)
-        .then(res => {
-            console.log(res.status)
-            console.log(res.json())
+        .then(res => res.json())
+        .then(data => {
+            const newDayInstanceList = [...dayInstanceList]
+            newDayInstanceList.push(data)
+            setDayInstanceList(newDayInstanceList)   
         })
-
     }
 
     const handleMealPost = async (day) => {
@@ -163,15 +163,20 @@ const MainContainer = () => {
 
     }
 
+    const updateDayTotal = function(dayTotalsData){
+        setDayTotals(dayTotalsData)
+        console.log(`Function triggered ${dayTotalsData.calories}`)
+    }
+
 
     
 
     if (onboardingComplete || user) {
         return(
             <div>
-                <NavBar user={user}/>
+                <NavBar user={user} dayTotals={dayTotals}/>
                 <Routes>
-                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood}/>} />
+                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} dayTotals={dayTotals}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} setUser={setUser} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
             </div>
@@ -181,7 +186,7 @@ const MainContainer = () => {
     } else {
         return(
             <>
-            <NavBar user={user}/>
+            <NavBar/>
             <Routes>
                 <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete} meals={meals}/>} />
             </Routes>
