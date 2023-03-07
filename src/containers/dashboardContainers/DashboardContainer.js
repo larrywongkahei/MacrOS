@@ -10,12 +10,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-const DashboardContainer = ({ user, setUser, foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood, updateDayTotal, dayTotals }) => {
+const DashboardContainer = ({ user, setUser, foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood, updateDayTotal, dayTotals, handleUserPut }) => {
 
 
     return (
         <>
-            <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} user={user} setUser={setUser}/>
+            <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} user={user} setUser={setUser} handleUserPut={handleUserPut}/>
             <MacroStatsContainer dayTotals={dayTotals} user={user} />
             {/* <ExerciseContainer /> */}
             {/* <UserUpdateForm /> */}
@@ -24,16 +24,16 @@ const DashboardContainer = ({ user, setUser, foodItems, searchFoodItemsByThreeLe
 
 
 
-return (
-    <>
-    <Container>
-        <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal}/>
-        <MacroStatsContainer dayTotals={dayTotals} user={user}/>
-            {/* <ExerciseContainer /> */}
-            {/* <UserUpdateForm /> */}
-    </Container>
-    </>
-);
+// return (
+//     <>
+//     <Container>
+//         <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} handleUserPut={handleUserPut} />
+//         <MacroStatsContainer dayTotals={dayTotals} user={user}/>
+//             {/* <ExerciseContainer /> */}
+//             {/* <UserUpdateForm /> */}
+//     </Container>
+//     </>
+// );
 }
 
 export default DashboardContainer
