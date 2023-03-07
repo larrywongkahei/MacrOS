@@ -12,7 +12,7 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
 
     const fatProteinCarbsGoal = (newUser2, bmr, multiplier) => {
         newUser2['proteinGoal'] = (newUser2.startingWeight * 2.2).toFixed(0)
-        newUser2['fatGoal'] = (newUser2.startingWeight * 0.7).toFixed(0)
+        newUser2['fatGoal'] = (newUser2.startingWeight * 1.8).toFixed(0)
         newUser2['carbsGoal'] = (((bmr * multiplier) * 0.3) / 4).toFixed(0)
         newUser2['sugarsGoal'] = (((bmr * multiplier) * 0.1) / 4).toFixed(0)
     }
