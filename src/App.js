@@ -1,12 +1,12 @@
 import './App.css';
 import MainContainer from './containers/MainContainer';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import BackgroundImage from './images/static.svg'
+import BackgroundImage from './images/chart.png'
 
 function App() {
   return (
     <div className='App'>
-      {/* <img src={BackgroundImage}
+      <img src={BackgroundImage}
               style={{
                 height: "100%",
                 width: "100%",
@@ -16,7 +16,7 @@ function App() {
                 position: "fixed",
                 zIndex: "-1",
                 objectFit: "cover",
-              }}/> */}
+              }}/>
       <Router>
         <MainContainer/>
       </Router>
