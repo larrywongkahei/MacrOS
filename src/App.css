@@ -24,3 +24,12 @@ img {
 .margin {
   margin:5em;
 }
+
+.db-food-item {
+  padding-left:1em;
+}
+
+.db-food-item:hover {
+  background-color: #C8DDFE;
+  cursor:pointer;
+}

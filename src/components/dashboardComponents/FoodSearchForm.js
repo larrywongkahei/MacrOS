@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal}) => {
     const [foodInput, setFoodInput] = useState("")
@@ -18,13 +19,14 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     const [dinnerFoodItems, setDinnerFoodItems] = useState([])
     const [snackFoodItems, setSnackFoodItems] = useState([])
     const [theItem, setTheItem] = useState({})
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState("")
     const [customFoodName, setCustomFoodName] = useState("")
-    const [customFoodCarbs, setCustomFoodCarbs] = useState(0)
-    const [customFoodSugars, setCustomFoodSugars] = useState(0)
-    const [customFoodProtein, setCustomFoodProtein] = useState(0)
-    const [customFoodFat, setCustomFoodFat] = useState(0)
-    const [customFoodCalories, setCustomFoodCalories] = useState(0)
+    const [customFoodCarbs, setCustomFoodCarbs] = useState("")
+    const [customFoodSugars, setCustomFoodSugars] = useState("")
+    const [customFoodProtein, setCustomFoodProtein] = useState("")
+    const [customFoodFat, setCustomFoodFat] = useState("")
+    const [customFoodCalories, setCustomFoodCalories] = useState("")
+    const [customOpen, setCustomOpen] = useState(false)
 
 
     // Day
@@ -178,17 +180,16 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         setFilteredFoodItems([])
         setTheItem({})
         setFoodInput("")
-        setQuantity(0)
+        setQuantity("")
         console.log('day totals', dayTotals);
         updateDayTotal(dayTotals)
     }
     }
-
     const foodItemsToShow = filteredFoodItems.splice(0,5).map((each,index) => {
         return (
             <ul>
-                <li onClick={getTheFoodItem} value={each.id} key={index}>
-                    {each.name}
+                <li onClick={getTheFoodItem} value={each.id} key={index} className="db-food-item">
+                    <b>{each.name}</b> C {each.carbs} / P {each.protein} / F {each.fat} (per 100g)
                 </li>
                 {/* button to add the fooditems, could use react icons */}
                 {/* <button onClick={getTheFoodItem} value={each.id}>+</button> */}
@@ -258,11 +259,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
     // clears input fields. correct way?
     setCustomFoodName("");
-    setCustomFoodCalories(0)
-    setCustomFoodCarbs(0)
-    setCustomFoodSugars(0)
-    setCustomFoodProtein(0)
-    setCustomFoodFat(0)
+    setCustomFoodCalories("")
+    setCustomFoodCarbs("")
+    setCustomFoodSugars("")
+    setCustomFoodProtein("")
+    setCustomFoodFat("")
+    setCustomOpen(!customOpen)
 
     // pop up alert on completion
     Swal.fire({
@@ -315,75 +317,84 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         
 
     return(
-        <Container className="margin">
-            <Row>
-                <Col xs={12} md={6}>
-                <Form>
-                    {!mealType ?
-                    <div>
-                        <Button value={"Breakfast"} onClick={handleMealType} variant="secondary" className="me-2">Breakfast +</Button>
-                        <Button value={"Lunch"} onClick={handleMealType} variant="secondary" className="me-2">Lunch +</Button>
-                        <Button value={"Dinner"} onClick={handleMealType} variant="secondary" className="me-2">Dinner +</Button>
-                        <Button value={"Snack"} onClick={handleMealType} variant="secondary" className="me-2">Snacks +</Button>
-                    </div>
-                    : null}
-                    {mealType ? 
-                    <Form.Group>
-                        <Form.Control type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange} />
-                        {/* <button>Barcode Scanner button</button> */}
-                        <Form.Label>Quantity (grams):</Form.Label>
-                        <Form.Control type="number" value={quantity} onChange={handleQuantity} />
-                        <Button onClick={handleAdd} className="my-3" variant="primary">Add to {mealType}</Button>
-                        {filteredFoodItems ? 
-                        <div>
-                            {foodItemsToShow}
-                        </div>
-                        : null}
-                        {/* {itemsChosen ?
-                        <div>
-                        {itemDetails}
-                        </div> :null} */}
-                        <Button onClick={handleSubmit} className="my-3" variant="success">Choose Meal</Button>
-                    </Form.Group>
-                    : null}
-                </Form>
-                </Col>
+        <Card>
+            
+                <Card>
+                    <Card.Body>
+                        <Form>
+                            {!mealType ?
+                            <div>
+                                <Button value={"Breakfast"} onClick={handleMealType} variant="secondary" className="me-2">Breakfast +</Button>
+                                <Button value={"Lunch"} onClick={handleMealType} variant="secondary" className="me-2">Lunch +</Button>
+                                <Button value={"Dinner"} onClick={handleMealType} variant="secondary" className="me-2">Dinner +</Button>
+                                <Button value={"Snack"} onClick={handleMealType} variant="secondary" className="me-2">Snacks +</Button>
+                            </div>
+                            : null}
+                            {mealType ? 
+                            <Form.Group>
+                                <Form.Label>Food Search</Form.Label>
+                                <Form.Control type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange} />
+                                {/* <button>Barcode Scanner button</button> */}
+                                <Form.Label>Quantity</Form.Label>
+                                <Form.Control placeholder="Enter quantity in grams"type="number" value={quantity} onChange={handleQuantity} />
+                                <Button onClick={handleAdd} className="my-3" variant="primary">Add to {mealType}</Button>
+                                {filteredFoodItems ? 
+                                <div>
+                                    {foodItemsToShow}
+                                </div>
+                                : null}
+                                {/* {itemsChosen ?
+                                <div>
+                                {itemDetails}
+                                </div> :null} */}
+                                <Button onClick={handleSubmit} className="my-3" variant="success">Choose Meal</Button>
+                            </Form.Group>
+                            : null}
+                        </Form>
+                    </Card.Body>
+                </Card>
 
-                <Col xs={12} md={6}>
-                <Form>
-                    <h4>Add Custom Food to Database</h4>
-                    <Form.Group className="mb-3">
-                    <Form.Label>Food Name:</Form.Label>
-                    <Form.Control type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                    <Form.Label>Carbs (per 100g):</Form.Label>
-                    <Form.Control type="text" placeholder="Input the carbs" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                    <Form.Label>Sugars (per 100g):</Form.Label>
-                    <Form.Control type="text" placeholder="Input the sugars" value={customFoodSugars} onChange={handleCustomFoodSugarsChange} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                    <Form.Label>Protein (per 100g):</Form.Label>
-                    <Form.Control type="text" placeholder="Input the protein" value={customFoodProtein} onChange={handleCustomFoodProteinChange} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                    <Form.Label>Fats (per 100g):</Form.Label>
-                    <Form.Control type="text" placeholder="Input the fats" value={customFoodFat} onChange={handleCustomFoodFatChange} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                    <Form.Label>Calories (per 100g):</Form.Label>
-                    <Form.Control type="text" placeholder="Input the calories" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange} />
-                    <Button onClick={handleAddCustomFood}>Add FoodItem</Button>
-                    </Form.Group>
-                    </Form>
-                    </Col>
-                    </Row>
+                <Card>
+                    <Card.Body>
+                        <Button onClick={() => setCustomOpen(!customOpen)}>Custom Food +</Button>
+                        {customOpen && (
+                                            <Form>
+                                                <Form.Group className="mb-3">
+                                                <Form.Label>Food Name</Form.Label>
+                                                <Form.Control required type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
+                                                </Form.Group>
+                                                <Form.Group className="mb-3">
+                                                <Form.Label>Carbohydrates</Form.Label>
+                                                <Form.Control type="text" placeholder="Enter carbohydrates per 100g" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange} />
+                                                </Form.Group>
+                                                <Form.Group className="mb-3">
+                                                <Form.Label>Sugars</Form.Label>
+                                                <Form.Control type="text" placeholder="Enter sugars per 100g" value={customFoodSugars} onChange={handleCustomFoodSugarsChange} />
+                                                </Form.Group>
+                                                <Form.Group className="mb-3">
+                                                <Form.Label>Protein</Form.Label>
+                                                <Form.Control type="text" placeholder="Enter protein per 100g" value={customFoodProtein} onChange={handleCustomFoodProteinChange} />
+                                                </Form.Group>
+                                                <Form.Group className="mb-3">
+                                                <Form.Label>Fats</Form.Label>
+                                                <Form.Control type="text" placeholder="Enter fat per 100g" value={customFoodFat} onChange={handleCustomFoodFatChange} />
+                                                </Form.Group>
+                                                <Form.Group className="mb-3">
+                                                <Form.Label>Calories</Form.Label>
+                                                <Form.Control type="text" placeholder="Enter calories per 100g" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange} />
+                                                <Button onClick={handleAddCustomFood}>Add to Database</Button>
+                                                </Form.Group>
+                                            </Form>
+                                            )}
+                    </Card.Body>
+                </Card>
+                    
+                    
 
         <Container>
+            <div>
             <h2 className="text-left">Breakfast</h2>{breakfastFoodItems.length > 0 ?(
-                <Row>
+                <Card>
                 <ul>
                     {breakfastFoodItems.map((item) => (
                         <li key={item}>
@@ -394,18 +405,21 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         </li>
                     ))}
                 </ul> 
-                    <p><b>Breakfast Totals </b> 
+                <ul>
+                    <li><b>Totals 
                         Calories:{breakfastTotals.calories.toFixed(0)}Kcal 
                         Carbs:{breakfastTotals.carbs.toFixed(0)}g 
                         Sugars:{breakfastTotals.sugars.toFixed(0)}g 
                         Protein:{breakfastTotals.protein.toFixed(0)}g 
                         Fat:{breakfastTotals.fat.toFixed(0)}g
-                    </p>
-            </Row>
+                        </b> 
+                    </li>
+                </ul>
+            </Card>
         ) : null}
     <div>
         <h2>Lunch</h2>{lunchFoodItems.length > 0 ?(
-            <Row>
+            <Card>
                 <ul>
                     {lunchFoodItems.map((item) => (
                         <li key={item}>
@@ -416,21 +430,24 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         </li>
                     ))}
                 </ul> 
-                <p><b>Lunch Totals </b> 
-                        Calories:{lunchTotals.calories.toFixed(0)}Kcal 
-                        Carbs:{lunchTotals.carbs.toFixed(0)}g 
-                        Sugars:{lunchTotals.sugars.toFixed(0)}g 
-                        Protein:{lunchTotals.protein.toFixed(0)}g 
-                        Fat:{lunchTotals.fat.toFixed(0)}g
-                    </p>
-            </Row>
+                <ul>
+                    <li><b>Totals
+                            Calories:{lunchTotals.calories.toFixed(0)}Kcal 
+                            Carbs:{lunchTotals.carbs.toFixed(0)}g 
+                            Sugars:{lunchTotals.sugars.toFixed(0)}g 
+                            Protein:{lunchTotals.protein.toFixed(0)}g 
+                            Fat:{lunchTotals.fat.toFixed(0)}g
+                            </b> 
+                        </li>
+                    </ul>
+            </Card>
             ) : null}
         
     </div>
     <div>
         
         <h2>Dinner</h2>{dinnerFoodItems.length > 0 ?(
-        <Row>
+        <Card>
             <ul>
                 {dinnerFoodItems.map((item) => (
                     <li key={item}>
@@ -441,14 +458,17 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     </li>
                 ))}
             </ul> 
-            <p><b>Dinner Totals </b> 
+            <ul>
+                    <li><b>Totals 
                         Calories:{dayTotals.calories.toFixed(0)}Kcal 
                         Carbs:{dayTotals.carbs.toFixed(0)}g 
                         Sugars:{dayTotals.sugars.toFixed(0)}g 
                         Protein:{dayTotals.protein.toFixed(0)}g 
                         Fat:{dayTotals.fat.toFixed(0)}g
-                    </p>
-        </Row>
+                        </b> 
+                    </li>
+                    </ul>
+        </Card>
         ) : null}
     </div>
     <div>
@@ -463,29 +483,36 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         </span>
                     </li>
                 ))}
-            </ul> 
-            <p><b>Snacks Totals </b> 
+            </ul>
+            <ul>
+                    <li><b>Totals 
                         Calories:{snacksTotals.calories.toFixed(0)}Kcal 
                         Carbs:{snacksTotals.carbs.toFixed(0)}g 
                         Sugars:{snacksTotals.sugars.toFixed(0)}g 
                         Protein:{snacksTotals.protein.toFixed(0)}g 
                         Fat:{snacksTotals.fat.toFixed(0)}g
-                    </p>
+                        </b> 
+                    </li>
+            </ul> 
         </Row>
         ) : null}
         </div>
+        </div>
     </Container>
-        <Row>
-            <p><b>Todays Totals </b>
-                    Calories:{dayTotals.calories.toFixed(0)}Kcal 
-                    Carbs:{dayTotals.carbs.toFixed(0)}g 
-                    Sugars:{dayTotals.sugars.toFixed(0)}g 
-                    Protein:{dayTotals.protein.toFixed(0)}g 
-                    Fat:{dayTotals.fat.toFixed(0)}g
-            </p>
-        </Row>
+        <Card>
+            <Card.Body>
+                <p><b>Todays Totals </b>
+                        Calories:{dayTotals.calories.toFixed(0)}Kcal 
+                        Carbs:{dayTotals.carbs.toFixed(0)}g 
+                        Sugars:{dayTotals.sugars.toFixed(0)}g 
+                        Protein:{dayTotals.protein.toFixed(0)}g 
+                        Fat:{dayTotals.fat.toFixed(0)}g
+                </p>
+            </Card.Body>
+        </Card>
     <button onClick={handleCompleteDay}>Complete Day</button>
-    </Container>
+    
+    </Card>
     )
 }
 
