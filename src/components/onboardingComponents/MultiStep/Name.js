@@ -35,42 +35,42 @@ const Name = ({ page, setPage, newUser, setNewUser, x, setX }) => {
           }}>Name</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#link" onClick={() => {
+            <Nav.Link href="" onClick={() => {
             clickHandlerForward(1)
           }}>Age</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#link" onClick={() => {
+            <Nav.Link href="" onClick={() => {
             clickHandlerForward(2);
           }}>Sex</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#link" onClick={() => {
+            <Nav.Link href="" onClick={() => {
             clickHandlerForward(3);
           }}>Height</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#link" onClick={() => {
+            <Nav.Link href="" onClick={() => {
             clickHandlerForward(4);
           }}>Weight</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#link" onClick={() => {
+            <Nav.Link href="" onClick={() => {
             clickHandlerForward(5);
           }}>Activity Level</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#link" onClick={() => {
+            <Nav.Link href="" onClick={() => {
             clickHandlerForward(6);
           }}>Goal</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#link" onClick={() => {
+            <Nav.Link href="" onClick={() => {
             clickHandlerForward(7);
           }}>Weight Goal</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#link" onClick={() => {
+            <Nav.Link href="" onClick={() => {
             clickHandlerForward(8);
           }}>Summary</Nav.Link>
           </Nav.Item>

@@ -32,17 +32,17 @@ const Height = ({ page, setPage, newUser, setNewUser, x, setX }) => {
     <Card.Header><h2>Halfway There...</h2>
     <Nav variant="pills" defaultActiveKey="#active">
         <Nav.Item>
-          <Nav.Link href="#link" onClick={() => {
+          <Nav.Link href="" onClick={() => {
           clickHandlerBackward(3)
         }}>Name</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#link" onClick={() => {
+          <Nav.Link href="" onClick={() => {
           clickHandlerBackward(2)
         }}>Age</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#link" onClick={() => {
+          <Nav.Link href="" onClick={() => {
           clickHandlerBackward(1);
         }}>Sex</Nav.Link>
         </Nav.Item>
@@ -52,27 +52,27 @@ const Height = ({ page, setPage, newUser, setNewUser, x, setX }) => {
         }}>Height</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#link" onClick={() => {
+          <Nav.Link href="" onClick={() => {
           clickHandlerForward(1);
         }}>Weight</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#link" onClick={() => {
+          <Nav.Link href="" onClick={() => {
           clickHandlerForward(2);
         }}>Activity Level</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#link" onClick={() => {
+          <Nav.Link href="" onClick={() => {
           clickHandlerForward(3);
         }}>Goal</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#link" onClick={() => {
+          <Nav.Link href="" onClick={() => {
           clickHandlerForward(4);
         }}>Weight Goal</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#link" onClick={() => {
+          <Nav.Link href="" onClick={() => {
           clickHandlerForward(5);
         }}>Summary</Nav.Link>
         </Nav.Item>
