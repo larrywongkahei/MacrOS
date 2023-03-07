@@ -32,12 +32,12 @@ const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                     <Card.Header><h2>Just a few more details, {newUser.name}!</h2>
                         <Nav variant="pills" defaultActiveKey="#active">
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(2)
                                 }}>Name</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerBackward(1)
                                 }}>Age</Nav.Link>
                             </Nav.Item>
@@ -47,32 +47,32 @@ const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                                 }}>Sex</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(1);
                                 }}>Height</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(2);
                                 }}>Weight</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(3);
                                 }}>Activity Level</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(4);
                                 }}>Goal</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(5);
                                 }}>Weight Goal</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="#link" onClick={() => {
+                                <Nav.Link href="" onClick={() => {
                                     clickHandlerForward(6);
                                 }}>Summary</Nav.Link>
                             </Nav.Item>
