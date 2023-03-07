@@ -191,7 +191,7 @@ const MainContainer = () => {
     } else {
         return(
             <>
-            <NavBar user={user}/>
+            <NavBar/>
             <Routes>
                 <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete} meals={meals}/>} />
             </Routes>
