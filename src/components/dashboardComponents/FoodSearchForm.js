@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, setUser}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, setUser, handleUserPut }) => {
 
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
@@ -30,6 +30,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     const [customFoodFat, setCustomFoodFat] = useState("")
     const [customFoodCalories, setCustomFoodCalories] = useState("")
     const [customOpen, setCustomOpen] = useState(false)
+    const [weightBox, setWeightbox] = useState("")
 
 
     // Day
@@ -109,6 +110,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     function handleSubmit(e){
         e.preventDefault()
         setMealType("")
+    }
+
+    function handleClickSubmit(e){
+        e.preventDefault();
+        handleUserPut(user)
+        setWeightbox("")
     }
 
     function handleCompleteDay(e){
@@ -305,7 +312,6 @@ const handleChange = function (event) {
     let copiedUser = { ...user };
     copiedUser[propertyName] = event.target.value;
     setUser(copiedUser);
-    console.log(copiedUser[propertyName]);
 }
 
 // assign calorie totals to variables for rendering
@@ -521,15 +527,15 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Protein:{dayTotals.protein.toFixed(0)}g 
                         Fat:{dayTotals.fat.toFixed(0)}g
                 </p>
-                <form onSubmit={handleSubmit}>
-                        <label for="weightUpdate">Weigh in!</label><br/>
+                <form onSubmit={handleClickSubmit}>
+                        <label htmlFor="weightUpdate">Weigh in!</label><br/>
                         <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
                         <button type="submit">+</button>
                     </form>
             </Card.Body>
         </Card>
 
-    <button onClick={handleCompleteDay}>Complete Day</button>
+    <Button  variant="outline-success" onClick={handleCompleteDay}>Complete Day</Button>
     
     </Card>
     )

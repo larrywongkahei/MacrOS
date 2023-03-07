@@ -36,6 +36,12 @@ img {
   background-color: #C8DDFE;
   cursor:pointer;
 }
+
 .row {
   margin:5em;
 }
+
+.container-card {
+  opacity: 0.9;
+}
+

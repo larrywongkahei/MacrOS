@@ -11,13 +11,6 @@ const NavBar = ({ user, dayTotals }) => {
 
     if (user) {
    
-
-    const currentProgressCalories = ((dayTotals.calories / user.caloriesGoal) * 100).toFixed(0)
-    const currentProgressProtein = ((dayTotals.protein / user.proteinGoal) * 100).toFixed(0)
-    const currentProgressCarbs = ((dayTotals.carbs / user.carbsGoal) * 100).toFixed(0)
-    const currentProgressFat = ((dayTotals.fat / user.fatGoal) * 100).toFixed(0)
-
-
     return (
         <Navbar bg="light" expand="lg" sticky="top">
             <Container >
@@ -30,16 +23,16 @@ const NavBar = ({ user, dayTotals }) => {
                     </Nav>
                     <Nav>
                         <Nav.Link href="/">Calories
-                            <ProgressBar striped animated min={0} max={user.caloriesGoal} now={dayTotals.calories} label={`${currentProgressCalories}%`} />
+                            <ProgressBar striped animated min={0} max={user.caloriesGoal} now={dayTotals.calories} label={`${dayTotals.calories}kcal / ${user.caloriesGoal}kcal`} />
                         </Nav.Link>
                         <Nav.Link href="/">Protein
-                            <ProgressBar striped animated variant="success" max={user.proteinGoal}  now={dayTotals.protein} label={`${currentProgressProtein}%`} />
+                            <ProgressBar striped animated variant="success" max={user.proteinGoal}  now={dayTotals.protein} label={`${dayTotals.protein}g / ${user.proteinGoal}g`} />
                         </Nav.Link>
                         <Nav.Link href="/">Carbs
-                        <ProgressBar striped animated variant="warning" max={user.carbsGoal}  now={dayTotals.carbs} label={`${currentProgressCarbs}%`}/>
+                        <ProgressBar striped animated variant="warning" max={user.carbsGoal}  now={dayTotals.carbs} label={`${dayTotals.carbs}g / ${user.carbsGoal}g`}/>
                         </Nav.Link>
                         <Nav.Link href="/">Fat
-                        <ProgressBar striped animated variant="danger" max={user.fatGoal}  now={dayTotals.fat} label={`${currentProgressFat}%`} />
+                        <ProgressBar striped animated variant="danger" max={user.fatGoal}  now={dayTotals.fat} label={`${dayTotals.fat}g / ${user.fatGoal}g`} />
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
