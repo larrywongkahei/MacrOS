@@ -210,33 +210,6 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         )
     })
 
-    // const itemDetails = itemsChosen.map(each => {
-    //     return (
-    //     <ul>
-    //         {/* <li >
-    //             FoodItem {itemsChosen.indexOf(each) + 1} :
-    //         </li> */}
-    //         <li>
-    //             {each.name}
-    //         </li>
-    //         <li>
-    //             carbs : {each.carbs}
-    //         </li>
-    //         <li>
-    //             sugars : {each.sugars}
-    //         </li>
-    //         <li>
-    //             protein : {each.protein}
-    //         </li>
-    //         <li>
-    //             fat : {each.fat}
-    //         </li>
-    //         <li>
-    //             calories : {each.calories}
-    //         </li>
-    //     </ul>
-    //     )
-    // })
 
    const onRemoveBreakfast = (item) => {
     const newList = breakfastFoodItems.filter(each => each !== item)
