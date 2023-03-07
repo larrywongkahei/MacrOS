@@ -4,7 +4,7 @@ import AddMealContainer from "./AddMealContainer";
 import ExerciseContainer from "./ExerciseContainer";
 import MacroStatsContainer from "./MacroStatsContainer";
 
-const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood }) => {
+const DashboardContainer = ({user, setUser, foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood }) => {
 
     const [dayTotals, setDayTotals] = useState({ calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 })
 
@@ -18,7 +18,7 @@ const DashboardContainer = ({user, foodItems, searchFoodItemsByThreeLetters, fil
 return (
     <>
 
-    <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} user={user}/>
+    <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} user={user} setUser={setUser}/>
     <MacroStatsContainer dayTotals={dayTotals} user={user}/>
     {/* <ExerciseContainer /> */}
     {/* <UserUpdateForm /> */}
