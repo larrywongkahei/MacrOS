@@ -9,8 +9,6 @@ import Card from 'react-bootstrap/Card';
 
 const AddMealContainer = ({foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood, updateDayTotal, user, setUser, handleUserPut }) => {
 
-const AddMealContainer = ({foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood, updateDayTotal, setUser, user, handleUserPut }) => {
-
     return(
         <Card className="container-card">
             <Card.Body>
@@ -18,7 +16,6 @@ const AddMealContainer = ({foodItems, searchFoodItemsByThreeLetters, filteredLis
             </Card.Body>
         </Card>
     )
-}
 }
 
 export default AddMealContainer;
