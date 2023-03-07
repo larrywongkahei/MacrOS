@@ -2,17 +2,10 @@ import { set } from "date-fns";
 import { useState, useEffect } from "react";
 import Swal from 'sweetalert2'
 
+import { Container, Card, Row, Form, Table, Button, ListGroup, Modal } from 'react-bootstrap';
+import { PlusCircle, XCircle } from 'react-bootstrap-icons';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-
-
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, setUser, handleUserPut }) => {
-
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -30,7 +23,22 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     const [customFoodFat, setCustomFoodFat] = useState("")
     const [customFoodCalories, setCustomFoodCalories] = useState("")
     const [customOpen, setCustomOpen] = useState(false)
-    const [weightBox, setWeightbox] = useState("")
+
+    // state for modals
+    const [showFoodAdd, setShowFoodAdd] = useState(false);
+    const [showCustomFoodAdd, setShowCustomFoodAdd] = useState(false);
+
+    const handleCloseFoodAdd = () => {
+        setShowFoodAdd(false);
+        setMealType("");
+    }
+    const handleShowFoodAdd = () => setShowFoodAdd(true);
+
+    const handleCustomFoodAdd = () => setShowCustomFoodAdd(true);
+
+    const handleCloseCustomFoodAdd = () => setShowCustomFoodAdd(false);
+
+    
 
 
     // Day
@@ -112,12 +120,6 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         setMealType("")
     }
 
-    function handleClickSubmit(e){
-        e.preventDefault();
-        handleUserPut(user)
-        setWeightbox("")
-    }
-
     function handleCompleteDay(e){
         e.preventDefault()
         // gets todays date
@@ -131,7 +133,6 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
         const completedDay = {
             date: isoDateStr,
-            userWeight: user.currentWeight,
         }
         console.log("next")
         getDateData(completedDay, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
@@ -149,6 +150,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     function handleMealType(e){
         e.preventDefault()
         setMealType(e.target.value)
+        handleShowFoodAdd()
     }
     
     function handleAdd(e){
@@ -276,6 +278,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     setCustomFoodProtein("")
     setCustomFoodFat("")
     setCustomOpen(!customOpen)
+    setShowCustomFoodAdd(false)
 
     // pop up alert on completion
     Swal.fire({
@@ -283,7 +286,9 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         text: 'You have added your custom food to our database and can now search for it',
         icon: 'success',
         confirmButtonText: 'Return'
+
         })
+        
     }
 
 //    calculate macro totals for each meal type state
@@ -305,13 +310,6 @@ function calculateTotals(mealTypeState){
 
 
     
-}
-
-const handleChange = function (event) {
-    let propertyName = event.target.name;
-    let copiedUser = { ...user };
-    copiedUser[propertyName] = event.target.value;
-    setUser(copiedUser);
 }
 
 // assign calorie totals to variables for rendering
@@ -336,104 +334,127 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
 
     return(
         <Card>
-            
-                <Card>
-                    <Card.Body>
+                <Container>
+                    <div>
                         <Form>
                             {!mealType ?
-                            <div>
-                                <Button value={"Breakfast"} onClick={handleMealType} variant="secondary" className="me-2">Breakfast +</Button>
-                                <Button value={"Lunch"} onClick={handleMealType} variant="secondary" className="me-2">Lunch +</Button>
-                                <Button value={"Dinner"} onClick={handleMealType} variant="secondary" className="me-2">Dinner +</Button>
-                                <Button value={"Snack"} onClick={handleMealType} variant="secondary" className="me-2">Snacks +</Button>
-                            </div>
+                            <Container className="d-flex justify-content-center">
+                                <Button value={"Breakfast"} onClick={handleMealType} variant="secondary" className="me-2">Breakfast &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Lunch"} onClick={handleMealType} variant="secondary" className="me-2">Lunch &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Dinner"} onClick={handleMealType} variant="secondary" className="me-2">Dinner &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Snack"} onClick={handleMealType} variant="secondary" className="me-2">Snacks &nbsp; <PlusCircle size={25}/></Button>
+                                
+                    
+                                    <Button variant="primary" onClick={() => handleCustomFoodAdd(!showCustomFoodAdd)}>Custom Food &nbsp; <PlusCircle size={25}/></Button>
+                                    <Modal show={showCustomFoodAdd} onHide={handleCloseCustomFoodAdd}>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Add Food to Database</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>
+                                        
+                                                <Form>
+                                                    <Form.Group className="mb-3">
+                                                    <Form.Label>Food Name</Form.Label>
+                                                    <Form.Control required type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
+                                                    </Form.Group>
+                                                    <Form.Group className="mb-3">
+                                                    <Form.Label>Carbohydrates</Form.Label>
+                                                    <Form.Control type="text" placeholder="Enter carbohydrates per 100g" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange} />
+                                                    </Form.Group>
+                                                    <Form.Group className="mb-3">
+                                                    <Form.Label>Sugars</Form.Label>
+                                                    <Form.Control type="text" placeholder="Enter sugars per 100g" value={customFoodSugars} onChange={handleCustomFoodSugarsChange} />
+                                                    </Form.Group>
+                                                    <Form.Group className="mb-3">
+                                                    <Form.Label>Protein</Form.Label>
+                                                    <Form.Control type="text" placeholder="Enter protein per 100g" value={customFoodProtein} onChange={handleCustomFoodProteinChange} />
+                                                    </Form.Group>
+                                                    <Form.Group className="mb-3">
+                                                    <Form.Label>Fats</Form.Label>
+                                                    <Form.Control type="text" placeholder="Enter fat per 100g" value={customFoodFat} onChange={handleCustomFoodFatChange} />
+                                                    </Form.Group>
+                                                    <Form.Group className="mb-3">
+                                                    <Form.Label>Calories</Form.Label>
+                                                    <Form.Control type="text" placeholder="Enter calories per 100g" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange} />
+                                                    <Button onClick={handleAddCustomFood}><PlusCircle size={35}/></Button>
+                                                    </Form.Group>
+                                                    
+                                                </Form>
+                                            </Modal.Body>
+                                            </Modal>
+                    
+
+                                            
+                    
+                        
+                            </Container>
                             : null}
                             {mealType ? 
-                            <Form.Group>
-                                <Form.Label>Food Search</Form.Label>
-                                <Form.Control type="text" placeholder="Input your food here" value={foodInput} onChange={handleFoodInputChange} />
-                                {/* <button>Barcode Scanner button</button> */}
-                                <Form.Label>Quantity</Form.Label>
-                                <Form.Control placeholder="Enter quantity in grams"type="number" value={quantity} onChange={handleQuantity} />
-                                <Button onClick={handleAdd} className="my-3" variant="primary">Add to {mealType}</Button>
-                                {filteredFoodItems ? 
-                                <div>
-                                    {foodItemsToShow}
-                                </div>
-                                : null}
-                                {/* {itemsChosen ?
-                                <div>
-                                {itemDetails}
-                                </div> :null} */}
-                                <Button onClick={handleSubmit} className="my-3" variant="success">Choose Meal</Button>
-                            </Form.Group>
+                            <>
+                      
+                            <Modal show={showFoodAdd} onHide={handleCloseFoodAdd}>
+                              <Modal.Header closeButton>
+                                <Modal.Title>Add Food to {mealType}</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                                    <Form.Group>
+                                        <Form.Label>Food Search</Form.Label>
+                                        <Form.Control type="text" placeholder="Type your food here" value={foodInput} onChange={handleFoodInputChange} />
+                                        {/* <button>Barcode Scanner button</button> */}
+                                        <Form.Label>Quantity</Form.Label>
+                                        <Form.Control placeholder="Enter quantity in grams"type="number" value={quantity} onChange={handleQuantity} />
+                                        <Button onClick={handleAdd} className="my-3" variant="success"><PlusCircle size={35}/></Button>
+                                        {filteredFoodItems ? 
+                                        <div>
+                                            {foodItemsToShow}
+                                        </div>
+                                        : null}
+                                        {/* {itemsChosen ?
+                                        <div>
+                                        {itemDetails}
+                                        </div> :null} */}
+                                        <Button onClick={handleSubmit} className="my-3" variant="success">Choose Meal</Button>
+                                    </Form.Group>
+                              </Modal.Body>
+                            </Modal>
+                          
+                            
+                            </>
                             : null}
                         </Form>
-                    </Card.Body>
-                </Card>
+                        
+                    </div>
+                </Container>
 
-                <Card>
-                    <Card.Body>
-                        <Button onClick={() => setCustomOpen(!customOpen)}>Custom Food +</Button>
-                        {customOpen && (
-                                            <Form>
-                                                <Form.Group className="mb-3">
-                                                <Form.Label>Food Name</Form.Label>
-                                                <Form.Control required type="text" placeholder="Input the name" value={customFoodName} onChange={handleCustomFoodNameChange}/>
-                                                </Form.Group>
-                                                <Form.Group className="mb-3">
-                                                <Form.Label>Carbohydrates</Form.Label>
-                                                <Form.Control type="text" placeholder="Enter carbohydrates per 100g" value={customFoodCarbs} onChange={handleCustomFoodCarbsChange} />
-                                                </Form.Group>
-                                                <Form.Group className="mb-3">
-                                                <Form.Label>Sugars</Form.Label>
-                                                <Form.Control type="text" placeholder="Enter sugars per 100g" value={customFoodSugars} onChange={handleCustomFoodSugarsChange} />
-                                                </Form.Group>
-                                                <Form.Group className="mb-3">
-                                                <Form.Label>Protein</Form.Label>
-                                                <Form.Control type="text" placeholder="Enter protein per 100g" value={customFoodProtein} onChange={handleCustomFoodProteinChange} />
-                                                </Form.Group>
-                                                <Form.Group className="mb-3">
-                                                <Form.Label>Fats</Form.Label>
-                                                <Form.Control type="text" placeholder="Enter fat per 100g" value={customFoodFat} onChange={handleCustomFoodFatChange} />
-                                                </Form.Group>
-                                                <Form.Group className="mb-3">
-                                                <Form.Label>Calories</Form.Label>
-                                                <Form.Control type="text" placeholder="Enter calories per 100g" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange} />
-                                                <Button onClick={handleAddCustomFood}>Add to Database</Button>
-                                                </Form.Group>
-                                            </Form>
-                                            )}
-                    </Card.Body>
-                </Card>
+                
                     
                     
 
         <Container>
-            <div>
+            <Container>
             <h2 className="text-left">Breakfast</h2>{breakfastFoodItems.length > 0 ?(
-                <Card>
-                <ul>
-                    {breakfastFoodItems.map((item) => (
-                        <li key={item}>
-                            <span>
-                                <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                                <button onClick={() => onRemoveBreakfast(item)}>Remove Item</button>
-                            </span>
+                <Container>
+                    <ul>
+                        {breakfastFoodItems.map((item) => (
+                            <li key={item}>
+                                <span>
+                                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                                    <Button variant="danger" onClick={() => onRemoveBreakfast(item)}><XCircle size={25}/></Button>
+                                </span>
+                            </li>
+                        ))}
+                    </ul> 
+                    <ul>
+                        <li><b>Totals 
+                            Calories:{breakfastTotals.calories.toFixed(0)}Kcal 
+                            Carbs:{breakfastTotals.carbs.toFixed(0)}g 
+                            Sugars:{breakfastTotals.sugars.toFixed(0)}g 
+                            Protein:{breakfastTotals.protein.toFixed(0)}g 
+                            Fat:{breakfastTotals.fat.toFixed(0)}g
+                            </b> 
                         </li>
-                    ))}
-                </ul> 
-                <ul>
-                    <li><b>Totals 
-                        Calories:{breakfastTotals.calories.toFixed(0)}Kcal 
-                        Carbs:{breakfastTotals.carbs.toFixed(0)}g 
-                        Sugars:{breakfastTotals.sugars.toFixed(0)}g 
-                        Protein:{breakfastTotals.protein.toFixed(0)}g 
-                        Fat:{breakfastTotals.fat.toFixed(0)}g
-                        </b> 
-                    </li>
-                </ul>
-            </Card>
+                    </ul>
+                </Container>
         ) : null}
     <div>
         <h2>Lunch</h2>{lunchFoodItems.length > 0 ?(
@@ -443,7 +464,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         <li key={item}>
                             <span>
                             <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                            <button onClick={() => onRemoveLunch(item)}>Remove Item</button>
+                            <Button variant="danger" onClick={() => onRemoveLunch(item)}><XCircle size={25}/></Button>
                             </span>
                         </li>
                     ))}
@@ -471,7 +492,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     <li key={item}>
                         <span>
                         <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                        <button onClick={() => onRemoveDinner(item)}>Remove Item</button>
+                        <Button variant="danger" onClick={() => onRemoveDinner(item)}><XCircle size={25}/></Button>
                         </span>
                     </li>
                 ))}
@@ -497,7 +518,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     <li key={item}>
                         <span>
                         <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                        <button onClick={() => onRemoveSnack(item)}>Remove Item</button>
+                        <Button variant="danger" onClick={() => onRemoveSnack(item)}><XCircle size={25}/></Button>
                         </span>
                     </li>
                 ))}
@@ -515,8 +536,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         </Row>
         ) : null}
         </div>
-
-        </div>
+        </Container>
     </Container>
         <Card>
             <Card.Body>
@@ -527,15 +547,9 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Protein:{dayTotals.protein.toFixed(0)}g 
                         Fat:{dayTotals.fat.toFixed(0)}g
                 </p>
-                <form onSubmit={handleClickSubmit}>
-                        <label htmlFor="weightUpdate">Weigh in!</label><br/>
-                        <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
-                        <button type="submit">+</button>
-                    </form>
             </Card.Body>
         </Card>
-
-    <Button  variant="outline-success" onClick={handleCompleteDay}>Complete Day</Button>
+    <Button variant="success" onClick={handleCompleteDay}>Complete Day</Button>
     
     </Card>
     )
