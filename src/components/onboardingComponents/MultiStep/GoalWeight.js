@@ -34,37 +34,37 @@ const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, set
         <Card.Header><h2>Last But Not Least...</h2>
         <Nav variant="pills" defaultActiveKey="#active">
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(7)
             }}>Name</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(6)
             }}>Age</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(5);
             }}>Sex</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(4)
             }}>Height</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(3)
             }}>Weight</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(2);
             }}>Activity Level</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
+              <Nav.Link href="" onClick={() => {
               clickHandlerBackward(1);
             }}>Goal</Nav.Link>
             </Nav.Item>
@@ -74,8 +74,8 @@ const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, set
             }}>Weight Goal</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#link" onClick={() => {
-              clickHandlerForward(4);
+              <Nav.Link href="" onClick={() => {
+              clickHandlerForward(1);
             }}>Summary</Nav.Link>
             </Nav.Item>
           </Nav>
