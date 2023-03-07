@@ -40,3 +40,7 @@ img {
 .row {
   margin:5em;
 }
+
+.container-card {
+  opacity: 0.9;
+}
