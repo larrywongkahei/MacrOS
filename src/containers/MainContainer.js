@@ -69,7 +69,6 @@ const MainContainer = () => {
 
     const handleUserPut = (user) => {
         const request = new Request();
-        console.log(user);
         request.put(`/api/user/${user.id}`, user).then(() => {
             window.location = '/journal'
         })
@@ -172,17 +171,13 @@ const MainContainer = () => {
 
     
 
-    console.log(user);
-    // console.log(days);
-    // console.log(meals);
-
     if (onboardingComplete || user) {
         return(
             <div>
                 <NavBar user={user} dayTotals={dayTotals}/>
                 <Routes>
-                    <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} dayTotals={dayTotals}/>} />
-                    <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
+                    <Route path="/" element={<DashboardContainer user={user} setUser={setUser} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} dayTotals={dayTotals}/>} />
+                    <Route path="/journal" element={<JournalContainer user={user} setUser={setUser} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
             </div>
         )
