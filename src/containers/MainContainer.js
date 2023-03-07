@@ -92,7 +92,6 @@ const MainContainer = () => {
         // Add meals field to day object
         responseToData['meals'] = updatedMeals
         // Update the day object to database
-        responseToData['completed'] = true
         handleDayPut(responseToData)
 
     }
