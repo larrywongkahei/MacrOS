@@ -80,9 +80,9 @@ const MainContainer = () => {
         const request = new Request();
         const postDay = await request.post('/api/days', day)
         const responseToData = await postDay.json()
-        const newDayInstanceList = [...dayInstanceList]
-        newDayInstanceList.push(responseToData)
-        setDayInstanceList(newDayInstanceList)   
+        // const newDayInstanceList = [...dayInstanceList]
+        // newDayInstanceList.push(responseToData)
+        // setDayInstanceList(newDayInstanceList)   
         // Create a list of meal
         const mealList = await handleMealPost(responseToData)
         // Put food inside the list
@@ -109,11 +109,12 @@ const MainContainer = () => {
     const handleDayPut = (day) => {
         const request = new Request();
         request.put(`/api/days/${day.id}`, day)
-        .then(res => {
-            console.log(res.status)
-            console.log(res.json())
+        .then(res => res.json())
+        .then(data => {
+            const newDayInstanceList = [...dayInstanceList]
+            newDayInstanceList.push(data)
+            setDayInstanceList(newDayInstanceList)   
         })
-            // window.locati on = '/'
     }
 
     const handleMealPost = async (day) => {
