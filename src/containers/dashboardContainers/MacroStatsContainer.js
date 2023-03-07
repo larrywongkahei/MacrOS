@@ -19,7 +19,6 @@ const MacroStatsContainer = ({ dayTotals, user }) => {
             </div>
             <div className="col-md-4">
                 <h2>Calories</h2>
-                <p>Goal: {user.caloriesGoal}Kcal</p>
                 <CaloriesRemainingChart dayTotals={dayTotals} user={user} />
             </div>
         </div>

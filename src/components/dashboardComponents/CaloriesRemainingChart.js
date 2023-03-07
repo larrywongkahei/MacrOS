@@ -10,7 +10,7 @@ const CaloriesRemainingChart = ({dayTotals, user}) => {
 
 
     const data = {
-            labels: ['Calories consumed (Kcal)', 'Calories remaining (Kcal)'],
+            labels: ['Calories consumed (Kcal)', `Calories remaining of ${user.caloriesGoal}Kcal`],
             datasets: [
             {
             label: 'Kcal',
