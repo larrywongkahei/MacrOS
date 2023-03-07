@@ -1,26 +1,6 @@
 import { useState } from "react";
 
-const GoalsStats = ({user, onEdit}) => {
-    
-    const [stateUser, setStateUser] = useState(
-        {
-            id: user.id,
-            name: user.name,
-            age: user.age,
-            sex: user.sex,
-            height: user.height,
-            startingWeight: user.startingWeight,
-            currentWeight: user.currentWeight,
-            goalWeight: user.goalWeight,
-            activityLevel: user.activityLevel,
-            experiencePoints: user.experiencePoints,
-            caloriesGoal: user.caloriesGoal,
-            proteinGoal: user.proteinGoal,
-            fatGoal: user.fatGoal,
-            carbsGoal: user.carbsGoal,
-            sugarsGoal: user.sugarsGoal
-        }
-    )
+const GoalsStats = ({user, setUser, onEdit}) => {
 
     const calculateBMI = (user) => {
         const bmi = (user.currentWeight)/(user.height/100*2);
@@ -29,14 +9,15 @@ const GoalsStats = ({user, onEdit}) => {
 
     const handleChange = function (event) {
         let propertyName = event.target.name;
-        let copiedUser = { ...stateUser };
+        let copiedUser = { ...user };
         copiedUser[propertyName] = event.target.value;
-        setStateUser(copiedUser);
+        setUser(copiedUser);
+        console.log(copiedUser[propertyName]);
     }
 
     const handleSubmit = function (event) {
         event.preventDefault();
-        onEdit(stateUser);
+        onEdit(user);
     }
 
 

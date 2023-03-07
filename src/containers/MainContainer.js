@@ -69,7 +69,6 @@ const MainContainer = () => {
 
     const handleUserPut = (user) => {
         const request = new Request();
-        console.log(user);
         request.put(`/api/user/${user.id}`, user).then(() => {
             window.location = '/journal'
         })
@@ -114,7 +113,7 @@ const MainContainer = () => {
             console.log(res.status)
             console.log(res.json())
         })
-            // window.locati on = '/'
+
     }
 
     const handleMealPost = async (day) => {
@@ -167,17 +166,13 @@ const MainContainer = () => {
 
     
 
-    console.log(user);
-    // console.log(days);
-    // console.log(meals);
-
     if (onboardingComplete || user) {
         return(
             <div>
                 <NavBar user={user}/>
                 <Routes>
                     <Route path="/" element={<DashboardContainer user={user} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood}/>} />
-                    <Route path="/journal" element={<JournalContainer user={user} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
+                    <Route path="/journal" element={<JournalContainer user={user} setUser={setUser} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
             </div>
         )

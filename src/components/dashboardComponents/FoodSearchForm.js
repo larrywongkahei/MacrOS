@@ -2,7 +2,7 @@ import { set } from "date-fns";
 import { useState, useEffect } from "react";
 import Swal from 'sweetalert2'
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -113,6 +113,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
         const completedDay = {
             date: isoDateStr,
+            userWeight: user.currentWeight,
         }
         console.log("next")
         getDateData(completedDay, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
