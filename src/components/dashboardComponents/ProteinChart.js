@@ -14,7 +14,7 @@ const ProteinChart = ({dayTotals, user}) => {
             datasets: [
             {
             label: 'g',
-            data: [dayTotals.carbs, user.carbsGoal],
+            data: [dayTotals.protein, (user.proteinGoal-dayTotals.protein)],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

@@ -14,7 +14,7 @@ const carbs = (dayTotals.carbs - dayTotals.sugars)
             datasets: [
             {
             label: 'g',
-            data: [carbs, user.carbsGoal],
+            data: [carbs, (user.carbsGoal-carbs)],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 120, 132, 0.5)',
