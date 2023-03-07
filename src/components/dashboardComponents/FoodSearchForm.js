@@ -367,7 +367,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                       
                             <Modal show={showFoodAdd} onHide={handleCloseFoodAdd}>
                               <Modal.Header closeButton>
-                                <Modal.Title>Add Food to {mealType}</Modal.Title>
+                                <Modal.Title>Add Food(s) to {mealType}</Modal.Title>
                               </Modal.Header>
                               <Modal.Body>
                                     <Form.Group>
@@ -375,17 +375,13 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                                         <Form.Control type="text" placeholder="Type your food here" value={foodInput} onChange={handleFoodInputChange} />
                                         {/* <button>Barcode Scanner button</button> */}
                                         <Form.Label>Quantity</Form.Label>
-                                        <Form.Control placeholder="Enter quantity in grams"type="number" value={quantity} onChange={handleQuantity} />
+                                        <Form.Control placeholder="Enter quantity in grams" type="number" value={quantity} onChange={handleQuantity} />
                                         <Button onClick={handleAdd} className="my-3" variant="success"><PlusCircle size={35}/></Button>
                                         {filteredFoodItems ? 
                                         <div>
                                             {foodItemsToShow}
                                         </div>
                                         : null}
-                                        {/* {itemsChosen ?
-                                        <div>
-                                        {itemDetails}
-                                        </div> :null} */}
                                         <Button onClick={handleSubmit} className="my-3" variant="success">Choose Meal</Button>
                                     </Form.Group>
                               </Modal.Body>
@@ -485,7 +481,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
     </div>
     <div>
         <h2>Snacks</h2>{snackFoodItems.length > 0 ?(
-        <Row>
+        <Card>
             <ul>
                 {snackFoodItems.map((item) => (
                     <li key={item}>
@@ -506,13 +502,12 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         </b> 
                     </li>
             </ul> 
-        </Row>
+        </Card>
         ) : null}
         </div>
         </Container>
     </Container>
-        <Card>
-            <Card.Body>
+        <Container>
                 <p><b>Todays Totals </b>
                         Calories:{dayTotals.calories.toFixed(0)}Kcal 
                         Carbs:{dayTotals.carbs.toFixed(0)}g 
@@ -520,8 +515,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Protein:{dayTotals.protein.toFixed(0)}g 
                         Fat:{dayTotals.fat.toFixed(0)}g
                 </p>
-            </Card.Body>
-        </Card>
+        </Container>
     <Button variant="success" onClick={handleCompleteDay}>Complete Day</Button>
     
     </Card>

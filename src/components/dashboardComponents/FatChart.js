@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { Card } from 'react-bootstrap'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -16,9 +17,8 @@ const FatChart = ({dayTotals, user}) => {
             label: 'g',
             data: [dayTotals.fat, (user.fatGoal-dayTotals.fat)],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
+                'rgba(231, 111, 81)',
+                'rgba(231, 111, 81, 0.5)',
                 
             ]
             },
@@ -33,9 +33,10 @@ const FatChart = ({dayTotals, user}) => {
     }
     
     return (
-        <>
+        <Card className="chart-card">
+            <Card.Header className="charts-title" >Fat</Card.Header>
         <Doughnut data={data} options={options}/>
-        </>
+        </Card>
     )
 }
 export default FatChart;

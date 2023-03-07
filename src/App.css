@@ -45,3 +45,14 @@ img {
   opacity: 0.9;
 }
 
+.chart-card {
+  padding:2em;
+}
+
+.charts-title {
+  font-size:1.6em;
+  text-decoration: solid;
+  text-align: center;
+  padding-bottom: .4em;
+}
+

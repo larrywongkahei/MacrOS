@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { Card } from 'react-bootstrap';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -16,9 +17,8 @@ const carbs = (dayTotals.carbs - dayTotals.sugars)
             label: 'g',
             data: [carbs, (user.carbsGoal-carbs)],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 120, 132, 0.5)',
-                'rgba(255, 206, 86, 0.2)',
+                'rgba(233, 196, 106)',
+                'rgba(233, 196, 106, 0.5)',
                 
             ]
             },
@@ -33,9 +33,10 @@ const carbs = (dayTotals.carbs - dayTotals.sugars)
     }
     
     return (
-        <>
+        <Card className="chart-card">
+            <Card.Header className="charts-title">Carbohydrates</Card.Header>
         <Doughnut data={data} options={options}/>
-        </>
+        </Card>
     )
 }
 export default CarbsChart;

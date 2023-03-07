@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { Container, Card } from 'react-bootstrap';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -33,9 +34,12 @@ const CaloriesRemainingChart = ({dayTotals, user}) => {
     }
     
     return (
-        <>
-        <Doughnut data={data} options={options}/>
-        </>
+        <Container className="container-card">
+            <Card className="chart-card">
+                <Card.Header className="charts-title">Calories</Card.Header>
+                <Doughnut data={data} options={options}/>
+            </Card>
+        </Container>
     )
 }
 export default CaloriesRemainingChart;
