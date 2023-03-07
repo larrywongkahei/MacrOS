@@ -7,6 +7,7 @@ import JournalContainer from '../containers/journalContainers/JournalContainer';
 import Request from '../helpers/Request';
 import OnboardingContainer from './onboardingContainers/OnboardingContainer';
 import Swal from 'sweetalert2'
+import Footer from '../components/Footer';
 
 const MainContainer = () => {
 
@@ -179,6 +180,7 @@ const MainContainer = () => {
                     <Route path="/" element={<DashboardContainer user={user} setUser={setUser} days={days} meals={meals} foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} dayTotals={dayTotals} handleUserPut={handleUserPut}/>} />
                     <Route path="/journal" element={<JournalContainer user={user} setUser={setUser} days={days} meals={meals} handleUserPut={handleUserPut}/>} />
                 </Routes>
+                <Footer/>
             </div>
         )
 
@@ -190,6 +192,7 @@ const MainContainer = () => {
             <Routes>
                 <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete} meals={meals}/>} />
             </Routes>
+            <Footer/>
             </>
         
         )
