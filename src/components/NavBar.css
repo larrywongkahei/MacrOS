@@ -1,0 +1,13 @@
+.navbar {
+    margin-bottom: 3rem;
+    background-color: green;
+}
+
+.progress-bar {
+    color: black;
+  font-weight: 500;
+}
+
+#onb-nav-title {
+    font-size: 1.7rem;
+}

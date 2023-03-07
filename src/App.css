@@ -1,3 +1,5 @@
+
+
 .component-container{
   border-style: solid;
   border-radius: 1em;
@@ -19,4 +21,8 @@ li {
 
 img {
   height:4em; 
+}
+
+.row {
+  margin:5em;
 }
