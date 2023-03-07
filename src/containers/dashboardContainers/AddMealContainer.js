@@ -19,5 +19,6 @@ const AddMealContainer = ({foodItems, searchFoodItemsByThreeLetters, filteredLis
         </Card>
     )
 }
+}
 
 export default AddMealContainer;
