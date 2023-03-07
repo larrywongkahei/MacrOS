@@ -1,6 +1,6 @@
 .navbar {
     margin-bottom: 3rem;
-    background-color: green;
+    text-align: center;
 }
 
 .progress-bar {
@@ -11,3 +11,8 @@
 #onb-nav-title {
     font-size: 1.7rem;
 }
+
+.progress {
+    width: 10rem;
+    height: 1.3rem;
+  }

@@ -37,12 +37,16 @@ const GoalsCharts = ({user, days}) => {
         datasets: [{
             label: 'Your Weight',
             data: daysData,
+         
         },
         {
             label: 'Your Goal',
             data: goalData,
+          
         }]
     }
+
+      
 
 
         return(

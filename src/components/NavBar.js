@@ -39,7 +39,7 @@ const NavBar = ({ user, dayTotals }) => {
                         <ProgressBar striped animated variant="warning" max={user.carbsGoal}  now={dayTotals.carbs} label={`${currentProgressCarbs}%`}/>
                         </Nav.Link>
                         <Nav.Link href="/">Fat
-                        <ProgressBar striped animated variant="danger" max={user.fatGoal}  now={dayTotals.fat} label={`${currentProgressFat}%`} />
+                        <ProgressBar striped animated variant="danger" max={user.fatGoal}  now={dayTotals.fat} label={`${dayTotals.fat} / ${user.fatGoal}`} />
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
