@@ -18,6 +18,7 @@ const JournalContainer = ({user, setUser, handleUserPut, days, meals}) => {
         setSelectedDate(newDate)
     }
 
+
     return(
         <div className="component-container">
         <p>I am JournalContainer</p>
