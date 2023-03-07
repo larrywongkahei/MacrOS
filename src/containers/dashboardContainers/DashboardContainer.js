@@ -9,8 +9,7 @@ const DashboardContainer = ({ user, foodItems, searchFoodItemsByThreeLetters, fi
 
     return (
         <>
-
-            <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} />
+            <AddMealContainer foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} user={user}/>
             <MacroStatsContainer dayTotals={dayTotals} user={user} />
             {/* <ExerciseContainer /> */}
             {/* <UserUpdateForm /> */}

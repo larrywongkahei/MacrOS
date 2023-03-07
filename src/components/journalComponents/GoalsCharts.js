@@ -25,8 +25,9 @@ const GoalsCharts = ({user, days}) => {
     );
 
     const labels = days.map( day => day.date)
+    console.log(days);
 
-    const daysData = days.map(day => day.user.currentWeight)
+    const daysData = days.map(day => day.userWeight)
 
     const goalData = days.map(day => day.user.goalWeight)
 
