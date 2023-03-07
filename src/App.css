@@ -42,11 +42,13 @@ img {
 }
 
 .container-card {
+  padding:1em 2em;
   opacity: 0.9;
 }
 
 .chart-card {
   padding:2em;
+  opacity:1;
 }
 
 .charts-title {

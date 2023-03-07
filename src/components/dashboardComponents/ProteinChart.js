@@ -11,7 +11,7 @@ const ProteinChart = ({dayTotals, user}) => {
 
 
     const data = {
-            labels: ['Protein consumed (g)', 'Protein remaining (g)'],
+            labels: ['Protein consumed (g)', `Protein remaining of ${user.proteinGoal}g Goal`],
             datasets: [
             {
             label: 'g',

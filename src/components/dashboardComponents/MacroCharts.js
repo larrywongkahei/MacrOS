@@ -22,9 +22,9 @@ const percentageFat = ((dayTotals.fat*9)/dayTotals.calories)*100
             label: '%',
             data: [percentageCarbs.toFixed(0), percentageProtein.toFixed(0), percentageFat.toFixed(0)],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
+                'rgba(233, 196, 106)',
+                'rgba(42, 157, 143)',
+                'rgba(231, 111, 81)',
                 
             ]
             },
@@ -41,7 +41,7 @@ const percentageFat = ((dayTotals.fat*9)/dayTotals.calories)*100
     return (
         <Container className="container-card">
             <Card className="chart-card">
-                <Card.Header className="charts-title">Macros</Card.Header>
+                <Card.Header className="charts-title">Macros (%)</Card.Header>
                 <Pie data={data} options={options}/>
             </Card>
         </Container>

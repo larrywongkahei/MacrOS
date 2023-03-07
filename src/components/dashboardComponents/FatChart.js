@@ -11,7 +11,7 @@ const FatChart = ({dayTotals, user}) => {
 
 
     const data = {
-            labels: ['Fat consumed (g)', 'Fat remaining (g)'],
+            labels: ['Fat consumed (g)', `Fat remaining of ${user.fatGoal}g Goal`],
             datasets: [
             {
             label: 'g',

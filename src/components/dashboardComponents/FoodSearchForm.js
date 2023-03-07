@@ -306,7 +306,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         
 
     return(
-        <Card>
+        <Card className="container-card">
                 <Container>
                     <div>
                         <Form>
