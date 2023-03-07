@@ -171,7 +171,7 @@ const MainContainer = () => {
 
     
 
-    if (onboardingComplete || user) {
+    if (user) {
         return(
             <div>
                 <NavBar user={user} dayTotals={dayTotals}/>

@@ -528,14 +528,14 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         Fat:{dayTotals.fat.toFixed(0)}g
                 </p>
                 <form onSubmit={handleClickSubmit}>
-                        <label for="weightUpdate">Weigh in!</label><br/>
+                        <label htmlFor="weightUpdate">Weigh in!</label><br/>
                         <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
                         <button type="submit">+</button>
                     </form>
             </Card.Body>
         </Card>
 
-    <button onClick={handleCompleteDay}>Complete Day</button>
+    <Button  variant="outline-success" onClick={handleCompleteDay}>Complete Day</Button>
     
     </Card>
     )
