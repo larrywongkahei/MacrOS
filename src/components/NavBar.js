@@ -17,7 +17,7 @@ const NavBar = ({ user, dayTotals }) => {
     if (user && window.location.pathname === '/'  ) {
    
     return (
-        <Navbar style={{ backgroundColor: '#d9dada', opacity:'0.7', fontWeight: '800' }}  expand="lg" variant="light" sticky="top">
+        <Navbar style={{ backgroundColor: '#d9dada', opacity:'0.7', fontWeight: '800', marginTop: '1rem', marginBottom: '3rem', textAlign: 'center'  }}  expand="lg" variant="light" sticky="top">
             <Container >
             < StaticImage />
                 <Navbar.Brand href="/">Welcome to macrOS</Navbar.Brand>
