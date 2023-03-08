@@ -404,12 +404,13 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                                         {/* <button>Barcode Scanner button</button> */}
                                         <Form.Label>Quantity</Form.Label>
                                         <Form.Control placeholder="Enter quantity in grams" type="number" value={quantity} onChange={handleQuantity} />
-                                        <Button onClick={handleAdd} className="max-width mx-auto btn-height margin-top" variant="success"><PlusCircle size={35}/></Button>
                                         {filteredFoodItems ? 
                                         <div>
                                             {foodItemsToShow}
                                         </div>
                                         : null}
+                                        <Button onClick={handleAdd} className="max-width mx-auto btn-height margin-top" variant="success"><PlusCircle size={35}/></Button>
+                                        
                                         <Button  onClick={handleSubmit} className="max-width mx-auto btn-height" variant="success">Choose Meal</Button>
                                     </Form.Group>
                               </Modal.Body>
