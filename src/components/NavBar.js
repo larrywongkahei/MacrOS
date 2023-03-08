@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import ProgressBar from 'react-bootstrap/ProgressBar'
+// import Image from '../images/static.svg'
 
 
 
@@ -13,8 +14,9 @@ const NavBar = ({ user, dayTotals }) => {
    
     return (
         <Navbar bg="light" expand="lg" sticky="top">
-            <Container >
+            <Container className='navbar-container' >
                 <Navbar.Brand href="/">{user.name}, Welcome to macrOS</Navbar.Brand>
+                {/* <img src={Image} alt="" width='30' height='24'/> */}
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
