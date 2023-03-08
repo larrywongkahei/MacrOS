@@ -18,9 +18,10 @@ function DatePicker ({updateDate, selectedDate, days}) {
     // loop days. if day.date === selected date then display that days information else null
 
     return (
-        <Card className="container-card">
-            <Container className="container-card">
 
+        <Card className="chart-card">
+            <Card.Header className="charts-title">Select a day</Card.Header>
+            
             <DayPicker
             mode="single"
             selected={selectedDate}
