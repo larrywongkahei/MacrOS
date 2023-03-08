@@ -303,15 +303,16 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         }, { calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 }
         );
 
-        
+        const today = new Date().toLocaleDateString()
 
     return(
         <Card className="container-card">
+            <Card.Header className="diary-title">Food Diary &nbsp; {today}</Card.Header>
                 <Container>
                     <div>
                         <Form>
                             {!mealType ?
-                            <Container className="d-flex justify-content-center">
+                            <Container className="d-flex justify-content-center container-card-buttons">
                                 <Button value={"Breakfast"} onClick={handleMealType} variant="primary" className="me-2">Breakfast &nbsp; <PlusCircle size={25}/></Button>
                                 <Button value={"Lunch"} onClick={handleMealType} variant="primary" className="me-2">Lunch &nbsp; <PlusCircle size={25}/></Button>
                                 <Button value={"Dinner"} onClick={handleMealType} variant="primary" className="me-2">Dinner &nbsp; <PlusCircle size={25}/></Button>
