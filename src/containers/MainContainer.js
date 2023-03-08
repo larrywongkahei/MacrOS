@@ -18,7 +18,6 @@ const MainContainer = () => {
     const [meals, setMeals] = useState([])
     const [foodItems, setFoodItems] = useState([])
     const [filteredList, setFilteredList] = useState([])
-    const [onboardingComplete, setOnboardingComplete] = useState(false)
     const [dayTotals, setDayTotals] = useState({ calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 })
 
     useEffect(() => {
@@ -51,7 +50,6 @@ const MainContainer = () => {
         // .then(() => {
         //     window.location = '/'
         // })
-        setOnboardingComplete(true);
         Swal.fire({
             title: 'Your nutrition goals per day:',
             html:
@@ -193,7 +191,7 @@ const MainContainer = () => {
             <>
             <NavBar/>
             <Routes>
-                <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete} meals={meals}/>} />
+                <Route path="/" element={<OnboardingContainer handleUserPost={handleUserPost} />} />
             </Routes>
             <Footer/>
             </>

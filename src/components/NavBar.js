@@ -20,8 +20,8 @@ const NavBar = ({ user, dayTotals }) => {
         marginTop: '1rem',
         marginBottom: '3rem',
         textAlign: 'center',
-        webkitBorderRadius: '30px',
-        mozBorderRadius: '30px',
+        WebkitBorderRadius: '30px',
+        MozBorderRadius: '30px',
         borderRadius: '30px'
     }
 
