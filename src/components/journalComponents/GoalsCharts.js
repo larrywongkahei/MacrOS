@@ -52,7 +52,7 @@ const GoalsCharts = ({user, days}) => {
 
 
         return(
-            <Card>
+            <Card className='charts-card'>
                 <Card.Header className="charts-title">Title for chart</Card.Header>
 
                 <Line data={data} />

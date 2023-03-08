@@ -9,6 +9,7 @@ import {
     Legend, 
 } from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2'
+import { Card } from 'react-bootstrap';
 
 
 const SelectedDateChart = ({selectedDate, days}) => {
@@ -34,23 +35,55 @@ const SelectedDateChart = ({selectedDate, days}) => {
 
     const dayArray = days.find(day => day.date === selectedDate)
 
-    console.log(dayArray);
+    const dummyData = {
+        labels: ["Carbohydrates (g)", "Protein (g)", "Fat (g)"],
+        datasets: [{
+            label: "g",
+            data: [33,33,33],
+            backgroundColor: [
+                'rgba(233, 196, 106)',
+                'rgba(42, 157, 143)',
+                'rgba(231, 111, 81)',
+                
+            ]
+        }]
+    }
 
     if (dayArray) {
-        const graphData = [totalForMacro(dayArray, "fat"), totalForMacro(dayArray, "protein"), totalForMacro(dayArray, "carbs")]
+        const graphData = [totalForMacro(dayArray, "carbs"), totalForMacro(dayArray, "protein"), totalForMacro(dayArray, "fat")]
 
         console.log(graphData);
 
         const data = {
-            labels: ["Fat", "Protein", "Carbs"],
+            labels: ["Carbohydrates (g)", "Protein (g)", "Fat (g)"],
             datasets: [{
-                label: "grams",
-                data: graphData
+                label: "g",
+                data: graphData,
+                backgroundColor: [
+                    'rgba(233, 196, 106)',
+                    'rgba(42, 157, 143)',
+                    'rgba(231, 111, 81)',
+                    
+                ]
             }]
         }
 
         return(
+            
+            <Card className='chart-card'>
+            <Card.Header className="charts-title">Title for chart</Card.Header>
+
             <Doughnut data={data} />
+        </Card>
+        )
+    } else{
+        return(
+
+            <Card className='chart-card'>
+            <Card.Header className="charts-title">Title for chart</Card.Header>
+
+            <Doughnut data={dummyData} />
+        </Card>
         )
     }
 

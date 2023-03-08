@@ -5,6 +5,8 @@ import { useState } from "react";
 import GoalsCharts from "../../components/journalComponents/GoalsCharts";
 import SelectedDateChart from "../../components/journalComponents/SelectedDateChart";
 import { Container } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const JournalContainer = ({user, setUser, handleUserPut, days, meals}) => {
 
@@ -23,20 +25,29 @@ const JournalContainer = ({user, setUser, handleUserPut, days, meals}) => {
     return(
         <Container className="container-card">
             <Container>
-                <UserInfo user = {user}/>
+                <Row>
+                    <Col xs={2} md={4} lg={6}>
+                        <UserInfo user = {user}/>
+                    </Col>
+                    <Col xs={2} md={4} lg={6}>
+                    <GoalsStats user={user} setUser={setUser} onEdit={handleUserPut}/>
+                    </Col>
+                </Row>
             </Container>
             <Container>
-                <DatePicker updateDate={updateDate} selectedDate={selectedDate} days={days} />
-            </Container>
-            <Container>
-                <GoalsStats user={user} setUser={setUser} onEdit={handleUserPut}/>
+                <Row>
+                    <Col xs={2} md={4} lg={6}>
+                        <DatePicker updateDate={updateDate} selectedDate={selectedDate} days={days} />
+                    </Col>
+                    <Col xs={2} md={4} lg={6}>
+                        <SelectedDateChart days={days} selectedDate={selectedDate} />
+                    </Col>
+                    
+                </Row>
             </Container>
                 <Container>
             <GoalsCharts user={user} days={days} /> 
                 </Container>
-            <Container>
-                <SelectedDateChart days={days} selectedDate={selectedDate} />
-            </Container>
         </Container>
     )
 }
