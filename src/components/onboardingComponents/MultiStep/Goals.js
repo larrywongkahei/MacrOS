@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Typed from 'react-typed'
+import Swal from 'sweetalert2'
 
 
 const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingComplete, handleUserPost, x, setX }) => {
@@ -162,16 +164,16 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
                     transition={{ duration: 1 }}
                     animate={{ x: 0 }}
                 >
-                    <Card.Header><h1>Welcome to macrOS!</h1>
+                    <Card.Header>
                         <Nav variant="pills" defaultActiveKey="#active">
                             <Nav.Item>
                                 <Nav.Link href="" onClick={() => {
-                                    clickHandlerBackward(7)
+                                    clickHandlerBackward(8)
                                 }}>Name</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link href="" onClick={() => {
-                                    clickHandlerBackward(3)
+                                    clickHandlerBackward(7)
                                 }}>Age</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
@@ -212,10 +214,14 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
                         </Nav>
                     </Card.Header>
                     <br />
-                    <Card.Title><h3>Now It's Time To See Your Dashboard!</h3></Card.Title>
+                    <Card.Title><Typed
+                    strings={[`Now it's time to see your dashboard, ${newUser.name}!`]}
+                    typeSpeed={30}
+                    style={{fontSize:'30px', fontWeight: '600'}}
+                /></Card.Title>
                     <br />
                     <Card.Text>
-                        <Button variant="success" size="lg" id="onboarding-save-button" onClick={handleSubmit}>
+                        <Button variant="outline-success" size="lg" id="onboarding-save-button" onClick={handleSubmit}>
                             Save & Take Me To Dashboard
                         </Button>
                         
@@ -239,3 +245,12 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
 }
 
 export default Goals;
+
+
+
+// Swal.fire({
+//     title: 'Your nutrition goals per day:',
+//     text: `Calories: ${user.caloriesGoal} Kcal \n  Protein: ${user.proteinGoal}g \n  Fat: ${user.fatGoal}g \n  Carbs: ${user.carbsGoal}g`,
+//     icon: 'success',
+//     confirmButtonText: 'OK',
+//   })

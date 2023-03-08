@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Typed from 'react-typed'
 
 const Weight = ({ page, setPage, newUser, setNewUser, x, setX }) => {
 
@@ -30,7 +31,7 @@ const Weight = ({ page, setPage, newUser, setNewUser, x, setX }) => {
         transition={{ duration: 1 }}
         animate={{ x: 0 }}
       >
-        <Card.Header><h2>\m/ O_o \m/</h2>
+        <Card.Header>
         <Nav variant="pills" defaultActiveKey="#active">
             <Nav.Item>
               <Nav.Link href="" onClick={() => {
@@ -80,7 +81,11 @@ const Weight = ({ page, setPage, newUser, setNewUser, x, setX }) => {
           </Nav>
         </Card.Header>
         <br />
-        <Card.Title><h3>What's your current weight?</h3></Card.Title>
+        <Card.Title><Typed
+                    strings={[`What's your weight?`]}
+                    typeSpeed={70}
+                    style={{fontSize:'30px', fontWeight: '600'}}
+                /></Card.Title>
         <br />
         <Card.Text>
         <input
@@ -112,45 +117,8 @@ const Weight = ({ page, setPage, newUser, setNewUser, x, setX }) => {
       </motion.div>
       </Card.Body>
       </Card>
-    
-    
-    
+  
 
-
-
-        // <motion.div
-        //     initial={{ x: x }}
-        //     transition={{ duration: 1 }}
-        //     animate={{ x: 0 }}
-        // >
-        //         <div>... Aaaand Your Current Weight?</div>
-        //         <input
-        //             type="number"
-        //             placeholder="Kg"
-        //             value={newUser.startingWeight}
-        //             onChange={(e) => setNewUser({ ...newUser, startingWeight: e.target.value })}
-        //         />
-        //         <Button
-        //             onClick={() => {
-        //                 setPage(page + 1);
-        //                 setX(1000);
-        //             }}
-        //             variant="outline-success"
-        //             >
-        //             Next
-        //         </Button>
-        //         <br />
-        //         <Button
-        //             onClick={() => {
-        //                 setPage(page - 1);
-        //                 setX(-1000);
-        //             }}
-        //             variant="outline-secondary"
-        //             >
-        //             Previous
-        //         </Button>
-
-        // </motion.div>
     );
 }
 

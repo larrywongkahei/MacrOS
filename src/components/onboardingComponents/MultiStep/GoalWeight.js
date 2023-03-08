@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Typed from 'react-typed'
 
 const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, setX }) => {
 
@@ -31,7 +32,7 @@ const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, set
         transition={{ duration: 1 }}
         animate={{ x: 0 }}
       >
-        <Card.Header><h2>Last But Not Least...</h2>
+        <Card.Header>
         <Nav variant="pills" defaultActiveKey="#active">
             <Nav.Item>
               <Nav.Link href="" onClick={() => {
@@ -81,7 +82,11 @@ const GoalWeight = ({ page, setPage, newUser, setNewUser, handleUserPost, x, set
           </Nav>
         </Card.Header>
         <br />
-        <Card.Title><h3>What's Your Goal Weight?</h3></Card.Title>
+        <Card.Title><Typed
+                    strings={[`What's your goal weight?`]}
+                    typeSpeed={70}
+                    style={{fontSize:'30px', fontWeight: '600'}}
+                /></Card.Title>
         <br />
         <Card.Text>
         <input
