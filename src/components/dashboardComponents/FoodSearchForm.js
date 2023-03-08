@@ -306,7 +306,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         const today = new Date().toLocaleDateString()
 
     return(
-        <Card className="container-card">
+        <Card className="container-card-big">
             <Card.Header className="diary-title">Food Diary &nbsp; {today}</Card.Header>
                 <Container>
                     <div>
@@ -400,7 +400,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     
                     
 
-        <Container>
+        <Container className="container-card">
             <h2 className="table-title">Breakfast</h2>
             <Table striped bordered hover>
             <thead>
