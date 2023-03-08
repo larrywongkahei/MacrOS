@@ -7,12 +7,12 @@ const SVGComponent = (props) => (
     x={0}
     xmlns="http://www.w3.org/2000/svg"
     id="Layer_1"
-    width="200px"
-    height="200px"
+    width="2px"
+    height="2px"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     style={{
-      width: "100%",
-      height: "100%",
+      width: "5%",
+      height: "5%",
       backgroundSize: "initial",
       backgroundRepeatY: "initial",
       backgroundRepeatX: "initial",

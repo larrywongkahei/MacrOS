@@ -3,18 +3,23 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import StaticImage from '../images/static.jsx'
+import { useLocation } from 'react-router-dom'
+import { Windows } from 'react-bootstrap-icons';
+import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
 
 
 const NavBar = ({ user, dayTotals }) => {
 
 
-    if (user) {
+    if (user && window.location.pathname === '/'  ) {
    
     return (
         <Navbar bg="light" expand="lg" sticky="top">
-            <Container >
-                <Navbar.Brand href="/">{user.name}, Welcome to macrOS</Navbar.Brand>
+            <Container className='navbar-container' >
+            < StaticImage />
+                <Navbar.Brand href="/">Welcome to macrOS</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -44,10 +49,15 @@ const NavBar = ({ user, dayTotals }) => {
     return (
         <Navbar bg="light" expand="lg" sticky="top"  >
             <Container>
-                <Navbar.Brand href="/" id="onb-nav-title">macrOS</Navbar.Brand>
+                <StaticImage />
+                <Navbar.Brand href="/" id="onb-nav-title">Welcome To macrOS</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                </Navbar.Collapse>
+                    <Nav className="me-auto">
+                        <Nav.Link href="/">Dashboard</Nav.Link>
+                        <Nav.Link href="/journal">Journal</Nav.Link>
+                    </Nav>
+                    </Navbar.Collapse>
             </Container>
         </Navbar>
     ) 

@@ -1,7 +1,16 @@
+.navbar-container {
+  background-color:
+}
+
+
 .navbar {
     margin-bottom: 3rem;
     text-align: center;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
 }
+
 
 .progress-bar {
     color: black;
@@ -21,3 +30,4 @@
 .footer {
   height:4em;
   }
+
