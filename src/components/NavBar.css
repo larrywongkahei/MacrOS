@@ -1,31 +1,18 @@
-/* .navbar-container {
-  backgro
-} */
-
-
 .navbar {
+    margin-top: 1rem;
     margin-bottom: 3rem;
     text-align: center;
-    -webkit-border-radius: 40px;
-    -moz-border-radius: 40px;
-    border-radius: 40px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+  
+
 }
 
-
-.progress-bar {
-    color: black;
-  font-weight: 500;
-}
 
 #onb-nav-title {
     font-size: 1.7rem;
 }
-
-.progress {
-    width: 10rem;
-    height: 1.3rem;
-    font-size: 0.6em;
-  }
 
 .footer {
   height:4em;
