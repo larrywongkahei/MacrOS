@@ -1,4 +1,6 @@
-
+#root {
+  font-family: 'Albert Sans', sans-serif;
+}
 
 .component-container{
   border-style: solid;
@@ -9,6 +11,14 @@
   padding-top:1em;
   width:fit-content;
   
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 600;
 }
 
 .navbar{
@@ -115,6 +125,7 @@ background-color: #376497;
 }
 
 .charts-title {
+  font-weight:700;
   font-size:1.6em;
   text-decoration: solid;
   text-align: center;
