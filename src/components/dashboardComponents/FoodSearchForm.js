@@ -27,7 +27,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     // state for modals
     const [showFoodAdd, setShowFoodAdd] = useState(false);
     const [showCustomFoodAdd, setShowCustomFoodAdd] = useState(false);
-
+    const [showWeightChanger, setShowWeightChanger] = useState(false);
     const handleCloseFoodAdd = () => {
         setShowFoodAdd(false);
         setMealType("");
@@ -38,7 +38,9 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
     const handleCloseCustomFoodAdd = () => setShowCustomFoodAdd(false);
 
-    
+    const handleWeightUpdateAdd = () => setShowWeightChanger(true);
+
+    const handleCloseWeightChanger = () => setShowWeightChanger(false);
 
 
     // Day
@@ -581,11 +583,30 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 </tbody>
             </Table>
         </Container>
-        <form onSubmit={handleSubmit}>
+        
+        <Button variant="secondary" onClick={() => handleWeightUpdateAdd(!showWeightChanger)}> Weight in! &nbsp; <PlusCircle size={25}/></Button>
+        <Modal show={showWeightChanger} onHide={handleCloseWeightChanger}>
+            <Modal.Header closeButton>
+                <Modal.Title>Weigh in, please!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Weigh in</Form.Label>
+                        <Form.Control required type="text" placeholder={`Current weight: ${user.currentWeight}kg`} onChange={handleChange} />
+                        <Button onClick={handleSubmit} type="submit">+</Button>
+                    </Form.Group>
+                </Form>
+            {/* <form onSubmit={handleSubmit}>
                         <label htmlFor="weightUpdate">Weigh in!</label><br/>
                         <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
                         <button type="submit">+</button>
-                    </form>
+                    </form> */}
+            </Modal.Body>
+        </Modal>
+
+
+        
     <Button variant="success" className="me-2 btn-lg" onClick={handleCompleteDay}>Complete Day</Button>
     
     </Card>
