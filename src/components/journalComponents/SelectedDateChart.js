@@ -37,12 +37,12 @@ const SelectedDateChart = ({selectedDate, days}) => {
     console.log(dayArray);
 
     if (dayArray) {
-        const graphData = [totalForMacro(dayArray, "fat"), totalForMacro(dayArray, "protein"), totalForMacro(dayArray, "carbs"), totalForMacro(dayArray, "sugars")]
+        const graphData = [totalForMacro(dayArray, "fat"), totalForMacro(dayArray, "protein"), totalForMacro(dayArray, "carbs")]
 
         console.log(graphData);
 
         const data = {
-            labels: ["Fat", "Protein", "Carbs", "Sugar"],
+            labels: ["Fat", "Protein", "Carbs"],
             datasets: [{
                 label: "grams",
                 data: graphData
