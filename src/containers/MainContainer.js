@@ -71,7 +71,6 @@ const MainContainer = () => {
     const handleUserPut = (user) => {
         const request = new Request();
         request.put(`/api/user/${user.id}`, user).then(() => {
-            window.location = '/'
         })
     }
 

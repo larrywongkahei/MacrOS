@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { Container, Card, Row, Form, Table, Button, ListGroup, Modal } from 'react-bootstrap';
 import { PlusCircle, XCircle } from 'react-bootstrap-icons';
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, handleChange}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, setUser, handleUserPut}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -58,7 +58,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     }, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
     
 
-
+    const handleWeightChange = function (event) {
+        let propertyName = event.target.name;
+        let copiedUser = { ...user };
+        copiedUser[propertyName] = event.target.value;
+        setUser(copiedUser);
+    }
     function handleCustomFoodNameChange(e){
         setCustomFoodName(e.target.value)
     }
@@ -120,6 +125,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     function handleSubmit(e){
         e.preventDefault()
         setMealType("")
+    }
+
+    function handleClickSubmit(e){
+        e.preventDefault();
+        handleUserPut(user);
+        setShowWeightChanger(false);
     }
 
     function handleCompleteDay(e){
@@ -244,6 +255,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         "calories" : customFoodCalories,
     }
     addCustomFood(customFoodItem)
+    
+
 
     // clears input fields. correct way?
     setCustomFoodName("");
@@ -593,8 +606,8 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 <Form>
                     <Form.Group className="mb-3">
                         <Form.Label>Weigh in</Form.Label>
-                        <Form.Control required type="text" placeholder={`Current weight: ${user.currentWeight}kg`} onChange={handleChange} />
-                        <Button onClick={handleSubmit} type="submit">+</Button>
+                        <Form.Control required type="text" name="currentWeight" placeholder={`Current weight: ${user.currentWeight}kg`} onChange={handleWeightChange} />
+                        <Button onClick={handleClickSubmit} type="submit">+</Button>
                     </Form.Group>
                 </Form>
             {/* <form onSubmit={handleSubmit}>
