@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { Container, Card, Row, Form, Table, Button, ListGroup, Modal } from 'react-bootstrap';
 import { PlusCircle, XCircle } from 'react-bootstrap-icons';
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, handleChange}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -580,6 +580,11 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 </tbody>
             </Table>
         </Container>
+        <form onSubmit={handleSubmit}>
+                        <label htmlFor="weightUpdate">Weigh in!</label><br/>
+                        <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
+                        <button type="submit">+</button>
+                    </form>
     <Button variant="success" onClick={handleCompleteDay}>Complete Day</Button>
     
     </Card>
