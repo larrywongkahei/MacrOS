@@ -10,6 +10,7 @@
   padding:2em;
   padding-top:1em;
   width:fit-content;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   
 }
 
@@ -51,15 +52,26 @@ img {
   margin:5em;
 }
 
+.btn-padding {
+  font-size:2em;
+  margin-bottom:1em;
+}
+
 .modal-header {
   background-color: #5985B8;
   color:#f9f9f9;
+}
+
+.orange {
+  background-color: #f4A261;
+  opacity:0.8;
 }
 /* BUTTONS
  */
 .btn-primary {
   background-color: #5985B8;
   border-color: #5985B8;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .btn-primary:hover {
@@ -67,16 +79,17 @@ background-color: #376497;
 }
 
 .btn-success {
-  background-color: #9bc89f;
-  border-color: #9bc89f;
-  color:#0d0d0d
+  background-color: #69a46e;
+  border-color: #69a46e;
+  color:#f9f9f9;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   
 }
 
 .btn-success:hover {
-  background-color: #69a46e;
-  border-color: #69a46e;
-  color:#0d0d0d
+  background-color: #559e5b;
+  border-color: #559e5b;
+  color:#f9f9f9;
 
   
 }
@@ -97,31 +110,37 @@ background-color: #376497;
 .btn-secondary {
   background-color: #F4A261;
   border-color: #F4A261;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .btn-secondary:hover {
-  background-color: #cb7c3c;
+  background-color: #ff933a;
+  border-color: #ff933a;
 }
 
 .container-card {
   padding:1em 3em;
   opacity: 0.9;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
 .container-card-big {
   /* padding:1em 2em; */
   opacity: 0.9;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .container-card-buttons {
   padding:1em 2em;
   opacity: 0.9;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
 
 }
 
 .chart-card {
   padding:2em;
   opacity:1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .charts-title {
@@ -133,13 +152,14 @@ background-color: #376497;
 }
 
 .diary-title {
-  font-size:3em;
+  font-size:xx-large;
   text-decoration: solid;
   text-align: center;
-  padding-bottom: .4em;
-  background-color:#D6DFC2;
+  padding: 1em;
+  font-family: 'Albert Sans', sans-serif;
+  background-color:#69a46e;
   
-  color:#0d0d0d;
+  color:#f9f9f9;
   /* text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black; */
 }
 
@@ -150,14 +170,30 @@ h1 {
 
 
 .table-title{
-  background-color:#D6DFC2;
+  background-color:#69a46e;
   border-radius:5px;
-  color:#0d0d0d;
+  color:#f9f9f9;
   padding-left:0.3em;
   padding-right:0.3em;
   padding-top:0.1em;
   padding-bottom:0.1em;
-  width:fit-content 100%;
+  width: 100%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
 }
+
+.title-width {
+  width:100%;
+  text-align:center;
+  background-color:#5985B8;
+}
+
+.btn-fit-content {
+  width:fit-content;
+}
+
+.btn-close {
+  color:#f9f9f9;
+}
+
 

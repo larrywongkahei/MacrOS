@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Swal from 'sweetalert2'
 
 import { Container, Card, Row, Form, Table, Button, ListGroup, Modal } from 'react-bootstrap';
-import { PlusCircle, XCircle } from 'react-bootstrap-icons';
+import { PlusCircle, XCircle, JournalPlus, Speedometer } from 'react-bootstrap-icons';
 
 const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, setUser, handleUserPut}) => {
     const [foodInput, setFoodInput] = useState("")
@@ -334,7 +334,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
 
     return(
         <Card className="container-card-big">
-            <Card.Header className="diary-title"><h1>Food Diary &nbsp; {today}</h1></Card.Header>
+            <Card.Header className="diary-title"><h1>Food Diary <JournalPlus size={45}/></h1></Card.Header>
                 <Container>
                     <div>
                         <Form>
@@ -348,7 +348,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     
                                     <Button variant="secondary" onClick={() => handleCustomFoodAdd(!showCustomFoodAdd)}>Custom Food &nbsp; <PlusCircle size={25}/></Button>
                                     <Modal show={showCustomFoodAdd} onHide={handleCloseCustomFoodAdd}>
-                                        <Modal.Header closeButton>
+                                        <Modal.Header className="orange" closeButton>
                                             <Modal.Title>Add Food to Database</Modal.Title>
                                             </Modal.Header>
                                             <Modal.Body>
@@ -583,8 +583,12 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         </tr>
                     </tbody>
                     </Table>
+                    
     </Container>
         <Container className="container-card">
+            <Container className="d-flex justify-content-center">
+                <h2 className="table-title title-width">Daily Totals</h2>
+            </Container>
             <Table striped bordered hover>
             <thead>
                 <tr>
@@ -598,7 +602,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
             </thead>
                 <tbody>
                     <tr>
-                        <td><b className="table-title">Day Totals</b></td>
+                        <td><b>Day Totals</b></td>
                         <td>{dayTotals.calories.toFixed(0)}</td>
                         <td>{dayTotals.carbs.toFixed(0)}</td>
                         <td>{dayTotals.sugars.toFixed(0)}</td>
@@ -608,18 +612,18 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 </tbody>
             </Table>
         </Container>
-        
-        <Button variant="secondary" onClick={() => handleWeightUpdateAdd(!showWeightChanger)}> Weight in! &nbsp; <PlusCircle size={25}/></Button>
+        <Container className="d-flex justify-content-center">
+            <Button className="btn-fit-content" variant="secondary" onClick={() => handleWeightUpdateAdd(!showWeightChanger)}> Weigh in &nbsp; <Speedometer size={25}/></Button>
+        </Container>
         <Modal show={showWeightChanger} onHide={handleCloseWeightChanger}>
-            <Modal.Header closeButton>
-                <Modal.Title>Weigh in, please!</Modal.Title>
+            <Modal.Header className="orange" closeButton>
+                <Modal.Title>Update Weight</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
                     <Form.Group className="mb-3">
-                        <Form.Label>Weigh in</Form.Label>
                         <Form.Control required type="text" name="currentWeight" placeholder={`Current weight: ${user.currentWeight}kg`} onChange={handleWeightChange} />
-                        <Button onClick={handleClickSubmit} type="submit">+</Button>
+                        <Button variant="success" onClick={handleClickSubmit} type="submit">Submit</Button>
                     </Form.Group>
                 </Form>
 
@@ -627,9 +631,9 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         </Modal>
 
 
-        
-    <Button variant="success" className="me-2 btn-lg" onClick={handleCompleteDay}>Complete Day</Button>
-    
+    <Container className="d-flex justify-content-center">  
+        <Button variant="success" className="me-2 btn-lg btn-padding btn-fit-content" onClick={handleCompleteDay}>Complete Day</Button>
+    </Container>
     </Card>
     )
 }
