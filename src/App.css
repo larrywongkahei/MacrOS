@@ -57,14 +57,17 @@ background-color: #376497;
 }
 
 .btn-success {
-  background-color: #2A9D8F;
-  border-color: #2A9D8F;
+  background-color: #9bc89f;
+  border-color: #9bc89f;
+  color:#0d0d0d
   
 }
 
 .btn-success:hover {
-  background-color: #157469;
-  border-color: #157469;
+  background-color: #69a46e;
+  border-color: #69a46e;
+  color:#0d0d0d
+
   
 }
 
@@ -123,16 +126,27 @@ background-color: #376497;
   text-decoration: solid;
   text-align: center;
   padding-bottom: .4em;
-  background-color:#2A9D8F;
-  color:#f9f9f9;
+  background-color:#D6DFC2;
+  
+  color:#0d0d0d;
   /* text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black; */
 }
 
+h1 {
+  margin:0
+}
+
+
+
 .table-title{
-  background-color:#E9C46A;
+  background-color:#D6DFC2;
+  border-radius:5px;
+  color:#0d0d0d;
   padding-left:0.3em;
   padding-right:0.3em;
-  width:fit-content;
+  padding-top:0.1em;
+  padding-bottom:0.1em;
+  width:fit-content 100%;
 
 }
 

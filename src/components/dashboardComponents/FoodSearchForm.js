@@ -307,7 +307,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
 
     return(
         <Card className="container-card-big">
-            <Card.Header className="diary-title">Food Diary &nbsp; {today}</Card.Header>
+            <Card.Header className="diary-title"><h1>Food Diary &nbsp; {today}</h1></Card.Header>
                 <Container>
                     <div>
                         <Form>
@@ -557,7 +557,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     </tbody>
                     </Table>
     </Container>
-        <Container>
+        <Container className="container-card">
             <Table striped bordered hover>
             <thead>
                 <tr>
@@ -586,7 +586,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
                         <button type="submit">+</button>
                     </form>
-    <Button variant="success" onClick={handleCompleteDay}>Complete Day</Button>
+    <Button variant="success" className="me-2 btn-lg" onClick={handleCompleteDay}>Complete Day</Button>
     
     </Card>
     )
