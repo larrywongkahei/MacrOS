@@ -9,6 +9,8 @@ import {
     Legend, 
 } from 'chart.js/auto';
 import { Line } from 'react-chartjs-2'
+import { Card } from 'react-bootstrap'
+
 
 const GoalsCharts = ({user, days}) => {
     const userGoal = user.goalWeight;
@@ -50,9 +52,11 @@ const GoalsCharts = ({user, days}) => {
 
 
         return(
-            <>
-            <Line data={data} />
-            </>
+            <Card>
+                <Card.Header className="charts-title">Title for chart</Card.Header>
+
+                <Line data={data} />
+            </Card>
         )
     }
 

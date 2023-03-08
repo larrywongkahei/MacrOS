@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Title, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import { Container, Card } from 'react-bootstrap';
 
 ChartJS.register(ArcElement, Tooltip, Title, Legend);
 
@@ -21,9 +22,9 @@ const percentageFat = ((dayTotals.fat*9)/dayTotals.calories)*100
             label: '%',
             data: [percentageCarbs.toFixed(0), percentageProtein.toFixed(0), percentageFat.toFixed(0)],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
+                'rgba(233, 196, 106)',
+                'rgba(42, 157, 143)',
+                'rgba(231, 111, 81)',
                 
             ]
             },
@@ -38,9 +39,12 @@ const percentageFat = ((dayTotals.fat*9)/dayTotals.calories)*100
     }
     
     return (
-        <>
-        <Pie data={data} options={options}/>
-        </>
+        // <Container className="container-card">
+            <Card className="chart-card">
+                <Card.Header className="charts-title">Macros (%)</Card.Header>
+                <Pie data={data} options={options}/>
+            </Card>
+        // </Container>
     )
 }
 export default MacroCharts;

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Card } from 'react-bootstrap'
+
 
 const GoalsStats = ({user, setUser, onEdit}) => {
 
@@ -8,13 +10,13 @@ const GoalsStats = ({user, setUser, onEdit}) => {
     }
 
     return(
-        <div className="component-container">
-            <h3>Your statistics</h3>
+        <Card className="container-card">
+            <Card.Header className="charts-title">{user.name}'s Statistics</Card.Header>
                 <p>Starting weight: {user.startingWeight}kg</p>
                 <p>Your current weight: {user.currentWeight}kg</p>
                 <p>Your goal weight: {user.goalWeight}kg</p>
                 <p>Current BMI: {calculateBMI(user)}</p>
-        </div>
+        </Card>
 
 
     )

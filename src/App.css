@@ -41,8 +41,59 @@ img {
   margin:5em;
 }
 
+.modal-header {
+  background-color: #5985B8;
+  color:#f9f9f9;
+}
+/* BUTTONS
+ */
+.btn-primary {
+  background-color: #5985B8;
+  border-color: #5985B8;
+}
+
+.btn-primary:hover {
+background-color: #376497;
+}
+
+.btn-success {
+  background-color: #2A9D8F;
+  border-color: #2A9D8F;
+  
+}
+
+.btn-secondary {
+  background-color: #F4A261;
+  border-color: #F4A261;
+}
+
+.btn-secondary:hover {
+  background-color: #cb7c3c;
+}
+
 .container-card {
+  padding:1em 2em;
   opacity: 0.9;
+
+}
+
+.chart-card {
+  padding:2em;
+  opacity:1;
+}
+
+.charts-title {
+  font-size:1.6em;
+  text-decoration: solid;
+  text-align: center;
+  padding-bottom: .4em;
+}
+
+.table-title{
+  background-color:#E9C46A;
+  padding-left:0.3em;
+  padding-right:0.3em;
+  width:fit-content;
 
 }
 

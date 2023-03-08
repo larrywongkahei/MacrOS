@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { Container, Card } from 'react-bootstrap';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -16,8 +17,8 @@ const CaloriesRemainingChart = ({dayTotals, user}) => {
             label: 'Kcal',
             data: [dayTotals.calories, user.caloriesGoal],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
+                'rgba(89, 133, 184)',
+                'rgba(89, 133, 184, 0.5)',
                 'rgba(255, 206, 86, 0.2)',
                 
             ]
@@ -33,9 +34,12 @@ const CaloriesRemainingChart = ({dayTotals, user}) => {
     }
     
     return (
-        <>
-        <Doughnut data={data} options={options}/>
-        </>
+        // <Container className="container-card">
+            <Card className="chart-card">
+                <Card.Header className="charts-title">Calories Remaining Kcal</Card.Header>
+                <Doughnut data={data} options={options}/>
+            </Card>
+        // </Container>
     )
 }
 export default CaloriesRemainingChart;

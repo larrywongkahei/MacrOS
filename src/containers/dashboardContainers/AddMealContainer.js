@@ -10,11 +10,11 @@ import Card from 'react-bootstrap/Card';
 const AddMealContainer = ({foodItems, searchFoodItemsByThreeLetters, filteredList, getDateData, addCustomFood, updateDayTotal, user, setUser, handleUserPut }) => {
 
     return(
-        <Card className="container-card">
-            <Card.Body>
+        <Container className="container-card">
+            <Container>
                 <FoodSearchForm foodItems={foodItems} searchFoodItemsByThreeLetters={searchFoodItemsByThreeLetters} filteredList={filteredList} getDateData={getDateData} addCustomFood={addCustomFood} updateDayTotal={updateDayTotal} setUser={setUser} user={user} handleUserPut={handleUserPut}/>
-            </Card.Body>
-        </Card>
+            </Container>
+        </Container>
     )
 }
 
