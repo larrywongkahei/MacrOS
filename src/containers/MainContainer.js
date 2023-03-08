@@ -80,7 +80,6 @@ const MainContainer = () => {
     }
 
     const handleDayPost = async (day, listOfMeals) => {
-        console.log(`logging from main container: ${day}`);
         const request = new Request();
         const postDay = await request.post('/api/days', day)
         const responseToData = await postDay.json()
@@ -97,7 +96,7 @@ const MainContainer = () => {
         responseToData['meals'] = updatedMeals
         // Update the day object to database
         handleDayPut(responseToData)
-
+        window.location.replace('/journal');
     }
 
     function putFoodItemsIntoList(mealList, foodItmesList){

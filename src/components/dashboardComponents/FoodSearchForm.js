@@ -137,7 +137,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
             title: 'Weigh In Complete!',
             text: `Your weight has been updated to ${user.currentWeight}kg` ,
             icon: 'success',
-            confirmButtonText: 'Return'
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#A5DC86'
           })
     }
 
@@ -147,7 +148,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         const date = new Date();
         // toISOString() method converts to ISO format. split removes the time
         const isoDateStr = date.toISOString().split('T')[0];
-        console.log(isoDateStr);
+      
 
 
         
@@ -162,7 +163,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
             title: 'Day Complete!',
             text: 'The day has been added to your diary',
             icon: 'success',
-            confirmButtonText: 'Return'
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#A5DC86'
           })
         // getDateData -> handleDayPost automatically resets the page and meal/day state
         // alert to say day has been completed and saved
@@ -182,7 +184,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
                 title: 'Oops!',
                 text: 'The quantity must be more than zero',
                 icon: 'error',
-                confirmButtonText: 'Return'
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#A5DC86'
               })
         }else{
         const listToBeMultiply = ["carbs", "sugars", "protein", "fat", "calories"]
@@ -282,8 +285,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         title: 'Success!',
         text: 'You have added your custom food to our database and can now search for it',
         icon: 'success',
-        confirmButtonText: 'Return'
-
+        confirmButtonText: 'Return',
+        confirmButtonColor: '#A5DC86'
         })
         
     }
@@ -619,11 +622,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         <Button onClick={handleClickSubmit} type="submit">+</Button>
                     </Form.Group>
                 </Form>
-            {/* <form onSubmit={handleSubmit}>
-                        <label htmlFor="weightUpdate">Weigh in!</label><br/>
-                        <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
-                        <button type="submit">+</button>
-                    </form> */}
+
             </Modal.Body>
         </Modal>
 
