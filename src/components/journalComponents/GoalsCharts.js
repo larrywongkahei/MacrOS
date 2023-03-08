@@ -12,6 +12,7 @@ import { Line } from 'react-chartjs-2'
 import { Card } from 'react-bootstrap'
 
 
+
 const GoalsCharts = ({user, days}) => {
     const userGoal = user.goalWeight;
 
@@ -48,14 +49,29 @@ const GoalsCharts = ({user, days}) => {
         }]
     }
 
+    
+
       
 
 
         return(
             <Card className='charts-card'>
-                <Card.Header className="charts-title">Title for chart</Card.Header>
+                <Card.Header className="charts-title">Weight Trends</Card.Header>
 
-                <Line data={data} />
+                <Line data={data} options = {{
+                                                plugins: {
+                                                legend: { 
+                                                    display: true, 
+                                                    position: "top"
+                                                    },
+                                                }      
+                                                ,
+                                                scales: {
+                                                    y: {
+                                                        min: 50,
+                                                        max: 110,
+                                                    }
+                                                }}}/>
             </Card>
         )
     }
