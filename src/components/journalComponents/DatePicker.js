@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { format } from 'date-fns'
 import { DayPicker } from 'react-day-picker'
 import { Card } from 'react-bootstrap'
+import './DatePicker.css'
 
 function DatePicker ({updateDate, selectedDate, days}) {
     
