@@ -5,10 +5,10 @@ import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Typed from 'react-typed'
-import Swal from 'sweetalert2'
 
 
-const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingComplete, handleUserPost, x, setX }) => {
+
+const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, handleUserPost, x, setX }) => {
 
 
 
@@ -143,11 +143,6 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
     }
 
 
-    const clickHandlerForward = (skipPages) => {
-        setPage(page + skipPages);
-        setX(1000);
-    }
-
     const clickHandlerBackward = (skipPages) => {
         setPage(page - skipPages);
         setX(-1000);
@@ -246,11 +241,3 @@ const Goals = ({ page, setPage, newUser, setNewUser, emptyUser, setOnboardingCom
 
 export default Goals;
 
-
-
-// Swal.fire({
-//     title: 'Your nutrition goals per day:',
-//     text: `Calories: ${user.caloriesGoal} Kcal \n  Protein: ${user.proteinGoal}g \n  Fat: ${user.fatGoal}g \n  Carbs: ${user.carbsGoal}g`,
-//     icon: 'success',
-//     confirmButtonText: 'OK',
-//   })

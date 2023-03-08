@@ -19,11 +19,10 @@ const NavBar = ({ user, dayTotals }) => {
         marginTop: '1rem',
         marginBottom: '3rem',
         textAlign: 'center',
-        webkitBorderRadius: '20px',
-        mozBorderRadius: '20px',
-        borderRadius: '20px',
-        marginLeft:'0.5em',
-        marginRight:'0.5em'
+        WebkitBorderRadius: '30px',
+        MozBorderRadius: '30px',
+        borderRadius: '30px'
+
     }
 
     const progressbarStyle = {

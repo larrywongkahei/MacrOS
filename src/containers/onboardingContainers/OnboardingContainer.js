@@ -1,12 +1,12 @@
 import OnboardingController from "../../components/onboardingComponents/MultiStep/OnboardingController";
 
-const OnboardingContainer = ({handleUserPost, setOnboardingComplete}) => {
+const OnboardingContainer = ({handleUserPost}) => {
 
 
 
     return(
         <>
-        <OnboardingController handleUserPost={handleUserPost} setOnboardingComplete={setOnboardingComplete}/>
+        <OnboardingController handleUserPost={handleUserPost}/>
         </>
     )
 }
