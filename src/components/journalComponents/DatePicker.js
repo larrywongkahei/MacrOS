@@ -26,7 +26,7 @@ function DatePicker ({updateDate, selectedDate, days}) {
             mode="single"
             selected={selectedDate}
             onSelect={dateChange} />
-            </Container>
+            
         </Card>
     )
 
