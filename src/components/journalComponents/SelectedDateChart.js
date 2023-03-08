@@ -9,13 +9,16 @@ import {
     Legend, 
 } from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2'
-import { Card } from 'react-bootstrap';
+import { Card, Spinner, Container } from 'react-bootstrap';
 
 
 const SelectedDateChart = ({selectedDate, days}) => {
 
     if (days.length === 0) {
-        return <p>Loading...</p>
+        return (
+                            <Spinner animation="grow" />
+                        
+        )
     }
 
     const totalForMacro = (dayArray, macroName) => {
