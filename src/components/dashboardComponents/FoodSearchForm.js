@@ -131,6 +131,13 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         e.preventDefault();
         handleUserPut(user);
         setShowWeightChanger(false);
+        Swal.fire({
+            title: 'Success!',
+            text: 'You have added your custom food to our database and can now search for it',
+            icon: 'success',
+            confirmButtonText: 'Return'
+    
+            });
     }
 
     function handleCompleteDay(e){
