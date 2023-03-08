@@ -493,7 +493,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         </tr>
       </thead>
       <tbody>
-        {lunchFoodItems.map((item) => (
+        {dinnerFoodItems.map((item) => (
                             <tr key={item.id}>
                             <td>{item.name}</td>
                             <td>{item.calories.toFixed(0)}</td>
