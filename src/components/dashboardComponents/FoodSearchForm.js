@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { Container, Card, Row, Form, Table, Button, ListGroup, Modal } from 'react-bootstrap';
 import { PlusCircle, XCircle } from 'react-bootstrap-icons';
 
-const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, handleChange}) => {
+const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, addCustomFood, updateDayTotal, user, setUser, handleUserPut}) => {
     const [foodInput, setFoodInput] = useState("")
     const [filtereditems, setFilteredItems] = useState([])
     const [filteredFoodItems, setFilteredFoodItems] = useState([])
@@ -27,7 +27,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     // state for modals
     const [showFoodAdd, setShowFoodAdd] = useState(false);
     const [showCustomFoodAdd, setShowCustomFoodAdd] = useState(false);
-
+    const [showWeightChanger, setShowWeightChanger] = useState(false);
     const handleCloseFoodAdd = () => {
         setShowFoodAdd(false);
         setMealType("");
@@ -38,7 +38,9 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
 
     const handleCloseCustomFoodAdd = () => setShowCustomFoodAdd(false);
 
-    
+    const handleWeightUpdateAdd = () => setShowWeightChanger(true);
+
+    const handleCloseWeightChanger = () => setShowWeightChanger(false);
 
 
     // Day
@@ -56,7 +58,12 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     }, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
     
 
-
+    const handleWeightChange = function (event) {
+        let propertyName = event.target.name;
+        let copiedUser = { ...user };
+        copiedUser[propertyName] = event.target.value;
+        setUser(copiedUser);
+    }
     function handleCustomFoodNameChange(e){
         setCustomFoodName(e.target.value)
     }
@@ -118,6 +125,18 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     function handleSubmit(e){
         e.preventDefault()
         setMealType("")
+    }
+
+    function handleClickSubmit(e){
+        e.preventDefault();
+        handleUserPut(user);
+        setShowWeightChanger(false);
+        Swal.fire({
+            title: 'Weigh In Complete!',
+            text: `Your weight has been updated to ${user.currentWeight}kg` ,
+            icon: 'success',
+            confirmButtonText: 'Return'
+          })
     }
 
     function handleCompleteDay(e){
@@ -242,6 +261,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         "calories" : customFoodCalories,
     }
     addCustomFood(customFoodItem)
+    
+
 
     // clears input fields. correct way?
     setCustomFoodName("");
@@ -581,11 +602,30 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 </tbody>
             </Table>
         </Container>
-        <form onSubmit={handleSubmit}>
+        
+        <Button variant="secondary" onClick={() => handleWeightUpdateAdd(!showWeightChanger)}> Weight in! &nbsp; <PlusCircle size={25}/></Button>
+        <Modal show={showWeightChanger} onHide={handleCloseWeightChanger}>
+            <Modal.Header closeButton>
+                <Modal.Title>Weigh in, please!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Weigh in</Form.Label>
+                        <Form.Control required type="text" name="currentWeight" placeholder={`Current weight: ${user.currentWeight}kg`} onChange={handleWeightChange} />
+                        <Button onClick={handleClickSubmit} type="submit">+</Button>
+                    </Form.Group>
+                </Form>
+            {/* <form onSubmit={handleSubmit}>
                         <label htmlFor="weightUpdate">Weigh in!</label><br/>
                         <input type="text" id="weightUpdate" placeholder={`Current weight: ${user.currentWeight}kg`} name="currentWeight" onChange={handleChange} />
                         <button type="submit">+</button>
-                    </form>
+                    </form> */}
+            </Modal.Body>
+        </Modal>
+
+
+        
     <Button variant="success" className="me-2 btn-lg" onClick={handleCompleteDay}>Complete Day</Button>
     
     </Card>
