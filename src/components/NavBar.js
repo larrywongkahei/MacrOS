@@ -13,11 +13,23 @@ import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 const NavBar = ({ user, dayTotals }) => {
 
 
+    const navbarStyle = {
+        backgroundColor: '#d9dada',
+        opacity:'0.7',
+        fontWeight: '800',
+        marginTop: '1rem',
+        marginBottom: '3rem',
+        textAlign: 'center',
+        webkitBorderRadius: '30px',
+        mozBorderRadius: '30px',
+        borderRadius: '30px'
+    }
+
 
     if (user && window.location.pathname === '/'  ) {
    
     return (
-        <Navbar style={{ backgroundColor: '#d9dada', opacity:'0.7', fontWeight: '800', marginTop: '1rem', marginBottom: '3rem', textAlign: 'center'  }}  expand="lg" variant="light" sticky="top">
+        <Navbar style={ navbarStyle }  expand="lg" variant="light" sticky="top">
             <Container >
             < StaticImage />
                 <Navbar.Brand href="/">Welcome to macrOS</Navbar.Brand>
@@ -48,7 +60,7 @@ const NavBar = ({ user, dayTotals }) => {
 
 } else {
     return (
-        <Navbar style={{ backgroundColor: '#d9dada', opacity:'0.7', fontWeight: '800' }} bg="light" expand="lg" sticky="top"  >
+        <Navbar style={ navbarStyle }  expand="lg" variant="light" sticky="top">
             <Container>
                 <StaticImage />
                 <Navbar.Brand href="/" id="onb-nav-title">Welcome To macrOS</Navbar.Brand>

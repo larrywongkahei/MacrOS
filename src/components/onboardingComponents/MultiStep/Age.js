@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Typed from 'react-typed'
 
 
 const Age = ({ page, setPage, newUser, setNewUser, x, setX }) => {
@@ -22,7 +23,7 @@ const Age = ({ page, setPage, newUser, setNewUser, x, setX }) => {
   const currentProgress = 24;
 
   return (
-
+    
     <Card style= {{ width: '53rem'}} className="text-center">
       <Card.Body>
     <motion.div
@@ -30,7 +31,7 @@ const Age = ({ page, setPage, newUser, setNewUser, x, setX }) => {
       transition={{ duration: 1 }}
       animate={{ x: 0 }}
     >
-      <Card.Header><h2>Welcome to macrOS, {newUser.name}!</h2>
+      <Card.Header>
       <Nav variant="pills" defaultActiveKey="#active">
           <Nav.Item>
             <Nav.Link href="" onClick={() => {
@@ -38,7 +39,7 @@ const Age = ({ page, setPage, newUser, setNewUser, x, setX }) => {
           }}>Name</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#active" onClick={() => {
+            <Nav.Link  href="#active" onClick={() => {
             setPage(page)
           }}>Age</Nav.Link>
           </Nav.Item>
@@ -80,7 +81,12 @@ const Age = ({ page, setPage, newUser, setNewUser, x, setX }) => {
         </Nav>
       </Card.Header>
       <br />
-      <Card.Title><h3>What's your age?</h3></Card.Title>
+      <Card.Title><Typed
+                    strings={[`Hi ${newUser.name}! How old are you?`]}
+                    typeSpeed={70}
+                    style={{fontSize:'30px', fontWeight: '600'}}
+                    backSpeed={50}
+                /></Card.Title>
       <br />
       <Card.Text>
       <input

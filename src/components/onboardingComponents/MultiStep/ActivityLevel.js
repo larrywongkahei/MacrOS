@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Typed from 'react-typed'
 
 
 const ActivityLevel = ({ page, setPage, newUser, setNewUser, x, setX }) => {
@@ -31,7 +32,7 @@ const ActivityLevel = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                     transition={{ duration: 1 }}
                     animate={{ x: 0 }}
                 >
-                    <Card.Header><h2>That's The Main Thing, Though...</h2>
+                    <Card.Header>
                         <Nav variant="pills" defaultActiveKey="#active">
                             <Nav.Item>
                                 <Nav.Link href="" onClick={() => {
@@ -81,7 +82,11 @@ const ActivityLevel = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                         </Nav>
                     </Card.Header>
                     <br />
-                    <Card.Title><h3>How Active Is Your Lifestyle?</h3></Card.Title>
+                    <Card.Title><Typed
+                    strings={[`How active is your lifestyle?`]}
+                    typeSpeed={70}
+                    style={{fontSize:'30px', fontWeight: '600'}}
+                /></Card.Title>
                     <br />
                     <Card.Text>
                         <div onChange={(e) => setNewUser({ ...newUser, activityLevel: e.target.value })}>

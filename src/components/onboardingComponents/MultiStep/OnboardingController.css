@@ -2,6 +2,7 @@
   margin: 0 auto; 
   float: none; 
   margin-bottom: 10px; 
+  opacity: 0.9;
 }
 
 label span {
@@ -12,6 +13,8 @@ label span {
 Button {
     margin: .6rem;
 }
+
+
 
 
 

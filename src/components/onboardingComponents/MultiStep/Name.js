@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Typed from 'react-typed'
+
 
 const Name = ({ page, setPage, newUser, setNewUser, x, setX }) => {
 
@@ -11,26 +13,23 @@ const Name = ({ page, setPage, newUser, setNewUser, x, setX }) => {
     setX(1000);
   }
 
-  const clickHandlerBackward = (skipPages) => {
-    setPage(page - skipPages);
-    setX(-1000);
-  }
-
   const currentProgress = 12;
 
-  return (
 
-    <Card style= {{ width: '53rem'}} className="text-center">
+  return (
+  
+
+    <Card style= {{ width: '53rem',}} className="text-center">
       <Card.Body>
     <motion.div
       initial={{ x: x }}
       transition={{ duration: 1 }}
       animate={{ x: 0 }}
     >
-      <Card.Header><h2>Welcome to macrOS!</h2>
+      <Card.Header > <h2>Let's get to know each other :-)</h2>
       <Nav variant="pills" defaultActiveKey="#active">
-          <Nav.Item>
-            <Nav.Link href="#active" onClick={() => {
+          <Nav.Item  >
+            <Nav.Link  href="#active" onClick={() => {
             setPage(page);
           }}>Name</Nav.Link>
           </Nav.Item>
@@ -77,7 +76,11 @@ const Name = ({ page, setPage, newUser, setNewUser, x, setX }) => {
         </Nav>
       </Card.Header>
       <br />
-      <Card.Title><h3>What's your name?</h3></Card.Title>
+      <Card.Title> <Typed
+                    strings={[`What's your name?`]}
+                    typeSpeed={60}
+                    style={{fontSize:'30px', fontWeight: '600'}}
+                /></Card.Title>
       <br />
       <Card.Text>
       <input

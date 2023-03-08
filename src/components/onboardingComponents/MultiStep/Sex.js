@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Typed from 'react-typed'
 
 
 const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
@@ -29,7 +30,7 @@ const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                     transition={{ duration: 1 }}
                     animate={{ x: 0 }}
                 >
-                    <Card.Header><h2>Just a few more details, {newUser.name}!</h2>
+                    <Card.Header>
                         <Nav variant="pills" defaultActiveKey="#active">
                             <Nav.Item>
                                 <Nav.Link href="" onClick={() => {
@@ -79,7 +80,11 @@ const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
                         </Nav>
                     </Card.Header>
                     <br />
-                    <Card.Title><h3>What's your gender?</h3></Card.Title>
+                    <Card.Title><Typed
+                    strings={[`What's your gender?`]}
+                    typeSpeed={70}
+                    style={{fontSize:'30px', fontWeight: '600'}}
+                /></Card.Title>
                     <br />
                     <Card.Text>
                         <div onChange={(e) => setNewUser({ ...newUser, sex: e.target.value })}>
@@ -116,72 +121,6 @@ const Sex = ({ page, setPage, newUser, setNewUser, x, setX }) => {
             </Card.Body>
         </Card>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // <Card style={{ width: '53rem' }} className="text-center">
-        //     <Card.Body>
-        //         <motion.div
-        //             initial={{ x: x }}
-        //             transition={{ duration: 1 }}
-        //             animate={{ x: 0 }}
-        //         >
-
-        //             <Card.Header>Welcome to macrOS</Card.Header>
-        //             <div>What's your gender?</div>
-        //             <div onChange={(e) => setNewUser({ ...newUser, sex: e.target.value })}>
-        //                 <div className="form-check">
-        //                     <input type="radio" value="Male" name="sex" id="sex1" className="form-check-input" />
-        //                     <label className="form-check-label" htmlFor="sex1">Male</label>
-        //                 </div>
-        //                 <div className="form-check">
-        //                     <input type="radio" value="Female" name="sex" id="sex2" className="form-check-input" />
-        //                     <label className="form-check-label" htmlFor="sex2">Female</label>
-        //                 </div>
-        //             </div>
-        //             <Button
-        //                 onClick={() => {
-        //                     if (newUser.sex !== "") {
-        //                         setPage(page + 1)
-        //                         setX(1000)
-        //                     } else {
-        //                         alert('Sex not selected, please try again')
-        //                     }
-        //                 }}
-        //                 variant="outline-success"
-        //             >
-        //                 Next
-        //             </Button>
-        //             <br />
-        //             <Button
-        //                 onClick={() => {
-        //                     setPage(page - 1);
-        //                     setX(-1000);
-        //                 }}
-        //                 variant="outline-secondary"
-        //             >
-        //                 Previous
-        //             </Button>
-
-        //         </motion.div>
-        //     </Card.Body>
-        // </Card>
     );
 }
 

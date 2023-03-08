@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Typed from 'react-typed'
 
 const Height = ({ page, setPage, newUser, setNewUser, x, setX }) => {
 
@@ -16,7 +17,7 @@ const Height = ({ page, setPage, newUser, setNewUser, x, setX }) => {
     setX(-1000);
   }
 
-  const currentProgress = 48;
+  const currentProgress = 50;
 
 
 
@@ -29,7 +30,7 @@ const Height = ({ page, setPage, newUser, setNewUser, x, setX }) => {
     transition={{ duration: 1 }}
     animate={{ x: 0 }}
   >
-    <Card.Header><h2>Halfway There...</h2>
+    <Card.Header>
     <Nav variant="pills" defaultActiveKey="#active">
         <Nav.Item>
           <Nav.Link href="" onClick={() => {
@@ -79,7 +80,11 @@ const Height = ({ page, setPage, newUser, setNewUser, x, setX }) => {
       </Nav>
     </Card.Header>
     <br />
-    <Card.Title><h3>How tall are you?</h3></Card.Title>
+    <Card.Title><Typed
+                    strings={[`How tall are you?`]}
+                    typeSpeed={70}
+                    style={{fontSize:'30px', fontWeight: '600'}}
+                /></Card.Title>
     <br />
     <Card.Text>
     <input

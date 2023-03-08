@@ -53,10 +53,15 @@ const MainContainer = () => {
         // })
         setOnboardingComplete(true);
         Swal.fire({
-            title: 'Your Nutrition Goals Per Day',
-            text: `Calories: ${user.caloriesGoal}Kcal \n Protein: ${user.proteinGoal}g \n Fat: ${user.fatGoal}g \n Carbs: ${user.carbsGoal}g`,
+            title: 'Your nutrition goals per day:',
+            html:
+            '<b>Calories:</b> &nbsp'+`${user.caloriesGoal} kcal`+'<br/>' +
+            '<b>Protein:</b> &nbsp'+`${user.proteinGoal}g` + '<br/>' +
+            '<b>Fat:</b> &nbsp'+`${user.fatGoal}g` + '<br/>' +
+            '<b>Carbs:</b> &nbsp'+`${user.carbsGoal}g`,
             icon: 'success',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#A5DC86'
           })
           setUser(user);
     }
