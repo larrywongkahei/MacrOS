@@ -200,8 +200,8 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
     }
     const foodItemsToShow = filteredFoodItems.splice(0,5).map((each,index) => {
         return (
-            <ul>
-                <li onClick={getTheFoodItem} value={each.id} key={index} className="db-food-item">
+            <ul onClick={getTheFoodItem}>
+                <li  value={each.id} key={index} className="db-food-item">
                     <b>{each.name}</b> C {each.carbs} / P {each.protein} / F {each.fat} (per 100g)
                 </li>
                 {/* button to add the fooditems, could use react icons */}
@@ -402,7 +402,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
 
         <Container className="container-card">
             <h2 className="table-title">Breakfast</h2>
-            <Table striped bordered hover>
+            <Table striped hover>
             <thead>
         <tr>
           <th>Food Item</th>
@@ -416,17 +416,19 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
       </thead>
       <tbody>
         {breakfastFoodItems.map((item) => (
-                            <tr key={item.id}>
-                            <td>{item.name}</td>
-                            <td>{item.calories.toFixed(0)}</td>
-                            <td>{item.carbs.toFixed(1)}g</td>
-                            <td>{item.sugars.toFixed(1)}g</td>
-                            <td>{item.protein.toFixed(0)}g</td>
-                            <td>{item.fat.toFixed(0)}g</td>
-                            <td>
-                            <Button variant="danger" onClick={() => onRemoveBreakfast(item)}><XCircle size={25}/></Button>
-                            </td>
-                          </tr>
+                            
+                                <tr key={item.id}>
+                                <td>{item.name}</td>
+                                <td>{item.calories.toFixed(0)}</td>
+                                <td>{item.carbs.toFixed(1)}g</td>
+                                <td>{item.sugars.toFixed(1)}g</td>
+                                <td>{item.protein.toFixed(0)}g</td>
+                                <td>{item.fat.toFixed(0)}g</td>
+                          
+                                <Button variant="danger" className="btn-danger" onClick={() => onRemoveBreakfast(item)}><XCircle size={25}/></Button>
+                                </tr>
+                                                    
+
                           
                         ))}
                         <tr>
@@ -442,7 +444,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                 
                 
                       <h2 className="table-title">Lunch</h2>
-            <Table striped bordered hover>
+            <Table striped hover>
             <thead>
         <tr>
           <th>Food Item</th>
@@ -481,7 +483,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                       </Table>
                 
                       <h2 className="table-title">Dinner</h2>
-            <Table striped bordered hover>
+            <Table striped hover>
             <thead>
         <tr>
           <th>Food Item</th>
@@ -519,7 +521,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                       </tbody>
                       </Table>
                       <h2 className="table-title">Snacks</h2>
-            <Table striped bordered hover>
+            <Table striped hover>
                 <thead>
                     <tr>
                     <th>Food Item</th>
@@ -557,8 +559,8 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     </tbody>
                     </Table>
     </Container>
-        <Container>
-            <Table striped bordered hover>
+        <Container className="container-card">
+            <Table striped hover>
             <thead>
                 <tr>
                     <th></th>

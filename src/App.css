@@ -68,10 +68,23 @@ background-color: #376497;
   
 }
 
+.btn-danger {
+  background-color: #e76f51;
+  color:#f9f9f9;
+  /* border: none; */
+  border-radius: 50%;
+  padding:0.2em;
+}
+
 .max-width {
   width: 100%;
 
 }
+
+.table td th {
+  text-align: center;
+}
+
 
 .margin-top {
   margin-top:1.5em;
