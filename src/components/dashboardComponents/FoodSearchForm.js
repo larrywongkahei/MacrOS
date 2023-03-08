@@ -132,12 +132,11 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         handleUserPut(user);
         setShowWeightChanger(false);
         Swal.fire({
-            title: 'Success!',
-            text: 'You have added your custom food to our database and can now search for it',
+            title: 'Weigh In Complete!',
+            text: `Your weight has been updated to ${user.currentWeight}kg` ,
             icon: 'success',
             confirmButtonText: 'Return'
-    
-            });
+          })
     }
 
     function handleCompleteDay(e){
