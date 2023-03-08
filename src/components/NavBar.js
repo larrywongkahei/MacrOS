@@ -69,7 +69,7 @@ const NavBar = ({ user, dayTotals }) => {
             <Navbar style={navbarStyle} expand="lg" variant="light" sticky="top">
                 <Container>
                     <StaticImage />
-                    <Navbar.Brand href="/" id="onb-nav-title">Welcome To macrOS®</Navbar.Brand>
+                    <Navbar.Brand href="/" id="onb-nav-title">Welcome to macrOS®</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
