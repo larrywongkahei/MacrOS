@@ -64,6 +64,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         copiedUser[propertyName] = event.target.value;
         setUser(copiedUser);
     }
+
     function handleCustomFoodNameChange(e){
         setCustomFoodName(e.target.value)
     }
@@ -131,6 +132,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         e.preventDefault();
         handleUserPut(user);
         setShowWeightChanger(false);
+        console.log(user.currentWeight);
         Swal.fire({
             title: 'Weigh In Complete!',
             text: `Your weight has been updated to ${user.currentWeight}kg` ,
@@ -152,6 +154,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         // "date" : `LocalDate.of(${date.getFullYear()}, ${date.getMonth()}, ${date.getDay()})`,
         const completedDay = {
             date: isoDateStr,
+            userWeight: user.currentWeight,
         }
         console.log("next")
         getDateData(completedDay, [breakfastFoodItems, lunchFoodItems, dinnerFoodItems, snackFoodItems])
