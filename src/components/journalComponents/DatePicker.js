@@ -20,7 +20,7 @@ function DatePicker ({updateDate, selectedDate, days}) {
     return (
 
         <Card className="chart-card">
-            <Card.Header className="charts-title">Select a day</Card.Header>
+            <Card.Header className="charts-title blue">Select a day</Card.Header>
             
             <DayPicker
             mode="single"

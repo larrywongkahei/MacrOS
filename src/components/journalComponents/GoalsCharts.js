@@ -56,7 +56,7 @@ const GoalsCharts = ({user, days}) => {
 
         return(
             <Card className='charts-card'>
-                <Card.Header className="charts-title">Weight Trends</Card.Header>
+                <Card.Header className="charts-title orangew">Weight Trends</Card.Header>
 
                 <Line data={data} options = {{
                                                 plugins: {
