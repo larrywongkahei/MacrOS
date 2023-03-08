@@ -75,7 +75,7 @@ const SelectedDateChart = ({selectedDate, days}) => {
             
             <Card className='chart-card'>
 
-            <Card.Header className="charts-title">Historical Macro Intake for {selectedDate}</Card.Header>
+            <Card.Header className="charts-title blue">Historical Macro Intake for {selectedDate}</Card.Header>
 
             <Doughnut data={data} />
         </Card>
@@ -85,7 +85,7 @@ const SelectedDateChart = ({selectedDate, days}) => {
 
             <Card className='chart-card'>
 
-            <Card.Header className="charts-title">Historical Macro Intake for {selectedDate}</Card.Header>
+            <Card.Header className="charts-title blue">Historical Macro Intake for {selectedDate}</Card.Header>
 
             <Doughnut data={dummyData} />
         </Card>

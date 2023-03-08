@@ -11,7 +11,7 @@ const GoalsStats = ({user, setUser, onEdit}) => {
 
     return(
         <Card className="container-card">
-            <Card.Header className="charts-title">Weight Goals</Card.Header>
+            <Card.Header className="charts-title green">Weight Goals</Card.Header>
             <Container className="container-card">
 
                 <p><b>Starting Weight:</b> {user.startingWeight}kg</p>

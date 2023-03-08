@@ -5,7 +5,7 @@ const UserInfo = ({user}) => {
     
     return(
             <Card className="container-card">
-                <Card.Header className="charts-title">{user.name}</Card.Header>
+                <Card.Header className="charts-title green">{user.name}'s Stats</Card.Header>
                     <Container className="container-card">
                             <p><b>Age:</b> {user.age}</p>
                             <p><b>Height:</b> {user.height}cm</p>
