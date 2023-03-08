@@ -215,4 +215,19 @@ a {
   color:#f9f9f9
 }
 
+.yellow {
+  background-color: #e9c46a;
+
+}
+
+.red {
+  background-color: rgba(231, 111, 81);
+  
+}
+
+.progreen {
+  background-color: rgba(42, 157, 143);
+
+}
+
 

@@ -34,7 +34,7 @@ const FatChart = ({dayTotals, user}) => {
     
     return (
         <Card className="chart-card">
-            <Card.Header className="charts-title" >Fat</Card.Header>
+            <Card.Header className="charts-title red" >Fat</Card.Header>
         <Doughnut data={data} options={options}/>
         </Card>
     )

@@ -33,7 +33,7 @@ const ProteinChart = ({dayTotals, user}) => {
     
     return (
         <Card className="chart-card">
-            <Card.Header className="charts-title">Protein</Card.Header>
+            <Card.Header className="charts-title progreen">Protein</Card.Header>
         <Doughnut data={data} options={options}/>
         </Card>
     )

@@ -34,7 +34,7 @@ const carbs = (dayTotals.carbs - dayTotals.sugars)
     
     return (
         <Card className="chart-card">
-            <Card.Header className="charts-title">Carbohydrates</Card.Header>
+            <Card.Header className="charts-title yellow">Carbohydrates</Card.Header>
         <Doughnut data={data} options={options}/>
         </Card>
     )

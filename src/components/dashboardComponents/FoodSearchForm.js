@@ -138,7 +138,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
             text: `Your weight has been updated to ${user.currentWeight}kg` ,
             icon: 'success',
             confirmButtonText: 'OK',
-            confirmButtonColor: '#A5DC86'
+            confirmButtonColor: '#69a46e'
           })
     }
 
@@ -164,7 +164,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
             text: 'The day has been added to your diary',
             icon: 'success',
             confirmButtonText: 'OK',
-            confirmButtonColor: '#A5DC86'
+            confirmButtonColor: '#69a46e'
           })
         // getDateData -> handleDayPost automatically resets the page and meal/day state
         // alert to say day has been completed and saved
@@ -185,7 +185,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
                 text: 'The quantity must be more than zero',
                 icon: 'error',
                 confirmButtonText: 'OK',
-                confirmButtonColor: '#A5DC86'
+                confirmButtonColor: '#69a46e'
               })
         }else{
         const listToBeMultiply = ["carbs", "sugars", "protein", "fat", "calories"]
@@ -286,7 +286,7 @@ const FoodSearchForm = ({foodItems, searchFoodItemsByThreeLetters, getDateData, 
         text: 'You have added your custom food to our database and can now search for it',
         icon: 'success',
         confirmButtonText: 'Return',
-        confirmButtonColor: '#A5DC86'
+        confirmButtonColor: '#69a46e'
         })
         
     }
