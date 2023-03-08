@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
+    "chartjs-plugin-annotation": "^2.1.2",
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
     "framer-motion": "^10.0.1",
