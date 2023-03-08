@@ -400,121 +400,185 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     
 
         <Container>
-            <Container>
-            <h2 className="text-left">Breakfast</h2>{breakfastFoodItems.length > 0 ?(
-                <Container>
-                    <ul>
-                        {breakfastFoodItems.map((item) => (
-                            <li key={item}>
-                                <span>
-                                    <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                                    <Button variant="danger" onClick={() => onRemoveBreakfast(item)}><XCircle size={25}/></Button>
-                                </span>
-                            </li>
+            <h2 className="table-title">Breakfast</h2>
+            <Table striped bordered hover>
+            <thead>
+        <tr>
+          <th>Food Item</th>
+          <th>Calories (Kcal)</th>
+          <th>Carbs (g)</th>
+          <th>of which Sugars (g)</th>
+          <th>Protein (g)</th>
+          <th>Fat (g)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {breakfastFoodItems.map((item) => (
+                            <tr key={item.id}>
+                            <td>{item.name}</td>
+                            <td>{item.calories.toFixed(0)}</td>
+                            <td>{item.carbs.toFixed(1)}g</td>
+                            <td>{item.sugars.toFixed(1)}g</td>
+                            <td>{item.protein.toFixed(0)}g</td>
+                            <td>{item.fat.toFixed(0)}g</td>
+                            <td>
+                            <Button variant="danger" onClick={() => onRemoveBreakfast(item)}><XCircle size={25}/></Button>
+                            </td>
+                          </tr>
+                          
                         ))}
-                    </ul> 
-                    <ul>
-                        <li><b>Totals 
-                            Calories:{breakfastTotals.calories.toFixed(0)}Kcal 
-                            Carbs:{breakfastTotals.carbs.toFixed(0)}g 
-                            Sugars:{breakfastTotals.sugars.toFixed(0)}g 
-                            Protein:{breakfastTotals.protein.toFixed(0)}g 
-                            Fat:{breakfastTotals.fat.toFixed(0)}g
-                            </b> 
-                        </li>
-                    </ul>
-                </Container>
-        ) : null}
-    <div>
-        <h2>Lunch</h2>{lunchFoodItems.length > 0 ?(
-            <Card>
-                <ul>
-                    {lunchFoodItems.map((item) => (
-                        <li key={item}>
-                            <span>
-                            <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
+                        <tr>
+                           <td><b>Totals</b></td>
+                           <td>{breakfastTotals.calories.toFixed(0)}</td>
+                           <td>{breakfastTotals.carbs.toFixed(0)}</td>
+                           <td>{breakfastTotals.sugars.toFixed(0)}</td>
+                           <td>{breakfastTotals.protein.toFixed(0)}</td>
+                           <td>{breakfastTotals.fat.toFixed(0)}</td>
+                        </tr>
+                      </tbody>
+                      </Table>
+                
+                
+                      <h2 className="table-title">Lunch</h2>
+            <Table striped bordered hover>
+            <thead>
+        <tr>
+          <th>Food Item</th>
+          <th>Calories (Kcal)</th>
+          <th>Carbs (g)</th>
+          <th>of which Sugars (g)</th>
+          <th>Protein (g)</th>
+          <th>Fat (g)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {lunchFoodItems.map((item) => (
+                            <tr key={item.id}>
+                            <td>{item.name}</td>
+                            <td>{item.calories.toFixed(0)}</td>
+                            <td>{item.carbs.toFixed(1)}g</td>
+                            <td>{item.sugars.toFixed(1)}g</td>
+                            <td>{item.protein.toFixed(0)}g</td>
+                            <td>{item.fat.toFixed(0)}g</td>
+                            <td>
                             <Button variant="danger" onClick={() => onRemoveLunch(item)}><XCircle size={25}/></Button>
-                            </span>
-                        </li>
-                    ))}
-                </ul> 
-                <ul>
-                    <li><b>Totals
-                            Calories:{lunchTotals.calories.toFixed(0)}Kcal 
-                            Carbs:{lunchTotals.carbs.toFixed(0)}g 
-                            Sugars:{lunchTotals.sugars.toFixed(0)}g 
-                            Protein:{lunchTotals.protein.toFixed(0)}g 
-                            Fat:{lunchTotals.fat.toFixed(0)}g
-                            </b> 
-                        </li>
-                    </ul>
-            </Card>
-            ) : null}
-        
-    </div>
-    <div>
-        
-        <h2>Dinner</h2>{dinnerFoodItems.length > 0 ?(
-        <Card>
-            <ul>
-                {dinnerFoodItems.map((item) => (
-                    <li key={item}>
-                        <span>
-                        <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                        <Button variant="danger" onClick={() => onRemoveDinner(item)}><XCircle size={25}/></Button>
-                        </span>
-                    </li>
-                ))}
-            </ul> 
-            <ul>
-                    <li><b>Totals 
-                        Calories:{dayTotals.calories.toFixed(0)}Kcal 
-                        Carbs:{dayTotals.carbs.toFixed(0)}g 
-                        Sugars:{dayTotals.sugars.toFixed(0)}g 
-                        Protein:{dayTotals.protein.toFixed(0)}g 
-                        Fat:{dayTotals.fat.toFixed(0)}g
-                        </b> 
-                    </li>
-                    </ul>
-        </Card>
-        ) : null}
-    </div>
-    <div>
-        <h2>Snacks</h2>{snackFoodItems.length > 0 ?(
-        <Card>
-            <ul>
-                {snackFoodItems.map((item) => (
-                    <li key={item}>
-                        <span>
-                        <b>{item.name}</b> Calories: {item.calories.toFixed(0)} Carbs: {item.carbs.toFixed(1)}g Sugars: {item.sugars.toFixed(1)}g Protein:{item.protein.toFixed(0)}g Fat: {item.fat.toFixed(0)}g
-                        <Button variant="danger" onClick={() => onRemoveSnack(item)}><XCircle size={25}/></Button>
-                        </span>
-                    </li>
-                ))}
-            </ul>
-            <ul>
-                    <li><b>Totals 
-                        Calories:{snacksTotals.calories.toFixed(0)}Kcal 
-                        Carbs:{snacksTotals.carbs.toFixed(0)}g 
-                        Sugars:{snacksTotals.sugars.toFixed(0)}g 
-                        Protein:{snacksTotals.protein.toFixed(0)}g 
-                        Fat:{snacksTotals.fat.toFixed(0)}g
-                        </b> 
-                    </li>
-            </ul> 
-        </Card>
-        ) : null}
-        </div>
-        </Container>
+                            </td>
+                          </tr>
+                          
+                        ))}
+                        <tr>
+                           <td><b>Totals</b></td>
+                           <td>{lunchTotals.calories.toFixed(0)}</td>
+                           <td>{lunchTotals.carbs.toFixed(0)}</td>
+                           <td>{lunchTotals.sugars.toFixed(0)}</td>
+                           <td>{lunchTotals.protein.toFixed(0)}</td>
+                           <td>{lunchTotals.fat.toFixed(0)}</td>
+                        </tr>
+                      </tbody>
+                      </Table>
+                
+                      <h2 className="table-title">Dinner</h2>
+            <Table striped bordered hover>
+            <thead>
+        <tr>
+          <th>Food Item</th>
+          <th>Calories (Kcal)</th>
+          <th>Carbs (g)</th>
+          <th>of which Sugars (g)</th>
+          <th>Protein (g)</th>
+          <th>Fat (g)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {lunchFoodItems.map((item) => (
+                            <tr key={item.id}>
+                            <td>{item.name}</td>
+                            <td>{item.calories.toFixed(0)}</td>
+                            <td>{item.carbs.toFixed(1)}g</td>
+                            <td>{item.sugars.toFixed(1)}g</td>
+                            <td>{item.protein.toFixed(0)}g</td>
+                            <td>{item.fat.toFixed(0)}g</td>
+                            <td>
+                            <Button variant="danger" onClick={() => onRemoveDinner(item)}><XCircle size={25}/></Button>
+                            </td>
+                          </tr>
+                          
+                        ))}
+                        <tr>
+                           <td><b>Totals</b></td>
+                           <td>{dinnerTotals.calories.toFixed(0)}</td>
+                           <td>{dinnerTotals.carbs.toFixed(0)}</td>
+                           <td>{dinnerTotals.sugars.toFixed(0)}</td>
+                           <td>{dinnerTotals.protein.toFixed(0)}</td>
+                           <td>{dinnerTotals.fat.toFixed(0)}</td>
+                        </tr>
+                      </tbody>
+                      </Table>
+                      <h2 className="table-title">Snacks</h2>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                    <th>Food Item</th>
+                    <th>Calories (Kcal)</th>
+                    <th>Carbs (g)</th>
+                    <th>of which Sugars (g)</th>
+                    <th>Protein (g)</th>
+                    <th>Fat (g)</th>
+                    <th></th>
+                    </tr>
+                </thead>
+        <tbody>
+        {snackFoodItems.map((item) => (
+                            <tr key={item.id}>
+                                <td>{item.name}</td>
+                                <td>{item.calories.toFixed(0)}</td>
+                                <td>{item.carbs.toFixed(1)}g</td>
+                                <td>{item.sugars.toFixed(1)}g</td>
+                                <td>{item.protein.toFixed(0)}g</td>
+                                <td>{item.fat.toFixed(0)}g</td>
+                                <td>
+                                <Button variant="danger" onClick={() => onRemoveSnack(item)}><XCircle size={25}/></Button>
+                                </td>
+                            </tr>
+                        
+                        ))}
+                        <tr>
+                            <td><b>Totals</b></td>
+                            <td>{snacksTotals.calories.toFixed(0)}</td>
+                            <td>{snacksTotals.carbs.toFixed(0)}</td>
+                            <td>{snacksTotals.sugars.toFixed(0)}</td>
+                            <td>{snacksTotals.protein.toFixed(0)}</td>
+                            <td>{snacksTotals.fat.toFixed(0)}</td>
+                        </tr>
+                    </tbody>
+                    </Table>
     </Container>
         <Container>
-                <p><b>Todays Totals </b>
-                        Calories:{dayTotals.calories.toFixed(0)}Kcal 
-                        Carbs:{dayTotals.carbs.toFixed(0)}g 
-                        Sugars:{dayTotals.sugars.toFixed(0)}g 
-                        Protein:{dayTotals.protein.toFixed(0)}g 
-                        Fat:{dayTotals.fat.toFixed(0)}g
-                </p>
+            <Table striped bordered hover>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Calories (Kcal)</th>
+                    <th>Carbs (g)</th>
+                    <th>of which Sugars (g)</th>
+                    <th>Protein (g)</th>
+                    <th>Fat (g)</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr>
+                        <td><b className="table-title">Day Totals</b></td>
+                        <td>{dayTotals.calories.toFixed(0)}</td>
+                        <td>{dayTotals.carbs.toFixed(0)}</td>
+                        <td>{dayTotals.sugars.toFixed(0)}</td>
+                        <td>{dayTotals.protein.toFixed(0)}</td>
+                        <td>{dayTotals.fat.toFixed(0)}</td>
+                    </tr>
+                </tbody>
+            </Table>
         </Container>
     <Button variant="success" onClick={handleCompleteDay}>Complete Day</Button>
     

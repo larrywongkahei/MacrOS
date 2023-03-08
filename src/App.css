@@ -42,7 +42,7 @@ img {
 }
 
 .modal-header {
-  background-color: #2A9D8F;
+  background-color: #5985B8;
   color:#f9f9f9;
 }
 /* BUTTONS
@@ -86,5 +86,13 @@ background-color: #376497;
   text-decoration: solid;
   text-align: center;
   padding-bottom: .4em;
+}
+
+.table-title{
+  background-color:#E9C46A;
+  padding-left:0.3em;
+  padding-right:0.3em;
+  width:fit-content;
+
 }
 
