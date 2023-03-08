@@ -39,12 +39,12 @@ const percentageFat = ((dayTotals.fat*9)/dayTotals.calories)*100
     }
     
     return (
-        <Container className="container-card">
+        // <Container className="container-card">
             <Card className="chart-card">
                 <Card.Header className="charts-title">Macros (%)</Card.Header>
                 <Pie data={data} options={options}/>
             </Card>
-        </Container>
+        // </Container>
     )
 }
 export default MacroCharts;

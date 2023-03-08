@@ -312,13 +312,13 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                         <Form>
                             {!mealType ?
                             <Container className="d-flex justify-content-center">
-                                <Button value={"Breakfast"} onClick={handleMealType} variant="secondary" className="me-2">Breakfast &nbsp; <PlusCircle size={25}/></Button>
-                                <Button value={"Lunch"} onClick={handleMealType} variant="secondary" className="me-2">Lunch &nbsp; <PlusCircle size={25}/></Button>
-                                <Button value={"Dinner"} onClick={handleMealType} variant="secondary" className="me-2">Dinner &nbsp; <PlusCircle size={25}/></Button>
-                                <Button value={"Snack"} onClick={handleMealType} variant="secondary" className="me-2">Snacks &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Breakfast"} onClick={handleMealType} variant="primary" className="me-2">Breakfast &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Lunch"} onClick={handleMealType} variant="primary" className="me-2">Lunch &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Dinner"} onClick={handleMealType} variant="primary" className="me-2">Dinner &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Snack"} onClick={handleMealType} variant="primary" className="me-2">Snacks &nbsp; <PlusCircle size={25}/></Button>
                                 
                     
-                                    <Button variant="primary" onClick={() => handleCustomFoodAdd(!showCustomFoodAdd)}>Custom Food &nbsp; <PlusCircle size={25}/></Button>
+                                    <Button variant="secondary" onClick={() => handleCustomFoodAdd(!showCustomFoodAdd)}>Custom Food &nbsp; <PlusCircle size={25}/></Button>
                                     <Modal show={showCustomFoodAdd} onHide={handleCloseCustomFoodAdd}>
                                         <Modal.Header closeButton>
                                             <Modal.Title>Add Food to Database</Modal.Title>
@@ -349,7 +349,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                                                     <Form.Group className="mb-3">
                                                     <Form.Label>Calories</Form.Label>
                                                     <Form.Control type="text" placeholder="Enter calories per 100g" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange} />
-                                                    <Button onClick={handleAddCustomFood}><PlusCircle size={35}/></Button>
+                                                    <Button variant="success" onClick={handleAddCustomFood}><PlusCircle size={35}/></Button>
                                                     </Form.Group>
                                                     
                                                 </Form>

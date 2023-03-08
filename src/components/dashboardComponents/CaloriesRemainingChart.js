@@ -34,12 +34,12 @@ const CaloriesRemainingChart = ({dayTotals, user}) => {
     }
     
     return (
-        <Container className="container-card">
+        // <Container className="container-card">
             <Card className="chart-card">
                 <Card.Header className="charts-title">Calories Remaining Kcal</Card.Header>
                 <Doughnut data={data} options={options}/>
             </Card>
-        </Container>
+        // </Container>
     )
 }
 export default CaloriesRemainingChart;
