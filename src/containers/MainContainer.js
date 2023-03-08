@@ -56,7 +56,7 @@ const MainContainer = () => {
             title: 'Your Nutrition Goals Per Day',
             text: `Calories: ${user.caloriesGoal}Kcal \n Protein: ${user.proteinGoal}g \n Fat: ${user.fatGoal}g \n Carbs: ${user.carbsGoal}g`,
             icon: 'success',
-            confirmButtonText: 'Return'
+            confirmButtonText: 'OK'
           })
           setUser(user);
     }
