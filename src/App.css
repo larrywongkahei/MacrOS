@@ -62,6 +62,25 @@ background-color: #376497;
   
 }
 
+.btn-success:hover {
+  background-color: #157469;
+  border-color: #157469;
+  
+}
+
+.max-width {
+  width: 100%;
+
+}
+
+.margin-top {
+  margin-top:1.5em;
+}
+
+.btn-height {
+  height:4em;
+}
+
 .btn-secondary {
   background-color: #F4A261;
   border-color: #F4A261;
@@ -72,6 +91,16 @@ background-color: #376497;
 }
 
 .container-card {
+  padding:1em 3em;
+  opacity: 0.9;
+}
+
+.container-card-big {
+  /* padding:1em 2em; */
+  opacity: 0.9;
+}
+
+.container-card-buttons {
   padding:1em 2em;
   opacity: 0.9;
 
@@ -87,6 +116,16 @@ background-color: #376497;
   text-decoration: solid;
   text-align: center;
   padding-bottom: .4em;
+}
+
+.diary-title {
+  font-size:3em;
+  text-decoration: solid;
+  text-align: center;
+  padding-bottom: .4em;
+  background-color:#2A9D8F;
+  color:#f9f9f9;
+  /* text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black; */
 }
 
 .table-title{

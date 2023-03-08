@@ -303,19 +303,20 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
         }, { calories: 0, carbs: 0, sugars: 0, protein: 0, fat: 0 }
         );
 
-        
+        const today = new Date().toLocaleDateString()
 
     return(
-        <Card className="container-card">
+        <Card className="container-card-big">
+            <Card.Header className="diary-title">Food Diary &nbsp; {today}</Card.Header>
                 <Container>
                     <div>
                         <Form>
                             {!mealType ?
-                            <Container className="d-flex justify-content-center">
-                                <Button value={"Breakfast"} onClick={handleMealType} variant="primary" className="me-2">Breakfast &nbsp; <PlusCircle size={25}/></Button>
-                                <Button value={"Lunch"} onClick={handleMealType} variant="primary" className="me-2">Lunch &nbsp; <PlusCircle size={25}/></Button>
-                                <Button value={"Dinner"} onClick={handleMealType} variant="primary" className="me-2">Dinner &nbsp; <PlusCircle size={25}/></Button>
-                                <Button value={"Snack"} onClick={handleMealType} variant="primary" className="me-2">Snacks &nbsp; <PlusCircle size={25}/></Button>
+                            <Container className="d-flex justify-content-center container-card-buttons">
+                                <Button value={"Breakfast"} onClick={handleMealType} variant="primary" className="me-2 btn-lg">Breakfast &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Lunch"} onClick={handleMealType} variant="primary" className="me-2 btn-lg">Lunch &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Dinner"} onClick={handleMealType} variant="primary" className="me-2 btn-lg">Dinner &nbsp; <PlusCircle size={25}/></Button>
+                                <Button value={"Snack"} onClick={handleMealType} variant="primary" className="me-2 btn-lg">Snacks &nbsp; <PlusCircle size={25}/></Button>
                                 
                     
                                     <Button variant="secondary" onClick={() => handleCustomFoodAdd(!showCustomFoodAdd)}>Custom Food &nbsp; <PlusCircle size={25}/></Button>
@@ -349,7 +350,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                                                     <Form.Group className="mb-3">
                                                     <Form.Label>Calories</Form.Label>
                                                     <Form.Control type="text" placeholder="Enter calories per 100g" value={customFoodCalories} onChange={handleCustomFoodCaloriesChange} />
-                                                    <Button variant="success" onClick={handleAddCustomFood}><PlusCircle size={35}/></Button>
+                                                    <Button className="max-width mx-auto" variant="success" onClick={handleAddCustomFood}><PlusCircle size={35}/></Button>
                                                     </Form.Group>
                                                     
                                                 </Form>
@@ -376,13 +377,13 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                                         {/* <button>Barcode Scanner button</button> */}
                                         <Form.Label>Quantity</Form.Label>
                                         <Form.Control placeholder="Enter quantity in grams" type="number" value={quantity} onChange={handleQuantity} />
-                                        <Button onClick={handleAdd} className="my-3" variant="success"><PlusCircle size={35}/></Button>
+                                        <Button onClick={handleAdd} className="max-width mx-auto btn-height margin-top" variant="success"><PlusCircle size={35}/></Button>
                                         {filteredFoodItems ? 
                                         <div>
                                             {foodItemsToShow}
                                         </div>
                                         : null}
-                                        <Button onClick={handleSubmit} className="my-3" variant="success">Choose Meal</Button>
+                                        <Button  onClick={handleSubmit} className="max-width mx-auto btn-height" variant="success">Choose Meal</Button>
                                     </Form.Group>
                               </Modal.Body>
                             </Modal>
@@ -399,7 +400,7 @@ const dayTotals = [breakfastTotals, lunchTotals, dinnerTotals, snacksTotals]
                     
                     
 
-        <Container>
+        <Container className="container-card">
             <h2 className="table-title">Breakfast</h2>
             <Table striped bordered hover>
             <thead>
