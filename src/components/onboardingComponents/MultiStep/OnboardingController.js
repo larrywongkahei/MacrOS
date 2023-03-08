@@ -14,7 +14,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 
 
 
-function OnboardingController({ handleUserPost, setOnboardingComplete }) {
+function OnboardingController({ handleUserPost }) {
 
 
     const emptyUser = {
@@ -111,7 +111,6 @@ function OnboardingController({ handleUserPost, setOnboardingComplete }) {
             newUser={newUser}
             emptyUser={emptyUser}
             setNewUser={setNewUser}
-            setOnboardingComplete={setOnboardingComplete}
             handleUserPost={handleUserPost}
             page={page}
             setPage={setPage}
@@ -123,7 +122,6 @@ function OnboardingController({ handleUserPost, setOnboardingComplete }) {
 
     return (
         <div>
-            <div style={{ width: page === 0 ? "15%" : page === 1 ? "30%" : page === 2 ? "45%" : page === 3 ? "55%" : page === 4 ? "65%" : page === 5 ? "75%" : page === 6 ? "85%" : page === 7 ? "90%" : "100%" }}></div>
             <div>{componentList[page]}</div>
         </div>
     );
