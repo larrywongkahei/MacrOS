@@ -125,6 +125,7 @@ background-color: #376497;
 }
 
 .charts-title {
+  font-weight:700;
   font-size:1.6em;
   text-decoration: solid;
   text-align: center;
