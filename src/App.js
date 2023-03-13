@@ -1,10 +1,11 @@
 import './App.css';
 import MainContainer from './containers/MainContainer';
-import {BrowserRouter as Router} from 'react-router-dom';
-
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import SVGComponent from './components/SvgComponent';
 function App() {
   return (
-    <div>
+    <div className='App'>
+      <SVGComponent />
       <Router>
         <MainContainer/>
       </Router>

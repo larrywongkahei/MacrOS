@@ -1,0 +1,20 @@
+.card {
+  margin: 0 auto; 
+  float: none; 
+  margin-bottom: 10px; 
+  opacity: 0.9;
+}
+
+label span {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+Button {
+    margin: .6rem;
+}
+
+
+
+
+

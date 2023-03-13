@@ -1,16 +1,12 @@
-import NavBar from "../../components/NavBar";
-import AppInformation from "../../components/onboardingComponents/AppInformation";
-import OnBoardingUserInputForm from "../../components/onboardingComponents/OnBoardingUserInputForm";
+import OnboardingController from "../../components/onboardingComponents/MultiStep/OnboardingController";
 
-const OnboardingContainer = () => {
+const OnboardingContainer = ({handleUserPost}) => {
+
+
+
     return(
         <>
-        <hr/>
-        <p>I am OnboardingContainer containing:</p>
-        <NavBar />
-        <OnBoardingUserInputForm />
-        <AppInformation />
-
+        <OnboardingController handleUserPost={handleUserPost}/>
         </>
     )
 }
