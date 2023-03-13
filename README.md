@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# CodeClan Capstone Project
+<kbd>
+<img height = "50px" src="https://user-images.githubusercontent.com/116349877/224767392-507ae35a-9f03-4e5c-bd0b-8677ccaa3297.png" />
+</kbd>
+<br></br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MacrOS is a full-stack calorie tracking application, with functionality allowing users set nutrition goals, track and view their daily food/calorie/macro intake and monitor their progress over time.
 
-## Available Scripts
+## Front-end technologies:
 
-In the project directory, you can run:
+* React JS
+* Bootstrap for React
 
-### `npm start`
+<span>
+  <img height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+  <img height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" />
+</span>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## [Back-end](https://github.com/mwmarszalek/MacrOS_backend) technologies:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Java
+* Spring Boot
+* PostgreSQL
 
-### `npm test`
+<span>
+  <img height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+  <img height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" />
+  <img height="50px src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg" />
+</span>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## MVP
 
-### `npm run build`
+A user should be able to: 
+  - Log food items to daily meals eg, breakfast, lunch, dinner, snacks for a given day.
+  - View current and past calorie and macro intake. This data should ideally be presented in chart format for easy user review and have a good aesthetic.
+  - Search for food items in an existing database and add custom items for future use.
+  - Track progress towards fitness goals through graphs/charts.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Future Extensions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ - Barcode scanner, so that users can search for food items without having to type names into a search field.
+ - User authentification.
+ - Game-ify the user experience, allowing them to accumulate XP and level up when logging their daily food intake and reaching the milestones on their health journey.
+ - Pre-set meals - a user could save nutritional information for custom meals for later reuse, without having to enter the individual food items each time. (should be easy enough- just an object with set calories and macros)
+ - A fitness tracker - allows users to record daily exercise, allowing them to adjust their calorie-intake goals with activity.
 
-### `npm run eject`
+## Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br></br>
+ <div align="center">
+  <kbd>
+   <img height ="120px" src="https://user-images.githubusercontent.com/116349877/224767490-47b6f4cf-4310-4dea-98c0-0f67eaa0bcb7.png" />
+  </kbd>
+ </div>
+ <br></br>
+ <div align="center">
+   <span>
+     <kbd>
+       <img height="200px" src="https://user-images.githubusercontent.com/116349877/224767526-08761065-e102-4b33-9203-838fc0699dbd.png" />
+     </kbd>
+      &emsp;&emsp;
+     <kbd>
+      <img height="200px" src="https://user-images.githubusercontent.com/116349877/224767580-aadba699-231c-4837-b597-581cb04752af.png" />
+     </kbd>
+     &emsp;&emsp;
+     <kbd>
+      <img height="200px" src="https://user-images.githubusercontent.com/116349877/224767597-a1de90ea-32cd-424d-b8f4-188f1e2a5e23.png" />
+     </kbd>
+   <span>
+ </div>
+<br></br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributors
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+[Andrew Patterson](https://github.com/ajdpatterson) | [Larry Wong](https://github.com/larrywongkahei) | [Lee Jones](https://github.com/ljones-11) | [Michal Marszalek](https://github.com/mwmarszalek) 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href="https://github.com/larrywongkahei/MacrOS/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=larrywongkahei/MacrOS" />
+</a>
